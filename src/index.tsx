@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled, { ThemeProvider } from 'styled-components'
 import { theme } from './constants'
@@ -14,6 +14,9 @@ import {
     LOCAL_STORAGE_JWT_TOKEN_KEY,
     mocking
 } from './constants'
+import { Box, Row } from 'hybrid-components'
+import CodeEditor from './CodeEditor'
+import SkemaEditor from './SkemaEditor'
 
 const graphqlOptions = {
     GRAPHQL_MOCKING_ENDPOINT,
@@ -23,11 +26,20 @@ const graphqlOptions = {
     mocking
 }
 
+const AppView = () => {
+    return (
+        <Row height='100vh'>
+            <SkemaEditor />
+            <SkemaEditor />
+        </Row>
+    )
+}
+
 const App: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
-            <GraphqlProvider  {...graphqlOptions}>
-                <Router>
+            <GraphqlProvider {...graphqlOptions}>
+                {/* <Router>
                     <Switch>
                         <Route
                             path='/'
@@ -35,16 +47,17 @@ const App: React.FC = () => {
                             component={() => <div>ciao</div>}
                         />
                     </Switch>
-                </Router>
+                </Router> */}
+                <AppView />
             </GraphqlProvider>
         </ThemeProvider>
     )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))
 
 // @ts-ignore
 if (module.hot) {
     // @ts-ignore
-    module.hot.accept();
+    module.hot.accept()
 }
