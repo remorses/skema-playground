@@ -33,7 +33,7 @@ export default ({
                 // ref={key}
                 readOnly={readOnly}
                 mode={language}
-                fontSize={16}
+                fontSize={14}
                 theme={theme}
                 // name={key}
                 height='100%'

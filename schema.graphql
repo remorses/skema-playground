@@ -1,17 +1,19 @@
-
-
 type Query {
-  languages: [Language]
+    languages: [Language]
+}
+
+type Mutation {
+    getOutput(skema: String!, options: Json!): String
 }
 
 type Language {
-  name: LanguageName
-  optionsSchema: Json 
+    name: LanguageName
+    optionsSchema: Json
 }
 
 scalar Json
 
 enum LanguageName {
-  python
-  typescript
+    python
+    typescript
 }

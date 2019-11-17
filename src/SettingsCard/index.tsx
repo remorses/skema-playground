@@ -18,7 +18,8 @@ import { SchemaForm, SchemaFormState } from 'skema-form'
 import {
     useGetLanguagesQuery,
     GetLanguagesQueryResult,
-    GetLanguagesQuery
+    GetLanguagesQuery,
+    useGetOutputCodeMutation
 } from '../generated'
 import { useGlobal } from '../store'
 
@@ -33,7 +34,14 @@ export default ({}) => {
 
 const View = ({ data }: { data: GetLanguagesQuery }) => {
     const langs = data.languages.map(({ name }) => name)
-    const [{settings}, actions] = useGlobal()
+    const [getOutput, { data: outData, }] = useGetOutputCodeMutation()
+    const [
+        {
+            settings,
+            skemaEditor: { code: skemaCode }
+        },
+        actions
+    ] = useGlobal()
     const language = settings.language || langs[0]
     const schema = data.languages.find(({ name }) => name === language)
         .optionsSchema
@@ -61,15 +69,32 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
                     <HTMLSelect
                         fill
                         value={language}
-                        onChange={(e) => actions.setOutputLanguage(e.target.value)}
+                        onChange={(e) =>
+                            actions.setOutputLanguage(e.target.value)
+                        }
                         options={langs.map((value) => ({ value }))}
                     />
                 </FormGroup>
                 <SchemaForm
-                    onChange={({values}) => actions.setOptions(values)}
+                    onChange={({ values }) => actions.setOptions(values)}
                     schema={schema}
                     skipValidation={true}
                 />
+                <FormGroup label='Language to putput code'>
+                    <Button
+                        fill
+                        onClick={async () =>{
+                            const {data} = await getOutput({
+                                variables: {
+                                    skema: skemaCode,
+                                    options: settings.options
+                                }
+                            })
+                            actions.setOutputCode(data.output)
+                        }}
+                        intent='primary'
+                    >Convert</Button>
+                </FormGroup>
             </Card>
         </Box>
     )

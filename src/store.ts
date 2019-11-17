@@ -10,7 +10,32 @@ interface State {
     settings: {
         language?: string
         options: any
-    }
+    },
+    fetchingOutput: boolean
+}
+
+const skemaCode = `
+Object:
+    x: Int
+    name: Str
+    enum: "jkg" | "kghj"
+    nested:
+        cosa: Str
+
+scalar: Int
+`
+
+const initialState = {
+    skemaEditor: {
+        code: skemaCode
+    },
+    outputEditor: {
+        code: 'ciao\ndsf'
+    },
+    settings: {
+        options: {}
+    },
+    fetchingOutput: false
 }
 
 const actions = ({ setState, state }: Store<State>) => ({
@@ -21,23 +46,15 @@ const actions = ({ setState, state }: Store<State>) => ({
         setState({ outputEditor: { ...state.skemaEditor, code } })
     },
     setOutputLanguage: (language) => {
-        setState({ settings: { language, options: {} } })
+        setState({ settings: { language, options: {} }, outputEditor: {code: ''} })
     },
     setOptions: options => {
         setState({ settings: { ...state.settings, options } })
-    }
+    },
 })
 
-const initialState = {
-    skemaEditor: {
-        code: 'ciao\ndsf'
-    },
-    outputEditor: {
-        code: 'ciao\ndsf'
-    },
-    settings: {
-        options: {}
-    }
-}
+
+
 
 export const useGlobal = makeHook<State, typeof actions>(initialState, actions)
+
