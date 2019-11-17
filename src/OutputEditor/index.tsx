@@ -20,6 +20,7 @@ const View = ({}) => {
                 onChange={(code) => actions.setOutputCode(code)}
                 value={state.outputEditor.code}
                 language='yaml'
+                showGutter={false}
                 minLines={2000}
                 readOnly
             />

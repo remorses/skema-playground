@@ -21,6 +21,7 @@ import CodeEditor from './CodeEditor'
 import SkemaEditor from './SkemaEditor'
 import OutputEditor from './OutputEditor'
 import SettingsCard from './SettingsCard'
+import Header from './Header'
 
 const graphqlOptions = {
     GRAPHQL_MOCKING_ENDPOINT,
@@ -32,7 +33,9 @@ const graphqlOptions = {
 
 const AppView = () => {
     return (
-        <Row height='100vh'>
+        <>
+        <Header />
+        <Row height='100vh' style={{position: 'relative'}}>
             <SplitPane split='vertical' minSize={50} defaultSize='50%'>
                 {/* <Pane initialSize='50%'>1</Pane>
                 <Pane initialSize='50%'>2</Pane> */}
@@ -42,6 +45,7 @@ const AppView = () => {
 
             <SettingsCard />
         </Row>
+        </>
     )
 }
 

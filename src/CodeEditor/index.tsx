@@ -15,6 +15,7 @@ export default ({
     language = 'yaml',
     readOnly = false,
     minLines = 0,
+    showGutter=true,
     theme = 'tomorrow_night',
     onChange = (v) => null,
     ...rest
@@ -53,7 +54,7 @@ export default ({
                     showFoldWidgets: false,
                     tabSize: 4,
                     showInvisibles: false,
-                    showGutter: true,
+                    showGutter,
                     
                     spellcheck: true,
                 }}
