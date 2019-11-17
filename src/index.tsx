@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled, { ThemeProvider } from 'styled-components'
 import { theme } from './constants'
 import { GraphqlProvider } from 'react-apollo-the-easy-way'
+import SplitPane from 'react-split-pane'
+import './index.css'
 
 console.log(process.env.MOCKING)
 
@@ -31,9 +33,14 @@ const graphqlOptions = {
 const AppView = () => {
     return (
         <Row height='100vh'>
-            <SkemaEditor />
-            <OutputEditor />
-            <SettingsCard/>
+            <SplitPane split='vertical' minSize={50} defaultSize='50%'>
+                {/* <Pane initialSize='50%'>1</Pane>
+                <Pane initialSize='50%'>2</Pane> */}
+                <SkemaEditor />
+                <OutputEditor />
+            </SplitPane>
+
+            <SettingsCard />
         </Row>
     )
 }
