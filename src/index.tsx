@@ -17,6 +17,8 @@ import {
 import { Box, Row } from 'hybrid-components'
 import CodeEditor from './CodeEditor'
 import SkemaEditor from './SkemaEditor'
+import OutputEditor from './OutputEditor'
+import SettingsCard from './SettingsCard'
 
 const graphqlOptions = {
     GRAPHQL_MOCKING_ENDPOINT,
@@ -30,7 +32,8 @@ const AppView = () => {
     return (
         <Row height='100vh'>
             <SkemaEditor />
-            <SkemaEditor />
+            <OutputEditor />
+            <SettingsCard/>
         </Row>
     )
 }

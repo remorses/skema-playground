@@ -29,6 +29,7 @@ export default ({
             {...rest}
         >
             <AceEditor
+                
                 // ref={key}
                 readOnly={readOnly}
                 mode={language}
@@ -44,7 +45,7 @@ export default ({
                 // minLines={minLines}
                 onChange={onChange as any}
                 setOptions={{
-                    highlightGutterLine: false,
+                    highlightGutterLine: true,
                     wrapBehavioursEnabled: false,
                     enableBasicAutocompletion: true,
                     enableLiveAutocompletion: true,
@@ -53,6 +54,7 @@ export default ({
                     tabSize: 4,
                     showInvisibles: false,
                     showGutter: true,
+                    
                     spellcheck: true,
                 }}
             />

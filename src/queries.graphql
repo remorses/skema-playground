@@ -1,7 +1,7 @@
-query Lang {
-    language {
-        code
+query GetLanguages {
+    languages {
         name
+        optionsSchema
     }
 }
 

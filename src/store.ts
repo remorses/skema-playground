@@ -7,11 +7,24 @@ interface State {
     outputEditor: {
         code: string
     }
+    settings: {
+        language?: string
+        options: any
+    }
 }
 
 const actions = ({ setState, state }: Store<State>) => ({
     setSkemaCode: (code) => {
         setState({ skemaEditor: { ...state.skemaEditor, code } })
+    },
+    setOutputCode: (code) => {
+        setState({ outputEditor: { ...state.skemaEditor, code } })
+    },
+    setOutputLanguage: (language) => {
+        setState({ settings: { language, options: {} } })
+    },
+    setOptions: options => {
+        setState({ settings: { ...state.settings, options } })
     }
 })
 
@@ -21,10 +34,10 @@ const initialState = {
     },
     outputEditor: {
         code: 'ciao\ndsf'
+    },
+    settings: {
+        options: {}
     }
 }
 
-export const useGlobal = makeHook<State, typeof actions>(
-    initialState,
-    actions
-)
+export const useGlobal = makeHook<State, typeof actions>(initialState, actions)
