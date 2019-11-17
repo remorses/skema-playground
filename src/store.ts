@@ -10,7 +10,7 @@ interface State {
     settings: {
         language?: string
         options: any
-    },
+    }
     fetchingOutput: boolean
 }
 
@@ -42,19 +42,22 @@ const actions = ({ setState, state }: Store<State>) => ({
     setSkemaCode: (code) => {
         setState({ skemaEditor: { ...state.skemaEditor, code } })
     },
-    setOutputCode: (code) => {
-        setState({ outputEditor: { ...state.skemaEditor, code } })
+    setOutputCode: (getCode) => {
+        setState({ fetchingOutput: true })
+        getCode.then((code) => {
+            setState({ outputEditor: { ...state.skemaEditor, code } })
+            setState({ fetchingOutput: false })
+        })
     },
     setOutputLanguage: (language) => {
-        setState({ settings: { language, options: {} }, outputEditor: {code: ''} })
+        setState({
+            settings: { language, options: {} },
+            outputEditor: { code: '' }
+        })
     },
-    setOptions: options => {
+    setOptions: (options) => {
         setState({ settings: { ...state.settings, options } })
-    },
+    }
 })
 
-
-
-
 export const useGlobal = makeHook<State, typeof actions>(initialState, actions)
-

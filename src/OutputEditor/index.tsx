@@ -9,7 +9,10 @@ export default () => {
 
 const View = ({}) => {
     const [state, actions] = useGlobal()
-
+    
+    if (state.fetchingOutput) {
+        return <Box height='100%' overflow='auto'>loading</Box>
+    }
     return (
         <Box height='100%' overflow='auto'>
             <CodeEditor

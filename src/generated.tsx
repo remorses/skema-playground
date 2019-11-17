@@ -30,13 +30,18 @@ export enum LanguageName {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  getOutput?: Maybe<Scalars['String']>,
+  getOutput?: Maybe<OutputCode>,
 };
 
 
 export type MutationGetOutputArgs = {
   skema: Scalars['String'],
   options: Scalars['Json']
+};
+
+export type OutputCode = {
+   __typename?: 'OutputCode',
+  code?: Maybe<Scalars['String']>,
 };
 
 export type Query = {
@@ -63,7 +68,10 @@ export type GetOutputCodeMutationVariables = {
 
 export type GetOutputCodeMutation = (
   { __typename?: 'Mutation' }
-  & { output: Mutation['getOutput'] }
+  & { output: Maybe<(
+    { __typename?: 'OutputCode' }
+    & Pick<OutputCode, 'code'>
+  )> }
 );
 
 
@@ -119,7 +127,9 @@ export type GetLanguagesLazyQueryHookResult = ReturnType<typeof useGetLanguagesL
 export type GetLanguagesQueryResult = ApolloReactCommon.QueryResult<GetLanguagesQuery, GetLanguagesQueryVariables>;
 export const GetOutputCodeDocument = gql`
     mutation GetOutputCode($skema: String!, $options: Json!) {
-  output: getOutput(skema: $skema, options: $options)
+  output: getOutput(skema: $skema, options: $options) {
+    code
+  }
 }
     `;
 export type GetOutputCodeMutationFn = ApolloReactCommon.MutationFunction<GetOutputCodeMutation, GetOutputCodeMutationVariables>;

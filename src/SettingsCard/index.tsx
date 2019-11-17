@@ -34,7 +34,7 @@ export default ({}) => {
 
 const View = ({ data }: { data: GetLanguagesQuery }) => {
     const langs = data.languages.map(({ name }) => name)
-    const [getOutput, { data: outData, }] = useGetOutputCodeMutation()
+    const [getOutput, { data: outData }] = useGetOutputCodeMutation()
     const [
         {
             settings,
@@ -80,20 +80,23 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
                     schema={schema}
                     skipValidation={true}
                 />
-                <FormGroup label='Language to putput code'>
+                <FormGroup>
                     <Button
                         fill
-                        onClick={async () =>{
-                            const {data} = await getOutput({
-                                variables: {
-                                    skema: skemaCode,
-                                    options: settings.options
-                                }
-                            })
-                            actions.setOutputCode(data.output)
+                        onClick={() => {
+                            actions.setOutputCode(
+                                getOutput({
+                                    variables: {
+                                        skema: skemaCode,
+                                        options: settings.options
+                                    }
+                                }).then(({ data }) => data.output.code)
+                            )
                         }}
                         intent='primary'
-                    >Convert</Button>
+                    >
+                        Convert
+                    </Button>
                 </FormGroup>
             </Card>
         </Box>

@@ -31,7 +31,7 @@
     "@graphql-codegen/typescript-operations": "latest",
     "@graphql-codegen/typescript-react-apollo": "latest",
     "faker": "^4.1.0",
-    "graphql-easy-mocks": "latest",
+    "graphql-easy-mocks": "0.0.6",
     "typescript": "^3.7.2"
   },
   "scripts": {
