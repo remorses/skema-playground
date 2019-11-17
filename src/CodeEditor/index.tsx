@@ -8,6 +8,9 @@ import 'brace/theme/tomorrow'
 import 'brace/ext/language_tools'
 import 'brace/mode/json'
 import 'brace/mode/yaml'
+import 'brace/mode/python'
+import 'brace/mode/typescript'
+
 import { BoxProps } from 'hybrid-components/src/types'
 
 export default ({

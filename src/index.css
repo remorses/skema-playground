@@ -39,9 +39,14 @@ body {
 }
 
 .Resizer.vertical {
-    width: 2px;
-    background: black;
-    margin: 0 10px;
+    width: 8px;
+    height: 0px;
+    background: none;
+    margin: auto 10px;
+    border: 2px solid black;
+    border-top: none;
+    border-bottom: none;
+    padding-top: 60px;
 
     /* border-left: 5px solid rgba(255, 255, 255, 0);
     border-right: 5px solid rgba(255, 255, 255, 0); */
