@@ -18,4 +18,4 @@ gen:
 	npx graphql-codegen --config ./.graphqlconfig.yml
 
 deploy:
-	docker-compose --verbose -H ssh://morse@instabotnet.club up -d
+	docker-compose -H ssh://morse@instabotnet.club up -d
