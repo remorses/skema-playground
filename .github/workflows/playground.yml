@@ -3,7 +3,7 @@ on:
         branches:
             - master
         paths:
-            - '**'
+            - 'playground/**'
 name: Playground
 jobs:
     all:
@@ -17,6 +17,8 @@ jobs:
                 username: remorses
                 personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
                 imageName: playground
+            env:
+                GITHUB_WORKSPACE: ${{ join(env.GITHUB_WORKSPACE, './playground') }}
         -   name: Bump Version
             uses: remorses/bump-version@js
             with:
