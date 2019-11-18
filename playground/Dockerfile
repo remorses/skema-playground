@@ -10,7 +10,7 @@ RUN npm ci
 
 COPY . /src/
 
-RUN npm run build
+RUN parcel build --public-url ./app/ public/index.html
 
 RUN ls /src
 
