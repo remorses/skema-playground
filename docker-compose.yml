@@ -1,8 +1,8 @@
 version : '3'
 
 services:
-    landing-page:
-        build: landing-page
+    landingpage:
+        build: landingpage
         labels:
             - traefik.enable=true
             - traefik.port=80
@@ -16,7 +16,7 @@ services:
             - traefik.port=80
             - "traefik.frontend.rule=Host:skema.club;Path:/app"
     worker:
-        build: skema-worker
+        build: worker
         environment: 
             - PORT=80
         ports:

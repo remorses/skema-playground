@@ -3,9 +3,9 @@ on:
         branches:
             - master
         paths:
-            - 'playground/**'
+            - 'worker/**'
 
-name: Playground
+name: Worker
 jobs:
     all:
         name: Everything
@@ -17,13 +17,13 @@ jobs:
             with:
                 username: remorses
                 personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
-                imageName: playground
-                context: playground
+                imageName: worker
+                context: worker
         -   name: Bump Version
             uses: remorses/bump-version@js
             with:
-                version_file: playground/VERSION
-                prefix: playground
+                version_file: worker/VERSION
+                prefix: worker
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
