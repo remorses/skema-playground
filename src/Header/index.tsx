@@ -1,7 +1,10 @@
 import React from 'react'
-import { Row, Box } from 'hybrid-components'
-import { Eye, EyeOff } from 'styled-icons/feather'
+import { Row, Box, Text } from 'hybrid-components'
+// import { Eye, EyeOff } from 'styled-icons/feather'
+import { ShowAlt, Coffee } from 'styled-icons/boxicons-regular/'
+import { Hide } from 'styled-icons/boxicons-regular/'
 import { useGlobal } from '../store'
+import { BUYMECOFFEE } from '../constants'
 
 const DisplaySettingsBtn = ({}) => {
     const [state, actions] = useGlobal()
@@ -9,7 +12,11 @@ const DisplaySettingsBtn = ({}) => {
     return (
         <Box width='60px' alignItems='center' justifyContent='center'>
             <div onClick={actions.toggleShowSettings}>
-                {!state.showSettings ? <Eye width='30px' /> : <EyeOff width='30px'/>}
+                {!state.showSettings ? (
+                    <ShowAlt width='30px' />
+                ) : (
+                    <Hide width='30px' />
+                )}
             </div>
         </Box>
     )
@@ -21,18 +28,40 @@ export default ({}) => {
             px='40px'
             width='100%'
             height='50px'
-            background='#fff'
-            borderBottom='2px solid #ddd'
+            background='#1D2021'
+            // borderBottom='2px solid #ddd'
             justifyContent='space-between'
             alignItems='center'
+            style={{ color: 'white', fontSize: '16px' }}
         >
-            <Box width='auto'>Logo</Box>
             <Box width='auto'>
-                <Row  height='40px' alignItems='center'>
+                <Text fontSize='24px' fontWeight='normal'>
+                    Skema Playground
+                </Text>
+            </Box>
+            <Row width='auto'>
+                <Row height='40px' alignItems='center' mx='20px'>
                     Options
                     <DisplaySettingsBtn />
                 </Row>
-            </Box>
+                <a
+                    href={BUYMECOFFEE}
+                    target='_blank'
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                    <Row height='40px' alignItems='center' mx='20px'>
+                        <div
+                            style={{
+                                whiteSpace: 'nowrap',
+                                marginRight: '20px'
+                            }}
+                        >
+                            Buy me a coffee
+                        </div>
+                        <Coffee width='30px' />
+                    </Row>
+                </a>
+            </Row>
         </Row>
     )
 }
