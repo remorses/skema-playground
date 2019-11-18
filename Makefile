@@ -6,7 +6,7 @@ mock:
 	MOCKING=1 concurrently -k 'make start-mock-server' 'make start'
 
 real:
-	MOCKING=1 concurrently -k 'make start-mock-server' 'make start' 'make start-real-server'
+	concurrently -k 'make start-mock-server' 'make start' 'make start-real-server'
 
 start-mock-server:
 	graphql-easy-mocks --port 9000 -f schema.graphql -m src/graphqlMocks.js

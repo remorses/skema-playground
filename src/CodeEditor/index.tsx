@@ -26,7 +26,7 @@ export default ({
 }) => {
     return (
         <Box
-            overflow='scroll'
+            overflow='auto'
             height='100%'
             
             // borderRadius='10px'

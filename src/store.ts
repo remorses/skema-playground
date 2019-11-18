@@ -11,7 +11,8 @@ interface State {
         language?: string
         options: any
     }
-    fetchingOutput: boolean
+    fetchingOutput: boolean,
+    showSettings: boolean,
 }
 
 const skemaCode = `
@@ -35,7 +36,8 @@ const initialState = {
     settings: {
         options: {}
     },
-    fetchingOutput: false
+    fetchingOutput: false,
+    showSettings: true,
 }
 
 const actions = (store: Store<State>) => {
@@ -59,6 +61,9 @@ const actions = (store: Store<State>) => {
         setOptions: (options) => {
             console.log(store.state)
             store.setState({ settings: { ...store.state.settings, options } })
+        },
+        toggleShowSettings: () => {
+            store.setState({showSettings: !store.state.showSettings})
         }
     }
 }

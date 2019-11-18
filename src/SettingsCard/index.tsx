@@ -42,6 +42,7 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
     const [
         {
             settings,
+            showSettings,
             skemaEditor: { code: skemaCode }
         },
         actions
@@ -51,6 +52,7 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
         ? data.languages.find(({ name }) => name === language).optionsSchema
         : {}
     const style: CSSProperties = {
+        display: showSettings ? 'block' : 'none',
         position: 'absolute',
         right: 0,
         top: 0
