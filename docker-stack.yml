@@ -2,7 +2,7 @@ version : '3'
 
 services:
     landingpage:
-        image: docker.pkg.github.com/remorses/skema-playground/landing-page
+        image: docker.pkg.github.com/remorses/skema-playground/landingpage
         labels:
             - traefik.enable=true
             - traefik.port=80

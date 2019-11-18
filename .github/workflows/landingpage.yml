@@ -5,7 +5,7 @@ on:
         paths:
             - 'landingpage/**'
 
-name: landingpage
+name: Landingpage
 jobs:
     all:
         name: Everything

@@ -17,8 +17,11 @@ start-real-server:
 gen:
 	npx graphql-codegen --config ./.graphqlconfig.yml
 
-deploy:
+deploy_:
 	docker-compose -H ssh://morse@instabotnet.club up -d --build
+
+deploy:
+	docker -H ssh://morse@instabotnet.club stack deploy -c docker-stack.yml skema
 
 # [bump if playground]
 # 0.0.0
