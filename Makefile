@@ -21,6 +21,7 @@ deploy_:
 	docker-compose -H ssh://morse@instabotnet.club up -d --build
 
 deploy:
+	docker -H ssh://morse@instabotnet.club stack rm skema
 	docker -H ssh://morse@instabotnet.club stack deploy -c docker-stack.yml --with-registry-auth skema
 
 # [bump if playground]
