@@ -16,3 +16,6 @@ start-real-server:
 
 gen:
 	npx graphql-codegen --config ./.graphqlconfig.yml
+
+deploy:
+	docker-compose --verbose -H ssh://morse@instabotnet.club up -d

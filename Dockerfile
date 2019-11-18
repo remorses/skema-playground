@@ -2,12 +2,18 @@ FROM node:10 AS builder
 
 WORKDIR /src
 
-COPY . /src
+RUN npm i -g parcel-bundler babel-types
 
-RUN npm ci && npm run build
+COPY *.json /src/
+
+RUN npm ci 
+
+COPY . /src/
+
+RUN npm run build
 
 RUN ls /src
 
 FROM xmorse/nginx-for-react:latest
 
-COPY --from=builder /src/build /var/www
+COPY --from=builder /src/dist /var/www

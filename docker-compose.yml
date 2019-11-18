@@ -1,0 +1,19 @@
+version : '3'
+
+services:
+    playground:
+        build: .
+        ports:
+            - 1234:80
+        labels:
+            - traefik.enable=true
+            - "traefik.frontend.rule=Host:skema.club"
+    worker:
+        build: skema-worker
+        environment: 
+            - PORT=80
+        ports:
+            - 8090:80
+        labels:
+            - traefik.enable=true
+            - "traefik.frontend.rule=Host:graphql.skema.club"

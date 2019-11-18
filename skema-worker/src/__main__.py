@@ -23,4 +23,4 @@ def main(host, port):
 
 
 if __name__ == '__main__':
-    main('0.0.0.0', 8000)
+    main('0.0.0.0', int(os.getenv('PORT')) or 8000)
