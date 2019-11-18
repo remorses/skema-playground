@@ -14,4 +14,4 @@ RUN yarn build
 
 FROM xmorse/nginx-for-react:latest
 
-COPY --from=builder /workdir/.docs/dist /var/www
+COPY --from=builder /workdir/.docz/dist /var/www
