@@ -1,13 +1,20 @@
 version : '3'
 
 services:
+    landing-page:
+        build: landing-page
+        labels:
+            - traefik.enable=true
+            - traefik.port=80
+            - "traefik.frontend.rule=Host:skema.club"
     playground:
         build: .
         ports:
             - 1234:80
         labels:
             - traefik.enable=true
-            - "traefik.frontend.rule=Host:skema.club"
+            - traefik.port=80
+            - "traefik.frontend.rule=Host:skema.club;Path:/app"
     worker:
         build: skema-worker
         environment: 
@@ -16,4 +23,5 @@ services:
             - 8090:80
         labels:
             - traefik.enable=true
+            - traefik.port=80
             - "traefik.frontend.rule=Host:graphql.skema.club"

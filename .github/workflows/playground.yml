@@ -1,0 +1,30 @@
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - 'playground/**'
+name: Playground
+jobs:
+    all:
+        name: Everything
+        runs-on: ubuntu-latest
+        steps:
+        -   uses: actions/checkout@master
+        -   name: Publish Image
+            uses: matootie/github-docker@v1.0.0
+            with:
+                username: remorses
+                personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
+                imageName: playground
+            env:
+                GITHUB_WORKSPACE: ${{ join(env.GITHUB_WORKSPACE, './playground') }}
+        -   name: Bump Version
+            uses: remorses/bump-version@js
+            with:
+                version_file: VERSION
+                prefix: playground
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
