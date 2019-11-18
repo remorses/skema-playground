@@ -2,7 +2,7 @@ version : '3'
 
 services:
     docs:
-        image: docker.pkg.github.com/remorses/skema-playground/landingpage
+        image: docker.pkg.github.com/remorses/skema-playground/docs
         networks:
             - traefik_default
         labels:
@@ -11,7 +11,7 @@ services:
             - traefik.docker.network=traefik_default
             - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/docs"
     landingpage:
-        image: docker.pkg.github.com/remorses/skema-playground/docs
+        image: docker.pkg.github.com/remorses/skema-playground/landingpage
         networks:
             - traefik_default
         labels:
