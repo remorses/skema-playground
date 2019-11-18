@@ -21,7 +21,7 @@ jobs:
         -   name: Bump Version
             uses: remorses/bump-version@js
             with:
-                version_file: VERSION
+                version_file: playground/VERSION
                 prefix: playground
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

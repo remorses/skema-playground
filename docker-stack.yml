@@ -1,0 +1,27 @@
+version : '3'
+
+services:
+    landing-page:
+        image: docker.pkg.github.com/remorses/skema-playground/landing-page
+        labels:
+            - traefik.enable=true
+            - traefik.port=80
+            - "traefik.frontend.rule=Host:skema.club"
+    playground:
+        image: docker.pkg.github.com/remorses/skema-playground/playground
+        ports:
+            - 1234:80
+        labels:
+            - traefik.enable=true
+            - traefik.port=80
+            - "traefik.frontend.rule=Host:skema.club;Path:/app"
+    worker:
+        image: docker.pkg.github.com/remorses/skema-playground/worker
+        environment: 
+            - PORT=80
+        ports:
+            - 8090:80
+        labels:
+            - traefik.enable=true
+            - traefik.port=80
+            - "traefik.frontend.rule=Host:graphql.skema.club"

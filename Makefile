@@ -19,3 +19,6 @@ gen:
 
 deploy:
 	docker-compose -H ssh://morse@instabotnet.club up -d --build
+
+# [bump if playground]
+# 0.0.0
