@@ -1,0 +1,30 @@
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - 'docs/**'
+
+name: docs
+jobs:
+    all:
+        name: Everything
+        runs-on: ubuntu-latest
+        steps:
+        -   uses: actions/checkout@master
+        -   name: Publish Image
+            uses: remorses/github-docker@master
+            with:
+                username: remorses
+                personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
+                imageName: docs
+                context: docs
+        -   name: Bump Version
+            uses: remorses/bump-version@js
+            with:
+                version_file: docs/VERSION
+                prefix: docs
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
