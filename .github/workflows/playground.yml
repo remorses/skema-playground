@@ -12,7 +12,7 @@ jobs:
         steps:
         -   uses: actions/checkout@master
         -   name: Publish Image
-            uses: matootie/github-docker@v1.0.0
+            uses: remorses/github-docker@master
             with:
                 username: remorses
                 personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
