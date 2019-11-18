@@ -31,7 +31,7 @@ const initialState = {
         code: skemaCode
     },
     outputEditor: {
-        code: 'ciao\ndsf'
+        code: ''
     },
     settings: {
         options: {}
