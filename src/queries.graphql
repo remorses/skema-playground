@@ -5,8 +5,8 @@ query GetLanguages {
     }
 }
 
-mutation GetOutputCode($skema: String!, $options: Json!) {
-    output: getOutput(skema: $skema, options: $options) {
+mutation GetOutputCode($skema: String!, $language: LanguageName!, $options: Json!) {
+    output: getOutput(skema: $skema, language: $language, options: $options) {
         code
     }
 }

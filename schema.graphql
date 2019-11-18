@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-    getOutput(skema: String!, options: Json!): OutputCode
+    getOutput(skema: String!, language: LanguageName!, options: Json!): OutputCode
 }
 
 type OutputCode {

@@ -36,6 +36,7 @@ export type Mutation = {
 
 export type MutationGetOutputArgs = {
   skema: Scalars['String'],
+  language: LanguageName,
   options: Scalars['Json']
 };
 
@@ -62,6 +63,7 @@ export type GetLanguagesQuery = (
 
 export type GetOutputCodeMutationVariables = {
   skema: Scalars['String'],
+  language: LanguageName,
   options: Scalars['Json']
 };
 
@@ -126,8 +128,8 @@ export type GetLanguagesQueryHookResult = ReturnType<typeof useGetLanguagesQuery
 export type GetLanguagesLazyQueryHookResult = ReturnType<typeof useGetLanguagesLazyQuery>;
 export type GetLanguagesQueryResult = ApolloReactCommon.QueryResult<GetLanguagesQuery, GetLanguagesQueryVariables>;
 export const GetOutputCodeDocument = gql`
-    mutation GetOutputCode($skema: String!, $options: Json!) {
-  output: getOutput(skema: $skema, options: $options) {
+    mutation GetOutputCode($skema: String!, $language: LanguageName!, $options: Json!) {
+  output: getOutput(skema: $skema, language: $language, options: $options) {
     code
   }
 }
@@ -165,6 +167,7 @@ export function withGetOutputCode<TProps, TChildProps = {}>(operationOptions?: A
  * const [getOutputCodeMutation, { data, loading, error }] = useGetOutputCodeMutation({
  *   variables: {
  *      skema: // value for 'skema'
+ *      language: // value for 'language'
  *      options: // value for 'options'
  *   },
  * });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Button,
     Card,
@@ -19,7 +19,8 @@ import {
     useGetLanguagesQuery,
     GetLanguagesQueryResult,
     GetLanguagesQuery,
-    useGetOutputCodeMutation
+    useGetOutputCodeMutation,
+    LanguageName
 } from '../generated'
 import { useGlobal } from '../store'
 
@@ -35,6 +36,9 @@ export default ({}) => {
 const View = ({ data }: { data: GetLanguagesQuery }) => {
     const langs = data.languages.map(({ name }) => name)
     const [getOutput, { data: outData }] = useGetOutputCodeMutation()
+    useEffect(() => {
+        actions.setOutputLanguage(langs[0])
+    }, [])
     const [
         {
             settings,
@@ -42,9 +46,10 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
         },
         actions
     ] = useGlobal()
-    const language = settings.language || langs[0]
-    const schema = data.languages.find(({ name }) => name === language)
-        .optionsSchema
+    const language = settings.language
+    const schema = language
+        ? data.languages.find(({ name }) => name === language).optionsSchema
+        : {}
     const style: CSSProperties = {
         position: 'absolute',
         right: 0,
@@ -72,7 +77,7 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
                         onChange={(e) =>
                             actions.setOutputLanguage(e.target.value)
                         }
-                        options={langs.map((value) => ({ value }))}
+                        options={langs.map((value) => ({ value })) as any}
                     />
                 </FormGroup>
                 <SchemaForm
@@ -83,12 +88,14 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
                 <FormGroup>
                     <Button
                         fill
+                        disabled={!settings.language}
                         onClick={() => {
                             actions.setOutputCode(
                                 getOutput({
                                     variables: {
                                         skema: skemaCode,
-                                        options: settings.options
+                                        options: settings.options,
+                                        language: settings.language as LanguageName
                                     }
                                 }).then(({ data }) => data.output.code)
                             )

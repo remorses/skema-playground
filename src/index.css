@@ -19,10 +19,6 @@ body {
     /* background-clip: padding-box; */
 }
 
-.Resizer:hover {
-    -webkit-transition: all 2s ease;
-    transition: all 2s ease;
-}
 
 .Resizer.horizontal {
     height: 11px;
@@ -39,11 +35,11 @@ body {
 }
 
 .Resizer.vertical {
-    width: 8px;
+    width: 6px;
     height: 0px;
     background: none;
     margin: auto 10px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-top: none;
     border-bottom: none;
     padding-top: 60px;
@@ -54,9 +50,7 @@ body {
 }
 
 .Resizer.vertical:hover {
-    border-left: 5px solid rgba(0, 0, 0, 0.5);
-    border-right: 5px solid rgba(0, 0, 0, 0.5);
-    background: white;
+    /* width: 10px; */
 }
 .Resizer.disabled {
     cursor: not-allowed;

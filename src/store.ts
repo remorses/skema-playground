@@ -38,26 +38,29 @@ const initialState = {
     fetchingOutput: false
 }
 
-const actions = ({ setState, state }: Store<State>) => ({
-    setSkemaCode: (code) => {
-        setState({ skemaEditor: { ...state.skemaEditor, code } })
-    },
-    setOutputCode: (getCode) => {
-        setState({ fetchingOutput: true })
-        getCode.then((code) => {
-            setState({ outputEditor: { ...state.skemaEditor, code } })
-            setState({ fetchingOutput: false })
-        })
-    },
-    setOutputLanguage: (language) => {
-        setState({
-            settings: { language, options: {} },
-            outputEditor: { code: '' }
-        })
-    },
-    setOptions: (options) => {
-        setState({ settings: { ...state.settings, options } })
+const actions = (store: Store<State>) => {
+    return {
+        setSkemaCode: (code) => {
+            store.setState({ skemaEditor: { ...store.state.skemaEditor, code } })
+        },
+        setOutputCode: (getCode) => {
+            store.setState({ fetchingOutput: true })
+            getCode.then((code) => {
+                store.setState({ outputEditor: { ...store.state.skemaEditor, code } })
+                store.setState({ fetchingOutput: false })
+            })
+        },
+        setOutputLanguage: (language) => {
+            store.setState({
+                settings: { language, options: {} },
+                outputEditor: { code: '' }
+            })
+        },
+        setOptions: (options) => {
+            console.log(store.state)
+            store.setState({ settings: { ...store.state.settings, options } })
+        }
     }
-})
+}
 
 export const useGlobal = makeHook<State, typeof actions>(initialState, actions)

@@ -5,6 +5,8 @@ import { Box } from 'hybrid-components'
 import { languageMapper } from '../constants'
 
 export default () => {
+    const [state] = useGlobal()
+    // return <pre>{JSON.stringify(state, null, 4)}</pre>
     return <View />
 }
 

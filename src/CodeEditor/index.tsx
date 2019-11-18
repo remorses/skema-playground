@@ -10,6 +10,7 @@ import 'brace/mode/json'
 import 'brace/mode/yaml'
 import 'brace/mode/python'
 import 'brace/mode/typescript'
+import 'brace/mode/graphqlschema'
 
 import { BoxProps } from 'hybrid-components/src/types'
 
