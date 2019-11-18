@@ -3,25 +3,44 @@ version : '3'
 services:
     landingpage:
         build: landingpage
+        networks:
+            - default
+            - traefik_default
         labels:
             - traefik.enable=true
+            - traefik.docker.network=traefik_default
             - traefik.port=80
             - "traefik.frontend.rule=Host:skema.club"
     playground:
         build: .
+        networks:
+            - default
+            - traefik_default
         ports:
             - 1234:80
         labels:
             - traefik.enable=true
+            - traefik.docker.network=traefik_default
             - traefik.port=80
             - "traefik.frontend.rule=Host:skema.club;Path:/app"
     worker:
         build: worker
         environment: 
             - PORT=80
+        networks:
+            - default
+            - traefik_default
         ports:
             - 8090:80
         labels:
             - traefik.enable=true
+            - traefik.docker.network=traefik_default
             - traefik.port=80
             - "traefik.frontend.rule=Host:graphql.skema.club"
+
+networks:
+    default:
+        driver: overlay
+    traefik_default:
+        external:
+            name: traefik_default
