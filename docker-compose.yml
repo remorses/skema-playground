@@ -14,7 +14,7 @@ services:
         labels:
             - traefik.enable=true
             - traefik.port=80
-            - "traefik.frontend.rule=Host:skema.club;PathPrefix:/app"
+            - "traefik.frontend.rule=Host:skema.club;Path:/app"
     worker:
         build: skema-worker
         environment: 
