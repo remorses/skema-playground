@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Box, Text } from 'hybrid-components'
-// import { Eye, EyeOff } from 'styled-icons/feather'
+import { Eye, EyeOff, } from 'styled-icons/feather'
 import { ShowAlt, Coffee } from 'styled-icons/boxicons-regular/'
 import { Hide } from 'styled-icons/boxicons-regular/'
 import { useGlobal } from '../store'
@@ -28,7 +28,7 @@ export default ({}) => {
             px='40px'
             width='100%'
             height='50px'
-            background='#1D2021'
+            background='#2D2D2D'
             // borderBottom='2px solid #ddd'
             justifyContent='space-between'
             alignItems='center'
@@ -40,10 +40,6 @@ export default ({}) => {
                 </Text>
             </Box>
             <Row width='auto'>
-                <Row height='40px' alignItems='center' mx='20px'>
-                    Options
-                    <DisplaySettingsBtn />
-                </Row>
                 <a
                     href={BUYMECOFFEE}
                     target='_blank'
@@ -61,6 +57,10 @@ export default ({}) => {
                         <Coffee width='30px' />
                     </Row>
                 </a>
+                <Row height='40px' alignItems='center' mx='20px'>
+                    Options
+                    <DisplaySettingsBtn />
+                </Row>
             </Row>
         </Row>
     )

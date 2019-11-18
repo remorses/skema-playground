@@ -19,7 +19,7 @@ const View = ({}) => {
     return (
         <Box height='100%' overflow='auto'>
             <CodeEditor
-                theme='xcode'
+                theme='chrome'
                 onChange={(code) => actions.setOutputCode(code)}
                 value={state.outputEditor.code}
                 language={languageMapper[language] || language}

@@ -3,7 +3,8 @@ import brace from 'brace'
 import AceEditor from 'react-ace'
 import { Box, Row } from 'hybrid-components'
 import 'brace/theme/xcode'
-import 'brace/theme/tomorrow_night'
+import 'brace/theme/tomorrow_night_eighties'
+import 'brace/theme/chrome'
 import 'brace/theme/tomorrow'
 import 'brace/ext/language_tools'
 import 'brace/mode/json'
@@ -20,7 +21,7 @@ export default ({
     readOnly = false,
     minLines = 0,
     showGutter=true,
-    theme = 'tomorrow_night',
+    theme = 'tomorrow_night_eighties',
     onChange = (v) => null,
     ...rest
 }) => {
@@ -42,7 +43,7 @@ export default ({
                 theme={theme}
                 // name={key}
                 height='100%'
-                editorProps={{ $blockScrolling: true,  }}
+                editorProps={{ $blockScrolling: false,  }}
                 value={value}
                 width={'100%'}
                 // maxLines={300}
@@ -59,7 +60,7 @@ export default ({
                     tabSize: 4,
                     showInvisibles: false,
                     showGutter,
-                    
+                    // scrollPastEnd: true,
                     spellcheck: true,
                 }}
             />
