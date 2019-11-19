@@ -11,4 +11,3 @@ RUN pip install -r requirements.txt
 COPY . /workdir
 
 CMD python -m src
-
