@@ -5,6 +5,7 @@ from starlette.middleware.cors import CORSMiddleware
 from strawberry.asgi import GraphQL
 from .server import schema
 
+
 def main(host, port=80):
     app = Starlette(debug=True)
 
@@ -22,5 +23,6 @@ def main(host, port=80):
     uvicorn.run(app, host=host, port=port, log_level="debug")
 
 
-if __name__ == '__main__':
-    main('0.0.0.0', int(os.getenv('PORT')) or 8000)
+if __name__ == "__main__":
+    main("0.0.0.0", int(os.getenv("PORT")) or 8000)
+
