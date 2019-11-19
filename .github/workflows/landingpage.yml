@@ -12,13 +12,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         -   uses: actions/checkout@master
-        -   name: Publish Image
-            uses: remorses/github-docker@master
+        # -   name: Publish Image
+        #     uses: remorses/github-docker@master
+        #     with:
+        #         username: remorses
+        #         personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
+        #         imageName: landingpage
+        #         context: landingpage
+        -   uses: whoan/docker-build-with-cache-action@v1
             with:
                 username: remorses
-                personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
-                imageName: landingpage
-                context: landingpage
+                password: "${{ secrets.GITHUB_TOKEN }}"
+                image_name: remorses/skema-playground/playground
+                image_tag: latest
+                registry: docker.pkg.github.com
+                context: playground
         -   name: Bump Version
             uses: remorses/bump-version@js
             with:
