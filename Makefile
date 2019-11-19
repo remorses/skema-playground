@@ -20,9 +20,17 @@ gen:
 deploy_:
 	docker-compose -H ssh://morse@instabotnet.club up -d --build
 
+
+DOCKER_HOST=ssh://morse@instabotnet.club
+
+redeploy:
+	docker -H $(DOCKER_HOST) service update --with-registry-auth --force skema_playground
+	docker -H $(DOCKER_HOST) service update --with-registry-auth --force skema_worker
+	docker -H $(DOCKER_HOST) service update --with-registry-auth --force skema_docs
+	docker -H $(DOCKER_HOST) service update --with-registry-auth --force skema_landingpage
+
 deploy:
-	# docker -H ssh://morse@instabotnet.club stack rm skema
-	docker -H ssh://morse@instabotnet.club stack deploy -c docker-stack.yml --with-registry-auth skema
+	docker -D --config ~/.docker/ stack deploy -c docker-stack.yml --resolve-image always --with-registry-auth skema
 
 # [bump if playground]
 # 0.0.6
