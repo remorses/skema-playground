@@ -1,0 +1,196 @@
+var $d08294dedfd0efbc10baa7d7294cde67$exports = {};
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/core");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/layout");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/color");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/typography");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/flexbox");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/grid");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/border");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/background");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/position");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/core");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/space");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/color");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/layout");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/typography");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/flexbox");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/border");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/background");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/position");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/grid");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/shadow");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/shadow");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/variant");
+$parcel$require("d08294dedfd0efbc10baa7d7294cde67", "@styled-system/border");
+$d08294dedfd0efbc10baa7d7294cde67$exports.system = $d08294dedfd0efbc10baa7d7294cde67$import$system;
+$d08294dedfd0efbc10baa7d7294cde67$exports.compose = $d08294dedfd0efbc10baa7d7294cde67$import$compose;
+$d08294dedfd0efbc10baa7d7294cde67$exports.createStyleFunction = $d08294dedfd0efbc10baa7d7294cde67$import$createStyleFunction;
+$d08294dedfd0efbc10baa7d7294cde67$exports.createParser = $d08294dedfd0efbc10baa7d7294cde67$import$createParser;
+$d08294dedfd0efbc10baa7d7294cde67$exports.get = $d08294dedfd0efbc10baa7d7294cde67$import$get;
+$d08294dedfd0efbc10baa7d7294cde67$exports.space = $d08294dedfd0efbc10baa7d7294cde67$import$space;
+$d08294dedfd0efbc10baa7d7294cde67$exports.padding = $d08294dedfd0efbc10baa7d7294cde67$import$padding;
+$d08294dedfd0efbc10baa7d7294cde67$exports.margin = $d08294dedfd0efbc10baa7d7294cde67$import$margin;
+$d08294dedfd0efbc10baa7d7294cde67$exports.color = $d08294dedfd0efbc10baa7d7294cde67$import$color;
+$d08294dedfd0efbc10baa7d7294cde67$exports.layout = $d08294dedfd0efbc10baa7d7294cde67$import$layout;
+$d08294dedfd0efbc10baa7d7294cde67$exports.typography = $d08294dedfd0efbc10baa7d7294cde67$import$typography;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexbox = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox;
+$d08294dedfd0efbc10baa7d7294cde67$exports.border = $d08294dedfd0efbc10baa7d7294cde67$import$border;
+$d08294dedfd0efbc10baa7d7294cde67$exports.background = $d08294dedfd0efbc10baa7d7294cde67$import$background;
+$d08294dedfd0efbc10baa7d7294cde67$exports.position = $d08294dedfd0efbc10baa7d7294cde67$import$position;
+$d08294dedfd0efbc10baa7d7294cde67$exports.grid = $d08294dedfd0efbc10baa7d7294cde67$import$grid;
+$d08294dedfd0efbc10baa7d7294cde67$exports.shadow = $d08294dedfd0efbc10baa7d7294cde67$import$shadow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.textShadow = $d08294dedfd0efbc10baa7d7294cde67$import$boxShadow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.boxShadow = $d08294dedfd0efbc10baa7d7294cde67$import$boxShadow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.colorStyle = $d08294dedfd0efbc10baa7d7294cde67$import$colorStyle;
+$d08294dedfd0efbc10baa7d7294cde67$exports.textStyle = $d08294dedfd0efbc10baa7d7294cde67$import$textStyle;
+$d08294dedfd0efbc10baa7d7294cde67$exports.buttonStyle = $d08294dedfd0efbc10baa7d7294cde67$import$buttonStyle;
+$d08294dedfd0efbc10baa7d7294cde67$exports.variant = $d08294dedfd0efbc10baa7d7294cde67$import$variant;
+var $d08294dedfd0efbc10baa7d7294cde67$export$width = $d08294dedfd0efbc10baa7d7294cde67$import$layout.width,
+    $d08294dedfd0efbc10baa7d7294cde67$export$height = $d08294dedfd0efbc10baa7d7294cde67$import$layout.height,
+    $d08294dedfd0efbc10baa7d7294cde67$export$minWidth = $d08294dedfd0efbc10baa7d7294cde67$import$layout.minWidth,
+    $d08294dedfd0efbc10baa7d7294cde67$export$minHeight = $d08294dedfd0efbc10baa7d7294cde67$import$layout.minHeight,
+    $d08294dedfd0efbc10baa7d7294cde67$export$maxWidth = $d08294dedfd0efbc10baa7d7294cde67$import$layout.maxWidth,
+    $d08294dedfd0efbc10baa7d7294cde67$export$maxHeight = $d08294dedfd0efbc10baa7d7294cde67$import$layout.maxHeight,
+    $d08294dedfd0efbc10baa7d7294cde67$export$size = $d08294dedfd0efbc10baa7d7294cde67$import$layout.size,
+    $d08294dedfd0efbc10baa7d7294cde67$export$verticalAlign = $d08294dedfd0efbc10baa7d7294cde67$import$layout.verticalAlign,
+    $d08294dedfd0efbc10baa7d7294cde67$export$display = $d08294dedfd0efbc10baa7d7294cde67$import$layout.display,
+    $d08294dedfd0efbc10baa7d7294cde67$export$overflow = $d08294dedfd0efbc10baa7d7294cde67$import$layout.overflow,
+    $d08294dedfd0efbc10baa7d7294cde67$export$overflowX = $d08294dedfd0efbc10baa7d7294cde67$import$layout.overflowX,
+    $d08294dedfd0efbc10baa7d7294cde67$export$overflowY = $d08294dedfd0efbc10baa7d7294cde67$import$layout.overflowY;
+var $d08294dedfd0efbc10baa7d7294cde67$export$opacity = $d08294dedfd0efbc10baa7d7294cde67$import$color.opacity;
+var $d08294dedfd0efbc10baa7d7294cde67$export$fontSize = $d08294dedfd0efbc10baa7d7294cde67$import$typography.fontSize,
+    $d08294dedfd0efbc10baa7d7294cde67$export$fontFamily = $d08294dedfd0efbc10baa7d7294cde67$import$typography.fontFamily,
+    $d08294dedfd0efbc10baa7d7294cde67$export$fontWeight = $d08294dedfd0efbc10baa7d7294cde67$import$typography.fontWeight,
+    $d08294dedfd0efbc10baa7d7294cde67$export$lineHeight = $d08294dedfd0efbc10baa7d7294cde67$import$typography.lineHeight,
+    $d08294dedfd0efbc10baa7d7294cde67$export$textAlign = $d08294dedfd0efbc10baa7d7294cde67$import$typography.textAlign,
+    $d08294dedfd0efbc10baa7d7294cde67$export$fontStyle = $d08294dedfd0efbc10baa7d7294cde67$import$typography.fontStyle,
+    $d08294dedfd0efbc10baa7d7294cde67$export$letterSpacing = $d08294dedfd0efbc10baa7d7294cde67$import$typography.letterSpacing;
+var $d08294dedfd0efbc10baa7d7294cde67$export$alignItems = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.alignItems,
+    $d08294dedfd0efbc10baa7d7294cde67$export$alignContent = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.alignContent,
+    $d08294dedfd0efbc10baa7d7294cde67$export$justifyItems = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.justifyItems,
+    $d08294dedfd0efbc10baa7d7294cde67$export$justifyContent = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.justifyContent,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flexWrap = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flexWrap,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flexDirection = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flexDirection,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flex = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flex,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flexGrow = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flexGrow,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flexShrink = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flexShrink,
+    $d08294dedfd0efbc10baa7d7294cde67$export$flexBasis = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.flexBasis,
+    $d08294dedfd0efbc10baa7d7294cde67$export$justifySelf = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.justifySelf,
+    $d08294dedfd0efbc10baa7d7294cde67$export$alignSelf = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.alignSelf,
+    $d08294dedfd0efbc10baa7d7294cde67$export$order = $d08294dedfd0efbc10baa7d7294cde67$import$flexbox.order;
+var $d08294dedfd0efbc10baa7d7294cde67$export$gridGap = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridGap,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridColumnGap = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridColumnGap,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridRowGap = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridRowGap,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridColumn = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridColumn,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridRow = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridRow,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoFlow = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridAutoFlow,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoColumns = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridAutoColumns,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoRows = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridAutoRows,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateColumns = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridTemplateColumns,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateRows = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridTemplateRows,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateAreas = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridTemplateAreas,
+    $d08294dedfd0efbc10baa7d7294cde67$export$gridArea = $d08294dedfd0efbc10baa7d7294cde67$import$grid.gridArea;
+var $d08294dedfd0efbc10baa7d7294cde67$export$borderWidth = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderWidth,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderStyle = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderStyle,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderColor = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderColor,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderTop = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderTop,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderRight = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderRight,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderBottom = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderBottom,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderLeft = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderLeft,
+    $d08294dedfd0efbc10baa7d7294cde67$export$borderRadius = $d08294dedfd0efbc10baa7d7294cde67$import$border.borderRadius;
+var $d08294dedfd0efbc10baa7d7294cde67$export$backgroundImage = $d08294dedfd0efbc10baa7d7294cde67$import$background.backgroundImage,
+    $d08294dedfd0efbc10baa7d7294cde67$export$backgroundSize = $d08294dedfd0efbc10baa7d7294cde67$import$background.backgroundSize,
+    $d08294dedfd0efbc10baa7d7294cde67$export$backgroundPosition = $d08294dedfd0efbc10baa7d7294cde67$import$background.backgroundPosition,
+    $d08294dedfd0efbc10baa7d7294cde67$export$backgroundRepeat = $d08294dedfd0efbc10baa7d7294cde67$import$background.backgroundRepeat;
+var $d08294dedfd0efbc10baa7d7294cde67$export$zIndex = $d08294dedfd0efbc10baa7d7294cde67$import$position.zIndex,
+    $d08294dedfd0efbc10baa7d7294cde67$export$top = $d08294dedfd0efbc10baa7d7294cde67$import$position.top,
+    $d08294dedfd0efbc10baa7d7294cde67$export$right = $d08294dedfd0efbc10baa7d7294cde67$import$position.right,
+    $d08294dedfd0efbc10baa7d7294cde67$export$bottom = $d08294dedfd0efbc10baa7d7294cde67$import$position.bottom,
+    $d08294dedfd0efbc10baa7d7294cde67$export$left = $d08294dedfd0efbc10baa7d7294cde67$import$position.left;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borders = $d08294dedfd0efbc10baa7d7294cde67$import$border;
+$d08294dedfd0efbc10baa7d7294cde67$exports.left = $d08294dedfd0efbc10baa7d7294cde67$export$left;
+$d08294dedfd0efbc10baa7d7294cde67$exports.bottom = $d08294dedfd0efbc10baa7d7294cde67$export$bottom;
+$d08294dedfd0efbc10baa7d7294cde67$exports.right = $d08294dedfd0efbc10baa7d7294cde67$export$right;
+$d08294dedfd0efbc10baa7d7294cde67$exports.top = $d08294dedfd0efbc10baa7d7294cde67$export$top;
+$d08294dedfd0efbc10baa7d7294cde67$exports.zIndex = $d08294dedfd0efbc10baa7d7294cde67$export$zIndex;
+$d08294dedfd0efbc10baa7d7294cde67$exports.backgroundRepeat = $d08294dedfd0efbc10baa7d7294cde67$export$backgroundRepeat;
+$d08294dedfd0efbc10baa7d7294cde67$exports.backgroundPosition = $d08294dedfd0efbc10baa7d7294cde67$export$backgroundPosition;
+$d08294dedfd0efbc10baa7d7294cde67$exports.backgroundSize = $d08294dedfd0efbc10baa7d7294cde67$export$backgroundSize;
+$d08294dedfd0efbc10baa7d7294cde67$exports.backgroundImage = $d08294dedfd0efbc10baa7d7294cde67$export$backgroundImage;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderRadius = $d08294dedfd0efbc10baa7d7294cde67$export$borderRadius;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderLeft = $d08294dedfd0efbc10baa7d7294cde67$export$borderLeft;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderBottom = $d08294dedfd0efbc10baa7d7294cde67$export$borderBottom;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderRight = $d08294dedfd0efbc10baa7d7294cde67$export$borderRight;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderTop = $d08294dedfd0efbc10baa7d7294cde67$export$borderTop;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderColor = $d08294dedfd0efbc10baa7d7294cde67$export$borderColor;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderStyle = $d08294dedfd0efbc10baa7d7294cde67$export$borderStyle;
+$d08294dedfd0efbc10baa7d7294cde67$exports.borderWidth = $d08294dedfd0efbc10baa7d7294cde67$export$borderWidth;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridArea = $d08294dedfd0efbc10baa7d7294cde67$export$gridArea;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridTemplateAreas = $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateAreas;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridTemplateRows = $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateRows;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridTemplateColumns = $d08294dedfd0efbc10baa7d7294cde67$export$gridTemplateColumns;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridAutoRows = $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoRows;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridAutoColumns = $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoColumns;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridAutoFlow = $d08294dedfd0efbc10baa7d7294cde67$export$gridAutoFlow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridRow = $d08294dedfd0efbc10baa7d7294cde67$export$gridRow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridColumn = $d08294dedfd0efbc10baa7d7294cde67$export$gridColumn;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridRowGap = $d08294dedfd0efbc10baa7d7294cde67$export$gridRowGap;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridColumnGap = $d08294dedfd0efbc10baa7d7294cde67$export$gridColumnGap;
+$d08294dedfd0efbc10baa7d7294cde67$exports.gridGap = $d08294dedfd0efbc10baa7d7294cde67$export$gridGap;
+$d08294dedfd0efbc10baa7d7294cde67$exports.order = $d08294dedfd0efbc10baa7d7294cde67$export$order;
+$d08294dedfd0efbc10baa7d7294cde67$exports.alignSelf = $d08294dedfd0efbc10baa7d7294cde67$export$alignSelf;
+$d08294dedfd0efbc10baa7d7294cde67$exports.justifySelf = $d08294dedfd0efbc10baa7d7294cde67$export$justifySelf;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexBasis = $d08294dedfd0efbc10baa7d7294cde67$export$flexBasis;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexShrink = $d08294dedfd0efbc10baa7d7294cde67$export$flexShrink;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexGrow = $d08294dedfd0efbc10baa7d7294cde67$export$flexGrow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flex = $d08294dedfd0efbc10baa7d7294cde67$export$flex;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexDirection = $d08294dedfd0efbc10baa7d7294cde67$export$flexDirection;
+$d08294dedfd0efbc10baa7d7294cde67$exports.flexWrap = $d08294dedfd0efbc10baa7d7294cde67$export$flexWrap;
+$d08294dedfd0efbc10baa7d7294cde67$exports.justifyContent = $d08294dedfd0efbc10baa7d7294cde67$export$justifyContent;
+$d08294dedfd0efbc10baa7d7294cde67$exports.justifyItems = $d08294dedfd0efbc10baa7d7294cde67$export$justifyItems;
+$d08294dedfd0efbc10baa7d7294cde67$exports.alignContent = $d08294dedfd0efbc10baa7d7294cde67$export$alignContent;
+$d08294dedfd0efbc10baa7d7294cde67$exports.alignItems = $d08294dedfd0efbc10baa7d7294cde67$export$alignItems;
+$d08294dedfd0efbc10baa7d7294cde67$exports.letterSpacing = $d08294dedfd0efbc10baa7d7294cde67$export$letterSpacing;
+$d08294dedfd0efbc10baa7d7294cde67$exports.fontStyle = $d08294dedfd0efbc10baa7d7294cde67$export$fontStyle;
+$d08294dedfd0efbc10baa7d7294cde67$exports.textAlign = $d08294dedfd0efbc10baa7d7294cde67$export$textAlign;
+$d08294dedfd0efbc10baa7d7294cde67$exports.lineHeight = $d08294dedfd0efbc10baa7d7294cde67$export$lineHeight;
+$d08294dedfd0efbc10baa7d7294cde67$exports.fontWeight = $d08294dedfd0efbc10baa7d7294cde67$export$fontWeight;
+$d08294dedfd0efbc10baa7d7294cde67$exports.fontFamily = $d08294dedfd0efbc10baa7d7294cde67$export$fontFamily;
+$d08294dedfd0efbc10baa7d7294cde67$exports.fontSize = $d08294dedfd0efbc10baa7d7294cde67$export$fontSize;
+$d08294dedfd0efbc10baa7d7294cde67$exports.opacity = $d08294dedfd0efbc10baa7d7294cde67$export$opacity;
+$d08294dedfd0efbc10baa7d7294cde67$exports.overflowY = $d08294dedfd0efbc10baa7d7294cde67$export$overflowY;
+$d08294dedfd0efbc10baa7d7294cde67$exports.overflowX = $d08294dedfd0efbc10baa7d7294cde67$export$overflowX;
+$d08294dedfd0efbc10baa7d7294cde67$exports.overflow = $d08294dedfd0efbc10baa7d7294cde67$export$overflow;
+$d08294dedfd0efbc10baa7d7294cde67$exports.display = $d08294dedfd0efbc10baa7d7294cde67$export$display;
+$d08294dedfd0efbc10baa7d7294cde67$exports.verticalAlign = $d08294dedfd0efbc10baa7d7294cde67$export$verticalAlign;
+$d08294dedfd0efbc10baa7d7294cde67$exports.size = $d08294dedfd0efbc10baa7d7294cde67$export$size;
+$d08294dedfd0efbc10baa7d7294cde67$exports.maxHeight = $d08294dedfd0efbc10baa7d7294cde67$export$maxHeight;
+$d08294dedfd0efbc10baa7d7294cde67$exports.maxWidth = $d08294dedfd0efbc10baa7d7294cde67$export$maxWidth;
+$d08294dedfd0efbc10baa7d7294cde67$exports.minHeight = $d08294dedfd0efbc10baa7d7294cde67$export$minHeight;
+$d08294dedfd0efbc10baa7d7294cde67$exports.minWidth = $d08294dedfd0efbc10baa7d7294cde67$export$minWidth;
+$d08294dedfd0efbc10baa7d7294cde67$exports.height = $d08294dedfd0efbc10baa7d7294cde67$export$height;
+$d08294dedfd0efbc10baa7d7294cde67$exports.width = $d08294dedfd0efbc10baa7d7294cde67$export$width;
+
+// v4 style API shim
+var $d08294dedfd0efbc10baa7d7294cde67$export$style = function style(_ref) {
+  var prop = _ref.prop,
+      cssProperty = _ref.cssProperty,
+      alias = _ref.alias,
+      key = _ref.key,
+      transformValue = _ref.transformValue,
+      scale = _ref.scale,
+      properties = _ref.properties;
+  var config = {};
+  config[prop] = $d08294dedfd0efbc10baa7d7294cde67$import$createStyleFunction({
+    properties: properties,
+    property: cssProperty || prop,
+    scale: key,
+    defaultScale: scale,
+    transform: transformValue
+  });
+  if (alias) config[alias] = config[prop];
+  var parse = $d08294dedfd0efbc10baa7d7294cde67$import$createParser(config);
+  return parse;
+};
+
+$d08294dedfd0efbc10baa7d7294cde67$exports.style = $d08294dedfd0efbc10baa7d7294cde67$export$style;

@@ -1,0 +1,21 @@
+var $b049b9d14abf86d9a862f73b9a6dc4c$exports = {};
+
+var $b049b9d14abf86d9a862f73b9a6dc4c$var$Cache = $b049b9d14abf86d9a862f73b9a6dc4c$exports = function Cache() {
+  this._cache = {};
+};
+
+$b049b9d14abf86d9a862f73b9a6dc4c$var$Cache.prototype.put = function Cache_put(key, value) {
+  this._cache[key] = value;
+};
+
+$b049b9d14abf86d9a862f73b9a6dc4c$var$Cache.prototype.get = function Cache_get(key) {
+  return this._cache[key];
+};
+
+$b049b9d14abf86d9a862f73b9a6dc4c$var$Cache.prototype.del = function Cache_del(key) {
+  delete this._cache[key];
+};
+
+$b049b9d14abf86d9a862f73b9a6dc4c$var$Cache.prototype.clear = function Cache_clear() {
+  this._cache = {};
+};

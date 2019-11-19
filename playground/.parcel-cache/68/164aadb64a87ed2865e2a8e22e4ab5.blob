@@ -1,0 +1,18 @@
+var $bcce95088328abcaae4deb574b7f88c$exports = {};
+
+function $bcce95088328abcaae4deb574b7f88c$var$_objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+$bcce95088328abcaae4deb574b7f88c$exports = $bcce95088328abcaae4deb574b7f88c$var$_objectWithoutPropertiesLoose;

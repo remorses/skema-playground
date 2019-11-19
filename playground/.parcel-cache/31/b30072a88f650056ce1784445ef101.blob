@@ -1,0 +1,17 @@
+var $ed2966885c51ce309ccee8a50c8730d8$exports = {};
+var $ed2966885c51ce309ccee8a50c8730d8$export$__esModule = true;
+$ed2966885c51ce309ccee8a50c8730d8$exports.__esModule = $ed2966885c51ce309ccee8a50c8730d8$export$__esModule;
+var $ed2966885c51ce309ccee8a50c8730d8$var$_react = $parcel$require("ed2966885c51ce309ccee8a50c8730d8", "react");
+var $ed2966885c51ce309ccee8a50c8730d8$var$_react2 = $ed2966885c51ce309ccee8a50c8730d8$var$_interopRequireDefault($ed2966885c51ce309ccee8a50c8730d8$var$_react);
+var $ed2966885c51ce309ccee8a50c8730d8$var$_implementation = $parcel$require("ed2966885c51ce309ccee8a50c8730d8", "./implementation");
+var $ed2966885c51ce309ccee8a50c8730d8$var$_implementation2 = $ed2966885c51ce309ccee8a50c8730d8$var$_interopRequireDefault($ed2966885c51ce309ccee8a50c8730d8$var$_implementation);
+
+function $ed2966885c51ce309ccee8a50c8730d8$var$_interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+var $ed2966885c51ce309ccee8a50c8730d8$export$default = $ed2966885c51ce309ccee8a50c8730d8$var$_react2.default.createContext || $ed2966885c51ce309ccee8a50c8730d8$var$_implementation2.default;
+$ed2966885c51ce309ccee8a50c8730d8$exports.default = $ed2966885c51ce309ccee8a50c8730d8$export$default;
+$ed2966885c51ce309ccee8a50c8730d8$exports = $ed2966885c51ce309ccee8a50c8730d8$exports['default'];

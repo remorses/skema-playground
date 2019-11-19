@@ -1,0 +1,55 @@
+var $f994e7a5daf40c96f7a1ef079fc040$exports = {};
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "tslib");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "react");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "../../common/abstractPureComponent");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "../../common/errors");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "../../common/intent");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "../../common/props");
+$parcel$require("70f994e7a5daf40c96f7a1ef079fc040", "./multiSlider");
+var $f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex;
+
+(function (RangeIndex) {
+  RangeIndex[RangeIndex["START"] = 0] = "START";
+  RangeIndex[RangeIndex["END"] = 1] = "END";
+})($f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex || ($f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex = {}));
+
+var $f994e7a5daf40c96f7a1ef079fc040$export$RangeSlider =
+/** @class */
+function (_super) {
+  $f994e7a5daf40c96f7a1ef079fc040$import$tslib_1.__extends(RangeSlider, _super);
+
+  function RangeSlider() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  RangeSlider.prototype.render = function () {
+    var _a = this.props,
+        value = _a.value,
+        props = $f994e7a5daf40c96f7a1ef079fc040$import$tslib_1.__rest(_a, ["value"]);
+
+    return $f994e7a5daf40c96f7a1ef079fc040$import$React.createElement($f994e7a5daf40c96f7a1ef079fc040$import$MultiSlider, $f994e7a5daf40c96f7a1ef079fc040$import$tslib_1.__assign({}, props), $f994e7a5daf40c96f7a1ef079fc040$import$React.createElement($f994e7a5daf40c96f7a1ef079fc040$import$MultiSlider.Handle, {
+      value: value[$f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex.START],
+      type: "start",
+      intentAfter: $f994e7a5daf40c96f7a1ef079fc040$import$Intent.PRIMARY
+    }), $f994e7a5daf40c96f7a1ef079fc040$import$React.createElement($f994e7a5daf40c96f7a1ef079fc040$import$MultiSlider.Handle, {
+      value: value[$f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex.END],
+      type: "end"
+    }));
+  };
+
+  RangeSlider.prototype.validateProps = function (props) {
+    var value = props.value;
+
+    if (value == null || value[$f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex.START] == null || value[$f994e7a5daf40c96f7a1ef079fc040$var$RangeIndex.END] == null) {
+      throw new Error($f994e7a5daf40c96f7a1ef079fc040$import$Errors.RANGESLIDER_NULL_VALUE);
+    }
+  };
+
+  RangeSlider.defaultProps = $f994e7a5daf40c96f7a1ef079fc040$import$tslib_1.__assign({}, $f994e7a5daf40c96f7a1ef079fc040$import$MultiSlider.defaultSliderProps, {
+    value: [0, 10]
+  });
+  RangeSlider.displayName = $f994e7a5daf40c96f7a1ef079fc040$import$DISPLAYNAME_PREFIX + ".RangeSlider";
+  return RangeSlider;
+}($f994e7a5daf40c96f7a1ef079fc040$import$AbstractPureComponent);
+
+$f994e7a5daf40c96f7a1ef079fc040$exports.RangeSlider = $f994e7a5daf40c96f7a1ef079fc040$export$RangeSlider;

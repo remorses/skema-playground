@@ -1,0 +1,35 @@
+var $ef8e44d01e280d30e2998e2eab2c7578$exports = {};
+$parcel$require("ef8e44d01e280d30e2998e2eab2c7578", "@styled-system/core");
+var $ef8e44d01e280d30e2998e2eab2c7578$var$defaults = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512]
+};
+var $ef8e44d01e280d30e2998e2eab2c7578$var$config = {
+  position: true,
+  zIndex: {
+    property: 'zIndex',
+    scale: 'zIndices'
+  },
+  top: {
+    property: 'top',
+    scale: 'space',
+    defaultScale: $ef8e44d01e280d30e2998e2eab2c7578$var$defaults.space
+  },
+  right: {
+    property: 'right',
+    scale: 'space',
+    defaultScale: $ef8e44d01e280d30e2998e2eab2c7578$var$defaults.space
+  },
+  bottom: {
+    property: 'bottom',
+    scale: 'space',
+    defaultScale: $ef8e44d01e280d30e2998e2eab2c7578$var$defaults.space
+  },
+  left: {
+    property: 'left',
+    scale: 'space',
+    defaultScale: $ef8e44d01e280d30e2998e2eab2c7578$var$defaults.space
+  }
+};
+var $ef8e44d01e280d30e2998e2eab2c7578$export$position = $ef8e44d01e280d30e2998e2eab2c7578$import$system($ef8e44d01e280d30e2998e2eab2c7578$var$config);
+$ef8e44d01e280d30e2998e2eab2c7578$exports.position = $ef8e44d01e280d30e2998e2eab2c7578$export$position;
+$ef8e44d01e280d30e2998e2eab2c7578$exports.default = $ef8e44d01e280d30e2998e2eab2c7578$export$position;

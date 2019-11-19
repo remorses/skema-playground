@@ -1,0 +1,101 @@
+var $d1844e9abd91986ac334fa374aadce$exports = {};
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "tslib");
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "classnames");
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "react");
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "../../common/classes");
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "../../common/props");
+$parcel$require("51d1844e9abd91986ac334fa374aadce", "../icon/icon");
+var $d1844e9abd91986ac334fa374aadce$var$DEFAULT_RIGHT_ELEMENT_WIDTH = 10;
+
+var $d1844e9abd91986ac334fa374aadce$export$InputGroup =
+/** @class */
+function (_super) {
+  $d1844e9abd91986ac334fa374aadce$import$tslib_1.__extends(InputGroup, _super);
+
+  function InputGroup() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.state = {
+      rightElementWidth: $d1844e9abd91986ac334fa374aadce$var$DEFAULT_RIGHT_ELEMENT_WIDTH
+    };
+    _this.refHandlers = {
+      rightElement: function (ref) {
+        return _this.rightElement = ref;
+      }
+    };
+    return _this;
+  }
+
+  InputGroup.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        disabled = _a.disabled,
+        fill = _a.fill,
+        intent = _a.intent,
+        large = _a.large,
+        small = _a.small,
+        leftIcon = _a.leftIcon,
+        round = _a.round;
+    var classes = $d1844e9abd91986ac334fa374aadce$import$classNames($d1844e9abd91986ac334fa374aadce$import$Classes.INPUT_GROUP, $d1844e9abd91986ac334fa374aadce$import$Classes.intentClass(intent), (_b = {}, _b[$d1844e9abd91986ac334fa374aadce$import$Classes.DISABLED] = disabled, _b[$d1844e9abd91986ac334fa374aadce$import$Classes.FILL] = fill, _b[$d1844e9abd91986ac334fa374aadce$import$Classes.LARGE] = large, _b[$d1844e9abd91986ac334fa374aadce$import$Classes.SMALL] = small, _b[$d1844e9abd91986ac334fa374aadce$import$Classes.ROUND] = round, _b), className);
+
+    var style = $d1844e9abd91986ac334fa374aadce$import$tslib_1.__assign({}, this.props.style, {
+      paddingRight: this.state.rightElementWidth
+    });
+
+    return $d1844e9abd91986ac334fa374aadce$import$React.createElement("div", {
+      className: classes
+    }, $d1844e9abd91986ac334fa374aadce$import$React.createElement($d1844e9abd91986ac334fa374aadce$import$Icon, {
+      icon: leftIcon
+    }), $d1844e9abd91986ac334fa374aadce$import$React.createElement("input", $d1844e9abd91986ac334fa374aadce$import$tslib_1.__assign({
+      type: "text"
+    }, $d1844e9abd91986ac334fa374aadce$import$removeNonHTMLProps(this.props), {
+      className: $d1844e9abd91986ac334fa374aadce$import$Classes.INPUT,
+      ref: this.props.inputRef,
+      style: style
+    })), this.maybeRenderRightElement());
+
+    var _b;
+  };
+
+  InputGroup.prototype.componentDidMount = function () {
+    this.updateInputWidth();
+  };
+
+  InputGroup.prototype.componentDidUpdate = function () {
+    this.updateInputWidth();
+  };
+
+  InputGroup.prototype.maybeRenderRightElement = function () {
+    var rightElement = this.props.rightElement;
+
+    if (rightElement == null) {
+      return undefined;
+    }
+
+    return $d1844e9abd91986ac334fa374aadce$import$React.createElement("span", {
+      className: $d1844e9abd91986ac334fa374aadce$import$Classes.INPUT_ACTION,
+      ref: this.refHandlers.rightElement
+    }, rightElement);
+  };
+
+  InputGroup.prototype.updateInputWidth = function () {
+    if (this.rightElement != null) {
+      var clientWidth = this.rightElement.clientWidth; // small threshold to prevent infinite loops
+
+      if (Math.abs(clientWidth - this.state.rightElementWidth) > 2) {
+        this.setState({
+          rightElementWidth: clientWidth
+        });
+      }
+    } else {
+      this.setState({
+        rightElementWidth: $d1844e9abd91986ac334fa374aadce$var$DEFAULT_RIGHT_ELEMENT_WIDTH
+      });
+    }
+  };
+
+  InputGroup.displayName = $d1844e9abd91986ac334fa374aadce$import$DISPLAYNAME_PREFIX + ".InputGroup";
+  return InputGroup;
+}($d1844e9abd91986ac334fa374aadce$import$React.PureComponent);
+
+$d1844e9abd91986ac334fa374aadce$exports.InputGroup = $d1844e9abd91986ac334fa374aadce$export$InputGroup;

@@ -1,0 +1,11 @@
+var $ce24160466d32ae0a603c47754c0d$exports = {};
+var $ce24160466d32ae0a603c47754c0d$export$__esModule = true;
+$ce24160466d32ae0a603c47754c0d$exports.__esModule = $ce24160466d32ae0a603c47754c0d$export$__esModule;
+var $ce24160466d32ae0a603c47754c0d$export$default = $ce24160466d32ae0a603c47754c0d$var$hasClass;
+$ce24160466d32ae0a603c47754c0d$exports.default = $ce24160466d32ae0a603c47754c0d$export$default;
+
+function $ce24160466d32ae0a603c47754c0d$var$hasClass(element, className) {
+  if (element.classList) return !!className && element.classList.contains(className);else return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+}
+
+$ce24160466d32ae0a603c47754c0d$exports = $ce24160466d32ae0a603c47754c0d$exports["default"];

@@ -1,0 +1,105 @@
+var $c761362b67b6dcd368eedb9033ff1$exports = {};
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "tslib");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "classnames");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "react");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../../common");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../../common/errors");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../../common/utils");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../button/buttons");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../dialog/dialog");
+$parcel$require("571c761362b67b6dcd368eedb9033ff1", "../icon/icon");
+
+var $c761362b67b6dcd368eedb9033ff1$export$Alert =
+/** @class */
+function (_super) {
+  $c761362b67b6dcd368eedb9033ff1$import$tslib_1.__extends(Alert, _super);
+
+  function Alert() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.handleCancel = function (evt) {
+      return _this.internalHandleCallbacks(false, evt);
+    };
+
+    _this.handleConfirm = function (evt) {
+      return _this.internalHandleCallbacks(true, evt);
+    };
+
+    return _this;
+  }
+
+  Alert.prototype.render = function () {
+    var _a = this.props,
+        canEscapeKeyCancel = _a.canEscapeKeyCancel,
+        canOutsideClickCancel = _a.canOutsideClickCancel,
+        children = _a.children,
+        className = _a.className,
+        icon = _a.icon,
+        intent = _a.intent,
+        cancelButtonText = _a.cancelButtonText,
+        confirmButtonText = _a.confirmButtonText,
+        onClose = _a.onClose,
+        overlayProps = $c761362b67b6dcd368eedb9033ff1$import$tslib_1.__rest(_a, ["canEscapeKeyCancel", "canOutsideClickCancel", "children", "className", "icon", "intent", "cancelButtonText", "confirmButtonText", "onClose"]);
+
+    return $c761362b67b6dcd368eedb9033ff1$import$React.createElement($c761362b67b6dcd368eedb9033ff1$import$Dialog, $c761362b67b6dcd368eedb9033ff1$import$tslib_1.__assign({}, overlayProps, {
+      className: $c761362b67b6dcd368eedb9033ff1$import$classNames($c761362b67b6dcd368eedb9033ff1$import$Classes.ALERT, className),
+      canEscapeKeyClose: canEscapeKeyCancel,
+      canOutsideClickClose: canOutsideClickCancel,
+      onClose: this.handleCancel,
+      portalContainer: this.props.portalContainer
+    }), $c761362b67b6dcd368eedb9033ff1$import$React.createElement("div", {
+      className: $c761362b67b6dcd368eedb9033ff1$import$Classes.ALERT_BODY
+    }, $c761362b67b6dcd368eedb9033ff1$import$React.createElement($c761362b67b6dcd368eedb9033ff1$import$Icon, {
+      icon: icon,
+      iconSize: 40,
+      intent: intent
+    }), $c761362b67b6dcd368eedb9033ff1$import$React.createElement("div", {
+      className: $c761362b67b6dcd368eedb9033ff1$import$Classes.ALERT_CONTENTS
+    }, children)), $c761362b67b6dcd368eedb9033ff1$import$React.createElement("div", {
+      className: $c761362b67b6dcd368eedb9033ff1$import$Classes.ALERT_FOOTER
+    }, $c761362b67b6dcd368eedb9033ff1$import$React.createElement($c761362b67b6dcd368eedb9033ff1$import$Button, {
+      intent: intent,
+      text: confirmButtonText,
+      onClick: this.handleConfirm
+    }), cancelButtonText && $c761362b67b6dcd368eedb9033ff1$import$React.createElement($c761362b67b6dcd368eedb9033ff1$import$Button, {
+      text: cancelButtonText,
+      onClick: this.handleCancel
+    })));
+  };
+
+  Alert.prototype.validateProps = function (props) {
+    if (props.onClose == null && props.cancelButtonText == null !== (props.onCancel == null)) {
+      console.warn($c761362b67b6dcd368eedb9033ff1$import$ALERT_WARN_CANCEL_PROPS);
+    }
+
+    var hasCancelHandler = props.onCancel != null || props.onClose != null;
+
+    if (props.canEscapeKeyCancel && !hasCancelHandler) {
+      console.warn($c761362b67b6dcd368eedb9033ff1$import$ALERT_WARN_CANCEL_ESCAPE_KEY);
+    }
+
+    if (props.canOutsideClickCancel && !hasCancelHandler) {
+      console.warn($c761362b67b6dcd368eedb9033ff1$import$ALERT_WARN_CANCEL_OUTSIDE_CLICK);
+    }
+  };
+
+  Alert.prototype.internalHandleCallbacks = function (confirmed, evt) {
+    var _a = this.props,
+        onCancel = _a.onCancel,
+        onClose = _a.onClose,
+        onConfirm = _a.onConfirm;
+    $c761362b67b6dcd368eedb9033ff1$import$safeInvoke(confirmed ? onConfirm : onCancel, evt);
+    $c761362b67b6dcd368eedb9033ff1$import$safeInvoke(onClose, confirmed, evt);
+  };
+
+  Alert.defaultProps = {
+    canEscapeKeyCancel: false,
+    canOutsideClickCancel: false,
+    confirmButtonText: "OK",
+    isOpen: false
+  };
+  Alert.displayName = $c761362b67b6dcd368eedb9033ff1$import$DISPLAYNAME_PREFIX + ".Alert";
+  return Alert;
+}($c761362b67b6dcd368eedb9033ff1$import$AbstractPureComponent);
+
+$c761362b67b6dcd368eedb9033ff1$exports.Alert = $c761362b67b6dcd368eedb9033ff1$export$Alert;

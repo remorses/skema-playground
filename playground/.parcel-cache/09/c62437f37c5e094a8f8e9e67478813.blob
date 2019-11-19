@@ -1,0 +1,53 @@
+var $c526d5bed88591a8d5272f39a2c4e6bb$exports = {};
+$parcel$require("c526d5bed88591a8d5272f39a2c4e6bb", "@babel/runtime/helpers/assertThisInitialized");
+$parcel$require("c526d5bed88591a8d5272f39a2c4e6bb", "@babel/runtime/helpers/inheritsLoose");
+$parcel$require("c526d5bed88591a8d5272f39a2c4e6bb", "@babel/runtime/helpers/defineProperty");
+$parcel$require("c526d5bed88591a8d5272f39a2c4e6bb", "react");
+$parcel$require("c526d5bed88591a8d5272f39a2c4e6bb", "create-react-context");
+var $c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeContext = $c526d5bed88591a8d5272f39a2c4e6bb$import$createContext();
+$c526d5bed88591a8d5272f39a2c4e6bb$exports.ManagerReferenceNodeContext = $c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeContext;
+var $c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeSetterContext = $c526d5bed88591a8d5272f39a2c4e6bb$import$createContext();
+$c526d5bed88591a8d5272f39a2c4e6bb$exports.ManagerReferenceNodeSetterContext = $c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeSetterContext;
+
+var $c526d5bed88591a8d5272f39a2c4e6bb$export$default =
+/*#__PURE__*/
+function (_React$Component) {
+  $c526d5bed88591a8d5272f39a2c4e6bb$import$_inheritsLoose(Manager, _React$Component);
+
+  function Manager() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    $c526d5bed88591a8d5272f39a2c4e6bb$import$_defineProperty($c526d5bed88591a8d5272f39a2c4e6bb$import$_assertThisInitialized(_this), "referenceNode", void 0);
+    $c526d5bed88591a8d5272f39a2c4e6bb$import$_defineProperty($c526d5bed88591a8d5272f39a2c4e6bb$import$_assertThisInitialized(_this), "setReferenceNode", function (newReferenceNode) {
+      if (newReferenceNode && _this.referenceNode !== newReferenceNode) {
+        _this.referenceNode = newReferenceNode;
+
+        _this.forceUpdate();
+      }
+    });
+    return _this;
+  }
+
+  var _proto = Manager.prototype;
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.referenceNode = null;
+  };
+
+  _proto.render = function render() {
+    return $c526d5bed88591a8d5272f39a2c4e6bb$import$React.createElement($c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeContext.Provider, {
+      value: this.referenceNode
+    }, $c526d5bed88591a8d5272f39a2c4e6bb$import$React.createElement($c526d5bed88591a8d5272f39a2c4e6bb$export$ManagerReferenceNodeSetterContext.Provider, {
+      value: this.setReferenceNode
+    }, this.props.children));
+  };
+
+  return Manager;
+}($c526d5bed88591a8d5272f39a2c4e6bb$import$React.Component);
+
+$c526d5bed88591a8d5272f39a2c4e6bb$exports.default = $c526d5bed88591a8d5272f39a2c4e6bb$export$default;

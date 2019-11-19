@@ -1,0 +1,63 @@
+var $d75c763d7ea3656e50975f7cb304cfe$exports = {};
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "tslib");
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "classnames");
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "react");
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "../../common");
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "../../common/classes");
+$parcel$require("0d75c763d7ea3656e50975f7cb304cfe", "../../common/props");
+
+// TODO: write tests (ignoring for now to get a build passing quickly)
+
+/* istanbul ignore next */
+var $d75c763d7ea3656e50975f7cb304cfe$export$FileInput =
+/** @class */
+function (_super) {
+  $d75c763d7ea3656e50975f7cb304cfe$import$tslib_1.__extends(FileInput, _super);
+
+  function FileInput() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.handleInputChange = function (e) {
+      $d75c763d7ea3656e50975f7cb304cfe$import$Utils.safeInvoke(_this.props.onInputChange, e);
+      $d75c763d7ea3656e50975f7cb304cfe$import$Utils.safeInvoke(_this.props.inputProps.onChange, e);
+    };
+
+    return _this;
+  }
+
+  FileInput.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        disabled = _a.disabled,
+        fill = _a.fill,
+        hasSelection = _a.hasSelection,
+        inputProps = _a.inputProps,
+        large = _a.large,
+        onInputChange = _a.onInputChange,
+        text = _a.text,
+        htmlProps = $d75c763d7ea3656e50975f7cb304cfe$import$tslib_1.__rest(_a, ["className", "disabled", "fill", "hasSelection", "inputProps", "large", "onInputChange", "text"]);
+
+    var rootClasses = $d75c763d7ea3656e50975f7cb304cfe$import$classNames($d75c763d7ea3656e50975f7cb304cfe$import$Classes.FILE_INPUT, (_b = {}, _b[$d75c763d7ea3656e50975f7cb304cfe$import$Classes.FILE_INPUT_HAS_SELECTION] = hasSelection, _b[$d75c763d7ea3656e50975f7cb304cfe$import$Classes.DISABLED] = disabled, _b[$d75c763d7ea3656e50975f7cb304cfe$import$Classes.FILL] = fill, _b[$d75c763d7ea3656e50975f7cb304cfe$import$Classes.LARGE] = large, _b), className);
+    return $d75c763d7ea3656e50975f7cb304cfe$import$React.createElement("label", $d75c763d7ea3656e50975f7cb304cfe$import$tslib_1.__assign({}, htmlProps, {
+      className: rootClasses
+    }), $d75c763d7ea3656e50975f7cb304cfe$import$React.createElement("input", $d75c763d7ea3656e50975f7cb304cfe$import$tslib_1.__assign({}, inputProps, {
+      onChange: this.handleInputChange,
+      type: "file",
+      disabled: disabled
+    })), $d75c763d7ea3656e50975f7cb304cfe$import$React.createElement("span", {
+      className: $d75c763d7ea3656e50975f7cb304cfe$import$Classes.FILE_UPLOAD_INPUT
+    }, text));
+
+    var _b;
+  };
+
+  FileInput.displayName = $d75c763d7ea3656e50975f7cb304cfe$import$DISPLAYNAME_PREFIX + ".FileInput";
+  FileInput.defaultProps = {
+    hasSelection: false,
+    inputProps: {},
+    text: "Choose file..."
+  };
+  return FileInput;
+}($d75c763d7ea3656e50975f7cb304cfe$import$React.PureComponent);
+
+$d75c763d7ea3656e50975f7cb304cfe$exports.FileInput = $d75c763d7ea3656e50975f7cb304cfe$export$FileInput;

@@ -1,0 +1,48 @@
+var $d4c6fe82073f19b79e45892df0286c2c$exports = {};
+$parcel$require("d4c6fe82073f19b79e45892df0286c2c", "tslib");
+$parcel$require("d4c6fe82073f19b79e45892df0286c2c", "classnames");
+$parcel$require("d4c6fe82073f19b79e45892df0286c2c", "react");
+$parcel$require("d4c6fe82073f19b79e45892df0286c2c", "../../common/classes");
+
+function $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement(tagName, tagClassName) {
+  return function (props) {
+    var className = props.className,
+        elementRef = props.elementRef,
+        htmlProps = $d4c6fe82073f19b79e45892df0286c2c$import$tslib_1.__rest(props, ["className", "elementRef"]);
+
+    return $d4c6fe82073f19b79e45892df0286c2c$import$React.createElement(tagName, $d4c6fe82073f19b79e45892df0286c2c$import$tslib_1.__assign({}, htmlProps, {
+      className: $d4c6fe82073f19b79e45892df0286c2c$import$classNames(tagClassName, className),
+      ref: elementRef
+    }));
+  };
+} // the following components are linted by blueprint-html-components because
+// they should rarely be used without the Blueprint classes/styles:
+
+
+var $d4c6fe82073f19b79e45892df0286c2c$export$H1 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h1", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H1 = $d4c6fe82073f19b79e45892df0286c2c$export$H1;
+var $d4c6fe82073f19b79e45892df0286c2c$export$H2 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h2", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H2 = $d4c6fe82073f19b79e45892df0286c2c$export$H2;
+var $d4c6fe82073f19b79e45892df0286c2c$export$H3 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h3", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H3 = $d4c6fe82073f19b79e45892df0286c2c$export$H3;
+var $d4c6fe82073f19b79e45892df0286c2c$export$H4 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h4", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H4 = $d4c6fe82073f19b79e45892df0286c2c$export$H4;
+var $d4c6fe82073f19b79e45892df0286c2c$export$H5 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h5", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H5 = $d4c6fe82073f19b79e45892df0286c2c$export$H5;
+var $d4c6fe82073f19b79e45892df0286c2c$export$H6 = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("h6", $d4c6fe82073f19b79e45892df0286c2c$import$HEADING);
+$d4c6fe82073f19b79e45892df0286c2c$exports.H6 = $d4c6fe82073f19b79e45892df0286c2c$export$H6;
+var $d4c6fe82073f19b79e45892df0286c2c$export$Blockquote = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("blockquote", $d4c6fe82073f19b79e45892df0286c2c$import$BLOCKQUOTE);
+$d4c6fe82073f19b79e45892df0286c2c$exports.Blockquote = $d4c6fe82073f19b79e45892df0286c2c$export$Blockquote;
+var $d4c6fe82073f19b79e45892df0286c2c$export$Code = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("code", $d4c6fe82073f19b79e45892df0286c2c$import$CODE);
+$d4c6fe82073f19b79e45892df0286c2c$exports.Code = $d4c6fe82073f19b79e45892df0286c2c$export$Code;
+var $d4c6fe82073f19b79e45892df0286c2c$export$Pre = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("pre", $d4c6fe82073f19b79e45892df0286c2c$import$CODE_BLOCK);
+$d4c6fe82073f19b79e45892df0286c2c$exports.Pre = $d4c6fe82073f19b79e45892df0286c2c$export$Pre;
+var $d4c6fe82073f19b79e45892df0286c2c$export$Label = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("label", $d4c6fe82073f19b79e45892df0286c2c$import$LABEL); // these two are not linted by blueprint-html-components because there are valid
+// uses of these elements without Blueprint styles:
+
+$d4c6fe82073f19b79e45892df0286c2c$exports.Label = $d4c6fe82073f19b79e45892df0286c2c$export$Label;
+var $d4c6fe82073f19b79e45892df0286c2c$export$OL = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("ol", $d4c6fe82073f19b79e45892df0286c2c$import$LIST);
+$d4c6fe82073f19b79e45892df0286c2c$exports.OL = $d4c6fe82073f19b79e45892df0286c2c$export$OL;
+var $d4c6fe82073f19b79e45892df0286c2c$export$UL = $d4c6fe82073f19b79e45892df0286c2c$var$htmlElement("ul", $d4c6fe82073f19b79e45892df0286c2c$import$LIST); //# sourceMappingURL=html.js.map
+
+$d4c6fe82073f19b79e45892df0286c2c$exports.UL = $d4c6fe82073f19b79e45892df0286c2c$export$UL;

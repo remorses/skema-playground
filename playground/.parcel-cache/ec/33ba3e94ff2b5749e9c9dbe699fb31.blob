@@ -1,0 +1,56 @@
+var $e2ba24712fa263ba6ab54ebb30aac4e2$exports = {};
+var $e2ba24712fa263ba6ab54ebb30aac4e2$var$metaSchema = $parcel$require("e2ba24712fa263ba6ab54ebb30aac4e2", "./refs/json-schema-draft-07.json");
+$e2ba24712fa263ba6ab54ebb30aac4e2$exports = {
+  $id: 'https://github.com/epoberezkin/ajv/blob/master/lib/definition_schema.js',
+  definitions: {
+    simpleTypes: $e2ba24712fa263ba6ab54ebb30aac4e2$var$metaSchema.definitions.simpleTypes
+  },
+  type: 'object',
+  dependencies: {
+    schema: ['validate'],
+    $data: ['validate'],
+    statements: ['inline'],
+    valid: {
+      not: {
+        required: ['macro']
+      }
+    }
+  },
+  properties: {
+    type: $e2ba24712fa263ba6ab54ebb30aac4e2$var$metaSchema.properties.type,
+    schema: {
+      type: 'boolean'
+    },
+    statements: {
+      type: 'boolean'
+    },
+    dependencies: {
+      type: 'array',
+      items: {
+        type: 'string'
+      }
+    },
+    metaSchema: {
+      type: 'object'
+    },
+    modifying: {
+      type: 'boolean'
+    },
+    valid: {
+      type: 'boolean'
+    },
+    $data: {
+      type: 'boolean'
+    },
+    async: {
+      type: 'boolean'
+    },
+    errors: {
+      anyOf: [{
+        type: 'boolean'
+      }, {
+        const: 'full'
+      }]
+    }
+  }
+};

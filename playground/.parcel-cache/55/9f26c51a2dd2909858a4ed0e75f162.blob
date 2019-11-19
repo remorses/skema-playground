@@ -1,0 +1,73 @@
+var $fe8cf595e0c34c9b9e9b2d80c916ac0b$exports = {};
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "tslib");
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "classnames");
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "react");
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "../../common");
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "../../index");
+$parcel$require("fe8cf595e0c34c9b9e9b2d80c916ac0b", "../html/html");
+
+var $fe8cf595e0c34c9b9e9b2d80c916ac0b$export$Callout =
+/** @class */
+function (_super) {
+  $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$tslib_1.__extends(Callout, _super);
+
+  function Callout() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Callout.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        children = _a.children,
+        icon = _a.icon,
+        intent = _a.intent,
+        title = _a.title,
+        htmlProps = $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$tslib_1.__rest(_a, ["className", "children", "icon", "intent", "title"]);
+
+    var iconName = this.getIconName(icon, intent);
+    var classes = $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$classNames($fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Classes.CALLOUT, $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Classes.intentClass(intent), (_b = {}, _b[$fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Classes.CALLOUT_ICON] = iconName != null, _b), className);
+    return $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$React.createElement("div", $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$tslib_1.__assign({
+      className: classes
+    }, htmlProps), iconName && $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$React.createElement($fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Icon, {
+      icon: iconName,
+      iconSize: $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Icon.SIZE_LARGE
+    }), title && $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$React.createElement($fe8cf595e0c34c9b9e9b2d80c916ac0b$import$H4, null, title), children);
+
+    var _b;
+  };
+
+  Callout.prototype.getIconName = function (icon, intent) {
+    // 1. no icon
+    if (icon === null) {
+      return undefined;
+    } // 2. defined iconName prop
+
+
+    if (icon !== undefined) {
+      return icon;
+    } // 3. default intent icon
+
+
+    switch (intent) {
+      case $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Intent.DANGER:
+        return "error";
+
+      case $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Intent.PRIMARY:
+        return "info-sign";
+
+      case $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Intent.WARNING:
+        return "warning-sign";
+
+      case $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$Intent.SUCCESS:
+        return "tick";
+
+      default:
+        return undefined;
+    }
+  };
+
+  Callout.displayName = $fe8cf595e0c34c9b9e9b2d80c916ac0b$import$DISPLAYNAME_PREFIX + ".Callout";
+  return Callout;
+}($fe8cf595e0c34c9b9e9b2d80c916ac0b$import$React.PureComponent);
+
+$fe8cf595e0c34c9b9e9b2d80c916ac0b$exports.Callout = $fe8cf595e0c34c9b9e9b2d80c916ac0b$export$Callout;

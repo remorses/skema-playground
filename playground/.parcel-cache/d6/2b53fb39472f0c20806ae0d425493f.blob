@@ -1,0 +1,80 @@
+var $ad5663dcbfc2951bbdd91c2c8f952$exports = {};
+
+var $ad5663dcbfc2951bbdd91c2c8f952$var$__assign = $ad5663dcbfc2951bbdd91c2c8f952$exports && $ad5663dcbfc2951bbdd91c2c8f952$exports.__assign || function () {
+  $ad5663dcbfc2951bbdd91c2c8f952$var$__assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return $ad5663dcbfc2951bbdd91c2c8f952$var$__assign.apply(this, arguments);
+};
+
+var $ad5663dcbfc2951bbdd91c2c8f952$var$__importDefault = $ad5663dcbfc2951bbdd91c2c8f952$exports && $ad5663dcbfc2951bbdd91c2c8f952$exports.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty($ad5663dcbfc2951bbdd91c2c8f952$exports, "__esModule", {
+  value: true
+});
+var $ad5663dcbfc2951bbdd91c2c8f952$var$react_1 = $ad5663dcbfc2951bbdd91c2c8f952$var$__importDefault($parcel$require("915ad5663dcbfc2951bbdd91c2c8f952", "react"));
+
+function $ad5663dcbfc2951bbdd91c2c8f952$var$setState(store, newState, afterUpdateCallback) {
+  store.state = $ad5663dcbfc2951bbdd91c2c8f952$var$__assign($ad5663dcbfc2951bbdd91c2c8f952$var$__assign({}, store.state), newState);
+  store.listeners.forEach(function (listener) {
+    listener.run(store.state);
+  });
+  afterUpdateCallback && afterUpdateCallback();
+}
+
+function $ad5663dcbfc2951bbdd91c2c8f952$var$useCustom(store, mapState, mapActions) {
+  var _a = $ad5663dcbfc2951bbdd91c2c8f952$var$react_1.default.useState(Object.create(null)),
+      originalHook = _a[1];
+
+  var state = mapState ? mapState(store.state) : store.state;
+  var actions = $ad5663dcbfc2951bbdd91c2c8f952$var$react_1.default.useMemo(function () {
+    return mapActions ? mapActions(store.actions) : store.actions;
+  }, [mapActions, store.actions]);
+  $ad5663dcbfc2951bbdd91c2c8f952$var$react_1.default.useEffect(function () {
+    var newListener = {
+      oldState: {}
+    };
+    newListener.run = mapState ? function (newState) {
+      var mappedState = mapState(newState);
+
+      if (mappedState !== newListener.oldState) {
+        newListener.oldState = mappedState;
+        originalHook(mappedState);
+      }
+    } : originalHook;
+    store.listeners.push(newListener);
+    newListener.run(store.state);
+    return function () {
+      store.listeners = store.listeners.filter(function (listener) {
+        return listener !== newListener;
+      });
+    };
+  }, []); // eslint-disable-line
+
+  return [state, actions];
+}
+
+var $ad5663dcbfc2951bbdd91c2c8f952$var$makeHook = function (initialState, actions, initializer) {
+  var store = {
+    state: initialState,
+    listeners: []
+  };
+  store.setState = $ad5663dcbfc2951bbdd91c2c8f952$var$setState.bind(null, store);
+  store.actions = actions(store);
+  if (initializer) initializer(store);
+  return $ad5663dcbfc2951bbdd91c2c8f952$var$useCustom.bind(null, store);
+};
+
+var $ad5663dcbfc2951bbdd91c2c8f952$export$default = $ad5663dcbfc2951bbdd91c2c8f952$var$makeHook;
+$ad5663dcbfc2951bbdd91c2c8f952$exports.default = $ad5663dcbfc2951bbdd91c2c8f952$export$default;

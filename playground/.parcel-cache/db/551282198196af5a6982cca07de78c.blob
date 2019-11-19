@@ -1,0 +1,9 @@
+var $ebe58eabd6324925367663f643cb6$exports = {};
+$parcel$require("838ebe58eabd6324925367663f643cb6", "../");
+
+function $ebe58eabd6324925367663f643cb6$export$isDarkTheme(element) {
+  return element instanceof Element && element.closest("." + $ebe58eabd6324925367663f643cb6$import$Classes.DARK) != null;
+} //# sourceMappingURL=isDarkTheme.js.map
+
+
+$ebe58eabd6324925367663f643cb6$exports.isDarkTheme = $ebe58eabd6324925367663f643cb6$export$isDarkTheme;

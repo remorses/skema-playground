@@ -1,0 +1,99 @@
+var $ec0268c447f457d616d4bae118422db$exports = {};
+$parcel$require("8ec0268c447f457d616d4bae118422db", "tslib");
+$parcel$require("8ec0268c447f457d616d4bae118422db", "react");
+$parcel$require("8ec0268c447f457d616d4bae118422db", "resize-observer-polyfill");
+$parcel$require("8ec0268c447f457d616d4bae118422db", "react-dom");
+$parcel$require("8ec0268c447f457d616d4bae118422db", "../../common/props");
+$parcel$require("8ec0268c447f457d616d4bae118422db", "../../common/utils");
+
+var $ec0268c447f457d616d4bae118422db$export$ResizeSensor =
+/** @class */
+function (_super) {
+  $ec0268c447f457d616d4bae118422db$import$tslib_1.__extends(ResizeSensor, _super);
+
+  function ResizeSensor() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.element = null;
+    _this.observer = new $ec0268c447f457d616d4bae118422db$import$ResizeObserver(function (entries) {
+      return $ec0268c447f457d616d4bae118422db$import$safeInvoke(_this.props.onResize, entries);
+    });
+    return _this;
+  }
+
+  ResizeSensor.prototype.render = function () {
+    // pass-through render of single child
+    return $ec0268c447f457d616d4bae118422db$import$React.Children.only(this.props.children);
+  };
+
+  ResizeSensor.prototype.componentDidMount = function () {
+    this.observeElement();
+  };
+
+  ResizeSensor.prototype.componentDidUpdate = function (prevProps) {
+    this.observeElement(this.props.observeParents !== prevProps.observeParents);
+  };
+
+  ResizeSensor.prototype.componentWillUnmount = function () {
+    this.observer.disconnect();
+  };
+  /**
+   * Observe the DOM element, if defined and different from the currently
+   * observed element. Pass `force` argument to skip element checks and always
+   * re-observe.
+   */
+
+
+  ResizeSensor.prototype.observeElement = function (force) {
+    if (force === void 0) {
+      force = false;
+    }
+
+    var element = this.getElement();
+
+    if (!(element instanceof Element)) {
+      // stop everything if not defined
+      this.observer.disconnect();
+      return;
+    }
+
+    if (element === this.element && !force) {
+      // quit if given same element -- nothing to update (unless forced)
+      return;
+    } else {
+      // clear observer list if new element
+      this.observer.disconnect(); // remember element reference for next time
+
+      this.element = element;
+    } // observer callback is invoked immediately when observing new elements
+
+
+    this.observer.observe(element);
+
+    if (this.props.observeParents) {
+      var parent_1 = element.parentElement;
+
+      while (parent_1 != null) {
+        this.observer.observe(parent_1);
+        parent_1 = parent_1.parentElement;
+      }
+    }
+  };
+
+  ResizeSensor.prototype.getElement = function () {
+    try {
+      // using findDOMNode for two reasons:
+      // 1. cloning to insert a ref is unwieldy and not performant.
+      // 2. ensure that we resolve to an actual DOM node (instead of any JSX ref instance).
+      return $ec0268c447f457d616d4bae118422db$import$findDOMNode(this);
+    } catch (_a) {
+      // swallow error if findDOMNode is run on unmounted component.
+      return null;
+    }
+  };
+
+  ResizeSensor.displayName = $ec0268c447f457d616d4bae118422db$import$DISPLAYNAME_PREFIX + ".ResizeSensor";
+  return ResizeSensor;
+}($ec0268c447f457d616d4bae118422db$import$React.PureComponent);
+
+$ec0268c447f457d616d4bae118422db$exports.ResizeSensor = $ec0268c447f457d616d4bae118422db$export$ResizeSensor;

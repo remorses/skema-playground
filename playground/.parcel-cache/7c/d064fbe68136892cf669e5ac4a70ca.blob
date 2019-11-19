@@ -1,0 +1,61 @@
+var $a349fb858c74944b29df3eeb7c6681f7$exports = {};
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "tslib");
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "classnames");
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "react");
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "../../common/classes");
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "../../common/props");
+$parcel$require("a349fb858c74944b29df3eeb7c6681f7", "../popover/popover");
+
+var $a349fb858c74944b29df3eeb7c6681f7$export$Tooltip =
+/** @class */
+function (_super) {
+  $a349fb858c74944b29df3eeb7c6681f7$import$tslib_1.__extends(Tooltip, _super);
+
+  function Tooltip() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.popover = null;
+    return _this;
+  }
+
+  Tooltip.prototype.render = function () {
+    var _this = this;
+
+    var _a = this.props,
+        children = _a.children,
+        intent = _a.intent,
+        popoverClassName = _a.popoverClassName,
+        restProps = $a349fb858c74944b29df3eeb7c6681f7$import$tslib_1.__rest(_a, ["children", "intent", "popoverClassName"]);
+
+    var classes = $a349fb858c74944b29df3eeb7c6681f7$import$classNames($a349fb858c74944b29df3eeb7c6681f7$import$Classes.TOOLTIP, $a349fb858c74944b29df3eeb7c6681f7$import$Classes.intentClass(intent), popoverClassName);
+    return $a349fb858c74944b29df3eeb7c6681f7$import$React.createElement($a349fb858c74944b29df3eeb7c6681f7$import$Popover, $a349fb858c74944b29df3eeb7c6681f7$import$tslib_1.__assign({
+      interactionKind: $a349fb858c74944b29df3eeb7c6681f7$import$PopoverInteractionKind.HOVER_TARGET_ONLY
+    }, restProps, {
+      autoFocus: false,
+      canEscapeKeyClose: false,
+      enforceFocus: false,
+      lazy: true,
+      popoverClassName: classes,
+      portalContainer: this.props.portalContainer,
+      ref: function (ref) {
+        return _this.popover = ref;
+      }
+    }), children);
+  };
+
+  Tooltip.prototype.reposition = function () {
+    if (this.popover != null) {
+      this.popover.reposition();
+    }
+  };
+
+  Tooltip.displayName = $a349fb858c74944b29df3eeb7c6681f7$import$DISPLAYNAME_PREFIX + ".Tooltip";
+  Tooltip.defaultProps = {
+    hoverCloseDelay: 0,
+    hoverOpenDelay: 100,
+    transitionDuration: 100
+  };
+  return Tooltip;
+}($a349fb858c74944b29df3eeb7c6681f7$import$React.PureComponent);
+
+$a349fb858c74944b29df3eeb7c6681f7$exports.Tooltip = $a349fb858c74944b29df3eeb7c6681f7$export$Tooltip;

@@ -1,0 +1,75 @@
+var $b487f74912caaa475b07677f893255b6$exports = {};
+$parcel$require("b487f74912caaa475b07677f893255b6", "tslib");
+$parcel$require("b487f74912caaa475b07677f893255b6", "react");
+$parcel$require("b487f74912caaa475b07677f893255b6", "react-dom");
+$parcel$require("b487f74912caaa475b07677f893255b6", "../../common/errors");
+$parcel$require("b487f74912caaa475b07677f893255b6", "../../common/utils");
+$parcel$require("b487f74912caaa475b07677f893255b6", "../../common/utils/isDarkTheme");
+$parcel$require("b487f74912caaa475b07677f893255b6", "./contextMenu");
+
+function $b487f74912caaa475b07677f893255b6$export$ContextMenuTarget(WrappedComponent) {
+  if (!$b487f74912caaa475b07677f893255b6$import$isFunction(WrappedComponent.prototype.renderContextMenu)) {
+    console.warn($b487f74912caaa475b07677f893255b6$import$CONTEXTMENU_WARN_DECORATOR_NO_METHOD);
+  }
+
+  return _a =
+  /** @class */
+  function (_super) {
+    $b487f74912caaa475b07677f893255b6$import$tslib_1.__extends(ContextMenuTargetClass, _super);
+
+    function ContextMenuTargetClass() {
+      return _super !== null && _super.apply(this, arguments) || this;
+    }
+
+    ContextMenuTargetClass.prototype.render = function () {
+      var _this = this;
+
+      var element = _super.prototype.render.call(this);
+
+      if (element == null) {
+        // always return `element` in case caller is distinguishing between `null` and `undefined`
+        return element;
+      }
+
+      if (!$b487f74912caaa475b07677f893255b6$import$React.isValidElement(element)) {
+        console.warn($b487f74912caaa475b07677f893255b6$import$CONTEXTMENU_WARN_DECORATOR_NEEDS_REACT_ELEMENT);
+        return element;
+      }
+
+      var oldOnContextMenu = element.props.onContextMenu;
+
+      var onContextMenu = function (e) {
+        // support nested menus (inner menu target would have called preventDefault())
+        if (e.defaultPrevented) {
+          return;
+        }
+
+        if ($b487f74912caaa475b07677f893255b6$import$isFunction(_this.renderContextMenu)) {
+          var menu = _this.renderContextMenu(e);
+
+          if (menu != null) {
+            var darkTheme = $b487f74912caaa475b07677f893255b6$import$isDarkTheme($b487f74912caaa475b07677f893255b6$import$ReactDOM.findDOMNode(_this));
+            e.preventDefault();
+            $b487f74912caaa475b07677f893255b6$import$ContextMenu.show(menu, {
+              left: e.clientX,
+              top: e.clientY
+            }, _this.onContextMenuClose, darkTheme);
+          }
+        }
+
+        $b487f74912caaa475b07677f893255b6$import$safeInvoke(oldOnContextMenu, e);
+      };
+
+      return $b487f74912caaa475b07677f893255b6$import$React.cloneElement(element, {
+        onContextMenu: onContextMenu
+      });
+    };
+
+    return ContextMenuTargetClass;
+  }(WrappedComponent), _a.displayName = "ContextMenuTarget(" + $b487f74912caaa475b07677f893255b6$import$getDisplayName(WrappedComponent) + ")", _a;
+
+  var _a;
+} //# sourceMappingURL=contextMenuTarget.js.map
+
+
+$b487f74912caaa475b07677f893255b6$exports.ContextMenuTarget = $b487f74912caaa475b07677f893255b6$export$ContextMenuTarget;

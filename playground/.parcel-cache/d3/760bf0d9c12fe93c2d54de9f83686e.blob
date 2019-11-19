@@ -1,0 +1,141 @@
+var $c18e3c2409067dfc28c2b90dd26cdc0$var$_temp,
+    $c18e3c2409067dfc28c2b90dd26cdc0$exports = {};
+$parcel$require("4c18e3c2409067dfc28c2b90dd26cdc0", "react");
+$parcel$require("4c18e3c2409067dfc28c2b90dd26cdc0", "../../common/utils");
+$parcel$require("4c18e3c2409067dfc28c2b90dd26cdc0", "./hotkey");
+$parcel$require("4c18e3c2409067dfc28c2b90dd26cdc0", "./hotkeyParser");
+$parcel$require("4c18e3c2409067dfc28c2b90dd26cdc0", "./hotkeysDialog");
+var $c18e3c2409067dfc28c2b90dd26cdc0$var$SHOW_DIALOG_KEY = "?";
+var $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope;
+$c18e3c2409067dfc28c2b90dd26cdc0$exports.HotkeyScope = $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope;
+
+(function (HotkeyScope) {
+  HotkeyScope["LOCAL"] = "local";
+  HotkeyScope["GLOBAL"] = "global";
+})($c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope || ($c18e3c2409067dfc28c2b90dd26cdc0$var$_temp = $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope = {}, $c18e3c2409067dfc28c2b90dd26cdc0$exports.HotkeyScope = $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope, $c18e3c2409067dfc28c2b90dd26cdc0$var$_temp));
+
+var $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeysEvents =
+/** @class */
+function () {
+  function HotkeysEvents(scope) {
+    var _this = this;
+
+    this.scope = scope;
+    this.actions = [];
+
+    this.handleKeyDown = function (e) {
+      var combo = $c18e3c2409067dfc28c2b90dd26cdc0$import$getKeyCombo(e);
+
+      var isTextInput = _this.isTextInput(e);
+
+      if (!isTextInput && $c18e3c2409067dfc28c2b90dd26cdc0$import$comboMatches($c18e3c2409067dfc28c2b90dd26cdc0$import$parseKeyCombo($c18e3c2409067dfc28c2b90dd26cdc0$var$SHOW_DIALOG_KEY), combo)) {
+        if ($c18e3c2409067dfc28c2b90dd26cdc0$import$isHotkeysDialogShowing()) {
+          $c18e3c2409067dfc28c2b90dd26cdc0$import$hideHotkeysDialogAfterDelay();
+        } else {
+          $c18e3c2409067dfc28c2b90dd26cdc0$import$showHotkeysDialog(_this.actions.map(function (action) {
+            return action.props;
+          }));
+        }
+
+        return;
+      } else if ($c18e3c2409067dfc28c2b90dd26cdc0$import$isHotkeysDialogShowing()) {
+        return;
+      }
+
+      _this.invokeNamedCallbackIfComboRecognized(combo, "onKeyDown", e);
+    };
+
+    this.handleKeyUp = function (e) {
+      if ($c18e3c2409067dfc28c2b90dd26cdc0$import$isHotkeysDialogShowing()) {
+        return;
+      }
+
+      _this.invokeNamedCallbackIfComboRecognized($c18e3c2409067dfc28c2b90dd26cdc0$import$getKeyCombo(e), "onKeyUp", e);
+    };
+  }
+
+  HotkeysEvents.prototype.count = function () {
+    return this.actions.length;
+  };
+
+  HotkeysEvents.prototype.clear = function () {
+    this.actions = [];
+  };
+
+  HotkeysEvents.prototype.setHotkeys = function (props) {
+    var _this = this;
+
+    var actions = [];
+    $c18e3c2409067dfc28c2b90dd26cdc0$import$Children.forEach(props.children, function (child) {
+      if ($c18e3c2409067dfc28c2b90dd26cdc0$import$isElementOfType(child, $c18e3c2409067dfc28c2b90dd26cdc0$import$Hotkey) && _this.isScope(child.props)) {
+        actions.push({
+          combo: $c18e3c2409067dfc28c2b90dd26cdc0$import$parseKeyCombo(child.props.combo),
+          props: child.props
+        });
+      }
+    });
+    this.actions = actions;
+  };
+
+  HotkeysEvents.prototype.invokeNamedCallbackIfComboRecognized = function (combo, callbackName, e) {
+    var isTextInput = this.isTextInput(e);
+
+    for (var _i = 0, _a = this.actions; _i < _a.length; _i++) {
+      var action = _a[_i];
+      var shouldIgnore = isTextInput && !action.props.allowInInput || action.props.disabled;
+
+      if (!shouldIgnore && $c18e3c2409067dfc28c2b90dd26cdc0$import$comboMatches(action.combo, combo)) {
+        if (action.props.preventDefault) {
+          e.preventDefault();
+        }
+
+        if (action.props.stopPropagation) {
+          // set a flag just for unit testing. not meant to be referenced in feature work.
+          e.isPropagationStopped = true;
+          e.stopPropagation();
+        }
+
+        $c18e3c2409067dfc28c2b90dd26cdc0$import$safeInvoke(action.props[callbackName], e);
+      }
+    }
+  };
+
+  HotkeysEvents.prototype.isScope = function (props) {
+    return (props.global ? $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope.GLOBAL : $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeyScope.LOCAL) === this.scope;
+  };
+
+  HotkeysEvents.prototype.isTextInput = function (e) {
+    var elem = e.target; // we check these cases for unit testing, but this should not happen
+    // during normal operation
+
+    if (elem == null || elem.closest == null) {
+      return false;
+    }
+
+    var editable = elem.closest("input, textarea, [contenteditable=true]");
+
+    if (editable == null) {
+      return false;
+    } // don't let checkboxes, switches, and radio buttons prevent hotkey behavior
+
+
+    if (editable.tagName.toLowerCase() === "input") {
+      var inputType = editable.type;
+
+      if (inputType === "checkbox" || inputType === "radio") {
+        return false;
+      }
+    } // don't let read-only fields prevent hotkey behavior
+
+
+    if (editable.readOnly) {
+      return false;
+    }
+
+    return true;
+  };
+
+  return HotkeysEvents;
+}();
+
+$c18e3c2409067dfc28c2b90dd26cdc0$exports.HotkeysEvents = $c18e3c2409067dfc28c2b90dd26cdc0$export$HotkeysEvents;

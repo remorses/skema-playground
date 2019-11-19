@@ -1,0 +1,61 @@
+var $c128c7b4197c53c29f686a9cd1de$exports = {};
+
+/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var $c128c7b4197c53c29f686a9cd1de$export$Position = {
+  BOTTOM: "bottom",
+  BOTTOM_LEFT: "bottom-left",
+  BOTTOM_RIGHT: "bottom-right",
+  LEFT: "left",
+  LEFT_BOTTOM: "left-bottom",
+  LEFT_TOP: "left-top",
+  RIGHT: "right",
+  RIGHT_BOTTOM: "right-bottom",
+  RIGHT_TOP: "right-top",
+  TOP: "top",
+  TOP_LEFT: "top-left",
+  TOP_RIGHT: "top-right"
+};
+$c128c7b4197c53c29f686a9cd1de$exports.Position = $c128c7b4197c53c29f686a9cd1de$export$Position;
+
+function $c128c7b4197c53c29f686a9cd1de$export$isPositionHorizontal(position) {
+  /* istanbul ignore next */
+  return position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP || position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP_LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP_RIGHT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM || position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM_LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM_RIGHT;
+}
+
+$c128c7b4197c53c29f686a9cd1de$exports.isPositionHorizontal = $c128c7b4197c53c29f686a9cd1de$export$isPositionHorizontal;
+
+function $c128c7b4197c53c29f686a9cd1de$export$isPositionVertical(position) {
+  /* istanbul ignore next */
+  return position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT_TOP || position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT_BOTTOM || position === $c128c7b4197c53c29f686a9cd1de$export$Position.RIGHT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.RIGHT_TOP || position === $c128c7b4197c53c29f686a9cd1de$export$Position.RIGHT_BOTTOM;
+}
+
+$c128c7b4197c53c29f686a9cd1de$exports.isPositionVertical = $c128c7b4197c53c29f686a9cd1de$export$isPositionVertical;
+
+function $c128c7b4197c53c29f686a9cd1de$export$getPositionIgnoreAngles(position) {
+  if (position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP || position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP_LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.TOP_RIGHT) {
+    return $c128c7b4197c53c29f686a9cd1de$export$Position.TOP;
+  } else if (position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM || position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM_LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM_RIGHT) {
+    return $c128c7b4197c53c29f686a9cd1de$export$Position.BOTTOM;
+  } else if (position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT || position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT_TOP || position === $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT_BOTTOM) {
+    return $c128c7b4197c53c29f686a9cd1de$export$Position.LEFT;
+  } else {
+    return $c128c7b4197c53c29f686a9cd1de$export$Position.RIGHT;
+  }
+} //# sourceMappingURL=position.js.map
+
+
+$c128c7b4197c53c29f686a9cd1de$exports.getPositionIgnoreAngles = $c128c7b4197c53c29f686a9cd1de$export$getPositionIgnoreAngles;

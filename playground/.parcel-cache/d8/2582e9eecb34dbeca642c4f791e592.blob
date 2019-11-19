@@ -1,0 +1,103 @@
+var $abefcd7d492c1e079308e813a04d$exports = {};
+
+/*
+ * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var $abefcd7d492c1e079308e813a04d$var$ns = "[Blueprint]";
+var $abefcd7d492c1e079308e813a04d$export$CLAMP_MIN_MAX = $abefcd7d492c1e079308e813a04d$var$ns + " clamp: max cannot be less than min";
+$abefcd7d492c1e079308e813a04d$exports.CLAMP_MIN_MAX = $abefcd7d492c1e079308e813a04d$export$CLAMP_MIN_MAX;
+var $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_PROPS = $abefcd7d492c1e079308e813a04d$var$ns + " <Alert> cancelButtonText and onCancel should be set together.";
+$abefcd7d492c1e079308e813a04d$exports.ALERT_WARN_CANCEL_PROPS = $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_PROPS;
+var $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_ESCAPE_KEY = $abefcd7d492c1e079308e813a04d$var$ns + " <Alert> canEscapeKeyCancel enabled without onCancel or onClose handler.";
+$abefcd7d492c1e079308e813a04d$exports.ALERT_WARN_CANCEL_ESCAPE_KEY = $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_ESCAPE_KEY;
+var $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_OUTSIDE_CLICK = $abefcd7d492c1e079308e813a04d$var$ns + " <Alert> canOutsideClickCancel enbaled without onCancel or onClose handler.";
+$abefcd7d492c1e079308e813a04d$exports.ALERT_WARN_CANCEL_OUTSIDE_CLICK = $abefcd7d492c1e079308e813a04d$export$ALERT_WARN_CANCEL_OUTSIDE_CLICK;
+var $abefcd7d492c1e079308e813a04d$export$COLLAPSIBLE_LIST_INVALID_CHILD = $abefcd7d492c1e079308e813a04d$var$ns + " <CollapsibleList> children must be <MenuItem>s";
+$abefcd7d492c1e079308e813a04d$exports.COLLAPSIBLE_LIST_INVALID_CHILD = $abefcd7d492c1e079308e813a04d$export$COLLAPSIBLE_LIST_INVALID_CHILD;
+var $abefcd7d492c1e079308e813a04d$export$CONTEXTMENU_WARN_DECORATOR_NO_METHOD = $abefcd7d492c1e079308e813a04d$var$ns + " @ContextMenuTarget-decorated class should implement renderContextMenu.";
+$abefcd7d492c1e079308e813a04d$exports.CONTEXTMENU_WARN_DECORATOR_NO_METHOD = $abefcd7d492c1e079308e813a04d$export$CONTEXTMENU_WARN_DECORATOR_NO_METHOD;
+var $abefcd7d492c1e079308e813a04d$export$CONTEXTMENU_WARN_DECORATOR_NEEDS_REACT_ELEMENT = $abefcd7d492c1e079308e813a04d$var$ns + " \"@ContextMenuTarget-decorated components must return a single JSX.Element or an empty render.";
+$abefcd7d492c1e079308e813a04d$exports.CONTEXTMENU_WARN_DECORATOR_NEEDS_REACT_ELEMENT = $abefcd7d492c1e079308e813a04d$export$CONTEXTMENU_WARN_DECORATOR_NEEDS_REACT_ELEMENT;
+var $abefcd7d492c1e079308e813a04d$export$HOTKEYS_HOTKEY_CHILDREN = $abefcd7d492c1e079308e813a04d$var$ns + " <Hotkeys> only accepts <Hotkey> children.";
+$abefcd7d492c1e079308e813a04d$exports.HOTKEYS_HOTKEY_CHILDREN = $abefcd7d492c1e079308e813a04d$export$HOTKEYS_HOTKEY_CHILDREN;
+var $abefcd7d492c1e079308e813a04d$export$HOTKEYS_WARN_DECORATOR_NO_METHOD = $abefcd7d492c1e079308e813a04d$var$ns + " @HotkeysTarget-decorated class should implement renderHotkeys.";
+$abefcd7d492c1e079308e813a04d$exports.HOTKEYS_WARN_DECORATOR_NO_METHOD = $abefcd7d492c1e079308e813a04d$export$HOTKEYS_WARN_DECORATOR_NO_METHOD;
+var $abefcd7d492c1e079308e813a04d$export$HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT = $abefcd7d492c1e079308e813a04d$var$ns + " \"@HotkeysTarget-decorated components must return a single JSX.Element or an empty render.";
+$abefcd7d492c1e079308e813a04d$exports.HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT = $abefcd7d492c1e079308e813a04d$export$HOTKEYS_WARN_DECORATOR_NEEDS_REACT_ELEMENT;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MIN_MAX = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires min to be no greater than max if both are defined.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_MIN_MAX = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MIN_MAX;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MINOR_STEP_SIZE_BOUND = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires minorStepSize to be no greater than stepSize.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_MINOR_STEP_SIZE_BOUND = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MINOR_STEP_SIZE_BOUND;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MAJOR_STEP_SIZE_BOUND = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires stepSize to be no greater than majorStepSize.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_MAJOR_STEP_SIZE_BOUND = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MAJOR_STEP_SIZE_BOUND;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MINOR_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires minorStepSize to be strictly greater than zero.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_MINOR_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MINOR_STEP_SIZE_NON_POSITIVE;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires majorStepSize to be strictly greater than zero.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_MAJOR_STEP_SIZE_NON_POSITIVE;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires stepSize to be strictly greater than zero.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_STEP_SIZE_NON_POSITIVE;
+var $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_STEP_SIZE_NULL = $abefcd7d492c1e079308e813a04d$var$ns + " <NumericInput> requires stepSize to be defined.";
+$abefcd7d492c1e079308e813a04d$exports.NUMERIC_INPUT_STEP_SIZE_NULL = $abefcd7d492c1e079308e813a04d$export$NUMERIC_INPUT_STEP_SIZE_NULL;
+var $abefcd7d492c1e079308e813a04d$export$PANEL_STACK_INITIAL_PANEL_STACK_MUTEX = $abefcd7d492c1e079308e813a04d$var$ns + " <PanelStack> requires exactly one of initialPanel and stack prop";
+$abefcd7d492c1e079308e813a04d$exports.PANEL_STACK_INITIAL_PANEL_STACK_MUTEX = $abefcd7d492c1e079308e813a04d$export$PANEL_STACK_INITIAL_PANEL_STACK_MUTEX;
+var $abefcd7d492c1e079308e813a04d$export$PANEL_STACK_REQUIRES_PANEL = $abefcd7d492c1e079308e813a04d$var$ns + " <PanelStack> requires at least one panel in the stack";
+$abefcd7d492c1e079308e813a04d$exports.PANEL_STACK_REQUIRES_PANEL = $abefcd7d492c1e079308e813a04d$export$PANEL_STACK_REQUIRES_PANEL;
+var $abefcd7d492c1e079308e813a04d$export$OVERFLOW_LIST_OBSERVE_PARENTS_CHANGED = $abefcd7d492c1e079308e813a04d$var$ns + " <OverflowList> does not support changing observeParents after mounting."; // TODO (clewis): Migrate old Popover validation errors to the component formerly known as Popover2.
+// See: https://github.com/palantir/blueprint/issues/1940
+
+$abefcd7d492c1e079308e813a04d$exports.OVERFLOW_LIST_OBSERVE_PARENTS_CHANGED = $abefcd7d492c1e079308e813a04d$export$OVERFLOW_LIST_OBSERVE_PARENTS_CHANGED;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_REQUIRES_TARGET = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover> requires target prop or at least one child element.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_REQUIRES_TARGET = $abefcd7d492c1e079308e813a04d$export$POPOVER_REQUIRES_TARGET;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_HAS_BACKDROP_INTERACTION = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover hasBackdrop={true}> requires interactionKind={PopoverInteractionKind.CLICK}.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_HAS_BACKDROP_INTERACTION = $abefcd7d492c1e079308e813a04d$export$POPOVER_HAS_BACKDROP_INTERACTION;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_TOO_MANY_CHILDREN = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover> supports one or two children; additional children are ignored." + " First child is the target, second child is the content. You may instead supply these two as props.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_TOO_MANY_CHILDREN = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_TOO_MANY_CHILDREN;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_DOUBLE_CONTENT = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover> with two children ignores content prop; use either prop or children.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_DOUBLE_CONTENT = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_DOUBLE_CONTENT;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_DOUBLE_TARGET = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover> with children ignores target prop; use either prop or children.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_DOUBLE_TARGET = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_DOUBLE_TARGET;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_EMPTY_CONTENT = $abefcd7d492c1e079308e813a04d$var$ns + " Disabling <Popover> with empty/whitespace content...";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_EMPTY_CONTENT = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_EMPTY_CONTENT;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_HAS_BACKDROP_INLINE = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover usePortal={false}> ignores hasBackdrop";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_HAS_BACKDROP_INLINE = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_HAS_BACKDROP_INLINE;
+var $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_UNCONTROLLED_ONINTERACTION = $abefcd7d492c1e079308e813a04d$var$ns + " <Popover> onInteraction is ignored when uncontrolled.";
+$abefcd7d492c1e079308e813a04d$exports.POPOVER_WARN_UNCONTROLLED_ONINTERACTION = $abefcd7d492c1e079308e813a04d$export$POPOVER_WARN_UNCONTROLLED_ONINTERACTION;
+var $abefcd7d492c1e079308e813a04d$export$PORTAL_CONTEXT_CLASS_NAME_STRING = $abefcd7d492c1e079308e813a04d$var$ns + " <Portal> context blueprintPortalClassName must be string";
+$abefcd7d492c1e079308e813a04d$exports.PORTAL_CONTEXT_CLASS_NAME_STRING = $abefcd7d492c1e079308e813a04d$export$PORTAL_CONTEXT_CLASS_NAME_STRING;
+var $abefcd7d492c1e079308e813a04d$export$RADIOGROUP_WARN_CHILDREN_OPTIONS_MUTEX = $abefcd7d492c1e079308e813a04d$var$ns + " <RadioGroup> children and options prop are mutually exclusive, with options taking priority.";
+$abefcd7d492c1e079308e813a04d$exports.RADIOGROUP_WARN_CHILDREN_OPTIONS_MUTEX = $abefcd7d492c1e079308e813a04d$export$RADIOGROUP_WARN_CHILDREN_OPTIONS_MUTEX;
+var $abefcd7d492c1e079308e813a04d$export$SLIDER_ZERO_STEP = $abefcd7d492c1e079308e813a04d$var$ns + " <Slider> stepSize must be greater than zero.";
+$abefcd7d492c1e079308e813a04d$exports.SLIDER_ZERO_STEP = $abefcd7d492c1e079308e813a04d$export$SLIDER_ZERO_STEP;
+var $abefcd7d492c1e079308e813a04d$export$SLIDER_ZERO_LABEL_STEP = $abefcd7d492c1e079308e813a04d$var$ns + " <Slider> labelStepSize must be greater than zero.";
+$abefcd7d492c1e079308e813a04d$exports.SLIDER_ZERO_LABEL_STEP = $abefcd7d492c1e079308e813a04d$export$SLIDER_ZERO_LABEL_STEP;
+var $abefcd7d492c1e079308e813a04d$export$RANGESLIDER_NULL_VALUE = $abefcd7d492c1e079308e813a04d$var$ns + " <RangeSlider> value prop must be an array of two non-null numbers.";
+$abefcd7d492c1e079308e813a04d$exports.RANGESLIDER_NULL_VALUE = $abefcd7d492c1e079308e813a04d$export$RANGESLIDER_NULL_VALUE;
+var $abefcd7d492c1e079308e813a04d$export$MULTISLIDER_INVALID_CHILD = $abefcd7d492c1e079308e813a04d$var$ns + " <MultiSlider> children must be <SliderHandle>s or <SliderTrackStop>s";
+$abefcd7d492c1e079308e813a04d$exports.MULTISLIDER_INVALID_CHILD = $abefcd7d492c1e079308e813a04d$export$MULTISLIDER_INVALID_CHILD;
+var $abefcd7d492c1e079308e813a04d$export$SPINNER_WARN_CLASSES_SIZE = $abefcd7d492c1e079308e813a04d$var$ns + " <Spinner> Classes.SMALL/LARGE are ignored if size prop is set.";
+$abefcd7d492c1e079308e813a04d$exports.SPINNER_WARN_CLASSES_SIZE = $abefcd7d492c1e079308e813a04d$export$SPINNER_WARN_CLASSES_SIZE;
+var $abefcd7d492c1e079308e813a04d$export$TOASTER_CREATE_NULL = $abefcd7d492c1e079308e813a04d$var$ns + " Toaster.create() is not supported inside React lifecycle methods in React 16." + " See usage example on the docs site.";
+$abefcd7d492c1e079308e813a04d$exports.TOASTER_CREATE_NULL = $abefcd7d492c1e079308e813a04d$export$TOASTER_CREATE_NULL;
+var $abefcd7d492c1e079308e813a04d$export$TOASTER_WARN_INLINE = $abefcd7d492c1e079308e813a04d$var$ns + " Toaster.create() ignores inline prop as it always creates a new element.";
+$abefcd7d492c1e079308e813a04d$exports.TOASTER_WARN_INLINE = $abefcd7d492c1e079308e813a04d$export$TOASTER_WARN_INLINE;
+var $abefcd7d492c1e079308e813a04d$export$DIALOG_WARN_NO_HEADER_ICON = $abefcd7d492c1e079308e813a04d$var$ns + " <Dialog> iconName is ignored if title is omitted.";
+$abefcd7d492c1e079308e813a04d$exports.DIALOG_WARN_NO_HEADER_ICON = $abefcd7d492c1e079308e813a04d$export$DIALOG_WARN_NO_HEADER_ICON;
+var $abefcd7d492c1e079308e813a04d$export$DIALOG_WARN_NO_HEADER_CLOSE_BUTTON = $abefcd7d492c1e079308e813a04d$var$ns + " <Dialog> isCloseButtonShown prop is ignored if title is omitted.";
+$abefcd7d492c1e079308e813a04d$exports.DIALOG_WARN_NO_HEADER_CLOSE_BUTTON = $abefcd7d492c1e079308e813a04d$export$DIALOG_WARN_NO_HEADER_CLOSE_BUTTON;
+var $abefcd7d492c1e079308e813a04d$export$DRAWER_VERTICAL_IS_IGNORED = $abefcd7d492c1e079308e813a04d$var$ns + " <Drawer> vertical is ignored if position is defined";
+$abefcd7d492c1e079308e813a04d$exports.DRAWER_VERTICAL_IS_IGNORED = $abefcd7d492c1e079308e813a04d$export$DRAWER_VERTICAL_IS_IGNORED;
+var $abefcd7d492c1e079308e813a04d$export$DRAWER_ANGLE_POSITIONS_ARE_CASTED = $abefcd7d492c1e079308e813a04d$var$ns + " <Drawer> all angle positions are casted into pure position (TOP, BOTTOM, LEFT or RIGHT)"; //# sourceMappingURL=errors.js.map
+
+$abefcd7d492c1e079308e813a04d$exports.DRAWER_ANGLE_POSITIONS_ARE_CASTED = $abefcd7d492c1e079308e813a04d$export$DRAWER_ANGLE_POSITIONS_ARE_CASTED;

@@ -1,0 +1,7 @@
+var $d7f4134332c7ce20b8a2b62bfde9087e$exports = {};
+var $d7f4134332c7ce20b8a2b62bfde9087e$var$util = $parcel$require("d7f4134332c7ce20b8a2b62bfde9087e", "./util");
+$d7f4134332c7ce20b8a2b62bfde9087e$exports = $d7f4134332c7ce20b8a2b62bfde9087e$var$SchemaObject;
+
+function $d7f4134332c7ce20b8a2b62bfde9087e$var$SchemaObject(obj) {
+  $d7f4134332c7ce20b8a2b62bfde9087e$var$util.copy(obj, this);
+}

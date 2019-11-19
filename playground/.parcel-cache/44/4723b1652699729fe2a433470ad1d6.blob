@@ -1,0 +1,60 @@
+var $f42a387a831672c9043e8f742d283f$exports = {};
+$parcel$require("64f42a387a831672c9043e8f742d283f", "react");
+$parcel$require("64f42a387a831672c9043e8f742d283f", "../CodeEditor");
+$parcel$require("64f42a387a831672c9043e8f742d283f", "../store");
+$parcel$require("64f42a387a831672c9043e8f742d283f", "hybrid-components");
+$parcel$require("64f42a387a831672c9043e8f742d283f", "../constants");
+
+function $f42a387a831672c9043e8f742d283f$var$_objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+function $f42a387a831672c9043e8f742d283f$var$_slicedToArray(arr, i) { return $f42a387a831672c9043e8f742d283f$var$_arrayWithHoles(arr) || $f42a387a831672c9043e8f742d283f$var$_iterableToArrayLimit(arr, i) || $f42a387a831672c9043e8f742d283f$var$_nonIterableRest(); }
+
+function $f42a387a831672c9043e8f742d283f$var$_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function $f42a387a831672c9043e8f742d283f$var$_iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function $f42a387a831672c9043e8f742d283f$var$_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var $f42a387a831672c9043e8f742d283f$export$default = function () {
+  var _useGlobal = $f42a387a831672c9043e8f742d283f$import$useGlobal(),
+      _useGlobal2 = $f42a387a831672c9043e8f742d283f$var$_slicedToArray(_useGlobal, 1),
+      state = _useGlobal2[0]; // return <pre>{JSON.stringify(state, null, 4)}</pre>
+
+
+  return $f42a387a831672c9043e8f742d283f$import$React.createElement($f42a387a831672c9043e8f742d283f$var$View, null);
+};
+
+$f42a387a831672c9043e8f742d283f$exports.default = $f42a387a831672c9043e8f742d283f$export$default;
+
+var $f42a387a831672c9043e8f742d283f$var$View = function View(_ref) {
+  $f42a387a831672c9043e8f742d283f$var$_objectDestructuringEmpty(_ref);
+
+  var _useGlobal3 = $f42a387a831672c9043e8f742d283f$import$useGlobal(),
+      _useGlobal4 = $f42a387a831672c9043e8f742d283f$var$_slicedToArray(_useGlobal3, 2),
+      state = _useGlobal4[0],
+      actions = _useGlobal4[1];
+
+  var language = state.settings.language;
+
+  if (state.fetchingOutput) {
+    return $f42a387a831672c9043e8f742d283f$import$React.createElement($f42a387a831672c9043e8f742d283f$import$Box, {
+      height: "100%",
+      overflow: "auto"
+    }, "loading");
+  }
+
+  return $f42a387a831672c9043e8f742d283f$import$React.createElement($f42a387a831672c9043e8f742d283f$import$Box, {
+    height: "100%",
+    overflow: "auto"
+  }, $f42a387a831672c9043e8f742d283f$import$React.createElement($f42a387a831672c9043e8f742d283f$import$CodeEditor, {
+    theme: "chrome",
+    onChange: function onChange(code) {
+      return actions.setOutputCode(code);
+    },
+    value: state.outputEditor.code,
+    language: $f42a387a831672c9043e8f742d283f$import$languageMapper[language] || language,
+    showGutter: false,
+    minLines: 2000,
+    readOnly: true
+  }));
+};

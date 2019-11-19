@@ -1,0 +1,229 @@
+var $dc4a439c51846821be283ad3b59cc$exports = {};
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "zen-observable-ts");
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "zen-observable-ts");
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "ts-invariant");
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "tslib");
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "apollo-utilities");
+$parcel$require("727dc4a439c51846821be283ad3b59cc", "apollo-utilities");
+$dc4a439c51846821be283ad3b59cc$exports.Observable = $dc4a439c51846821be283ad3b59cc$import$Observable;
+$dc4a439c51846821be283ad3b59cc$exports.getOperationName = $dc4a439c51846821be283ad3b59cc$import$getOperationName;
+
+function $dc4a439c51846821be283ad3b59cc$var$validateOperation(operation) {
+  var OPERATION_FIELDS = ['query', 'operationName', 'variables', 'extensions', 'context'];
+
+  for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
+    var key = _a[_i];
+
+    if (OPERATION_FIELDS.indexOf(key) < 0) {
+      throw "production" === "production" ? new $dc4a439c51846821be283ad3b59cc$import$InvariantError(2) : new $dc4a439c51846821be283ad3b59cc$import$InvariantError("illegal argument: " + key);
+    }
+  }
+
+  return operation;
+}
+
+var $dc4a439c51846821be283ad3b59cc$var$LinkError = function (_super) {
+  $dc4a439c51846821be283ad3b59cc$import$__extends(LinkError, _super);
+
+  function LinkError(message, link) {
+    var _this = _super.call(this, message) || this;
+
+    _this.link = link;
+    return _this;
+  }
+
+  return LinkError;
+}(Error);
+
+function $dc4a439c51846821be283ad3b59cc$var$isTerminating(link) {
+  return link.request.length <= 1;
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$toPromise(observable) {
+  var completed = false;
+  return new Promise(function (resolve, reject) {
+    observable.subscribe({
+      next: function (data) {
+        if (completed) {
+          "production" === "production" || $dc4a439c51846821be283ad3b59cc$import$invariant.warn("Promise Wrapper does not support multiple results from Observable");
+        } else {
+          completed = true;
+          resolve(data);
+        }
+      },
+      error: reject
+    });
+  });
+}
+
+var $dc4a439c51846821be283ad3b59cc$export$makePromise = $dc4a439c51846821be283ad3b59cc$export$toPromise;
+
+function $dc4a439c51846821be283ad3b59cc$export$fromPromise(promise) {
+  return new $dc4a439c51846821be283ad3b59cc$import$Observable(function (observer) {
+    promise.then(function (value) {
+      observer.next(value);
+      observer.complete();
+    }).catch(observer.error.bind(observer));
+  });
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$fromError(errorValue) {
+  return new $dc4a439c51846821be283ad3b59cc$import$Observable(function (observer) {
+    observer.error(errorValue);
+  });
+}
+
+function $dc4a439c51846821be283ad3b59cc$var$transformOperation(operation) {
+  var transformedOperation = {
+    variables: operation.variables || {},
+    extensions: operation.extensions || {},
+    operationName: operation.operationName,
+    query: operation.query
+  };
+
+  if (!transformedOperation.operationName) {
+    transformedOperation.operationName = typeof transformedOperation.query !== 'string' ? $dc4a439c51846821be283ad3b59cc$import$getOperationName(transformedOperation.query) : '';
+  }
+
+  return transformedOperation;
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$createOperation(starting, operation) {
+  var context = $dc4a439c51846821be283ad3b59cc$import$__assign({}, starting);
+
+  var setContext = function (next) {
+    if (typeof next === 'function') {
+      context = $dc4a439c51846821be283ad3b59cc$import$__assign({}, context, next(context));
+    } else {
+      context = $dc4a439c51846821be283ad3b59cc$import$__assign({}, context, next);
+    }
+  };
+
+  var getContext = function () {
+    return $dc4a439c51846821be283ad3b59cc$import$__assign({}, context);
+  };
+
+  Object.defineProperty(operation, 'setContext', {
+    enumerable: false,
+    value: setContext
+  });
+  Object.defineProperty(operation, 'getContext', {
+    enumerable: false,
+    value: getContext
+  });
+  Object.defineProperty(operation, 'toKey', {
+    enumerable: false,
+    value: function () {
+      return $dc4a439c51846821be283ad3b59cc$var$getKey(operation);
+    }
+  });
+  return operation;
+}
+
+function $dc4a439c51846821be283ad3b59cc$var$getKey(operation) {
+  var query = operation.query,
+      variables = operation.variables,
+      operationName = operation.operationName;
+  return JSON.stringify([operationName, query, variables]);
+}
+
+function $dc4a439c51846821be283ad3b59cc$var$passthrough(op, forward) {
+  return forward ? forward(op) : $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+}
+
+function $dc4a439c51846821be283ad3b59cc$var$toLink(handler) {
+  return typeof handler === 'function' ? new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(handler) : handler;
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$empty() {
+  return new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(function () {
+    return $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+  });
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$from(links) {
+  if (links.length === 0) return $dc4a439c51846821be283ad3b59cc$export$empty();
+  return links.map($dc4a439c51846821be283ad3b59cc$var$toLink).reduce(function (x, y) {
+    return x.concat(y);
+  });
+}
+
+function $dc4a439c51846821be283ad3b59cc$export$split(test, left, right) {
+  var leftLink = $dc4a439c51846821be283ad3b59cc$var$toLink(left);
+  var rightLink = $dc4a439c51846821be283ad3b59cc$var$toLink(right || new $dc4a439c51846821be283ad3b59cc$export$ApolloLink($dc4a439c51846821be283ad3b59cc$var$passthrough));
+
+  if ($dc4a439c51846821be283ad3b59cc$var$isTerminating(leftLink) && $dc4a439c51846821be283ad3b59cc$var$isTerminating(rightLink)) {
+    return new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(function (operation) {
+      return test(operation) ? leftLink.request(operation) || $dc4a439c51846821be283ad3b59cc$import$Observable.of() : rightLink.request(operation) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+    });
+  } else {
+    return new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(function (operation, forward) {
+      return test(operation) ? leftLink.request(operation, forward) || $dc4a439c51846821be283ad3b59cc$import$Observable.of() : rightLink.request(operation, forward) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+    });
+  }
+}
+
+var $dc4a439c51846821be283ad3b59cc$export$concat = function (first, second) {
+  var firstLink = $dc4a439c51846821be283ad3b59cc$var$toLink(first);
+
+  if ($dc4a439c51846821be283ad3b59cc$var$isTerminating(firstLink)) {
+    "production" === "production" || $dc4a439c51846821be283ad3b59cc$import$invariant.warn(new $dc4a439c51846821be283ad3b59cc$var$LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
+    return firstLink;
+  }
+
+  var nextLink = $dc4a439c51846821be283ad3b59cc$var$toLink(second);
+
+  if ($dc4a439c51846821be283ad3b59cc$var$isTerminating(nextLink)) {
+    return new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(function (operation) {
+      return firstLink.request(operation, function (op) {
+        return nextLink.request(op) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+      }) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+    });
+  } else {
+    return new $dc4a439c51846821be283ad3b59cc$export$ApolloLink(function (operation, forward) {
+      return firstLink.request(operation, function (op) {
+        return nextLink.request(op, forward) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+      }) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+    });
+  }
+};
+
+var $dc4a439c51846821be283ad3b59cc$export$ApolloLink = function () {
+  function ApolloLink(request) {
+    if (request) this.request = request;
+  }
+
+  ApolloLink.prototype.split = function (test, left, right) {
+    return this.concat($dc4a439c51846821be283ad3b59cc$export$split(test, left, right || new ApolloLink($dc4a439c51846821be283ad3b59cc$var$passthrough)));
+  };
+
+  ApolloLink.prototype.concat = function (next) {
+    return $dc4a439c51846821be283ad3b59cc$export$concat(this, next);
+  };
+
+  ApolloLink.prototype.request = function (operation, forward) {
+    throw "production" === "production" ? new $dc4a439c51846821be283ad3b59cc$import$InvariantError(1) : new $dc4a439c51846821be283ad3b59cc$import$InvariantError('request is not implemented');
+  };
+
+  ApolloLink.empty = $dc4a439c51846821be283ad3b59cc$export$empty;
+  ApolloLink.from = $dc4a439c51846821be283ad3b59cc$export$from;
+  ApolloLink.split = $dc4a439c51846821be283ad3b59cc$export$split;
+  ApolloLink.execute = $dc4a439c51846821be283ad3b59cc$export$execute;
+  return ApolloLink;
+}();
+
+function $dc4a439c51846821be283ad3b59cc$export$execute(link, operation) {
+  return link.request($dc4a439c51846821be283ad3b59cc$export$createOperation(operation.context, $dc4a439c51846821be283ad3b59cc$var$transformOperation($dc4a439c51846821be283ad3b59cc$var$validateOperation(operation)))) || $dc4a439c51846821be283ad3b59cc$import$Observable.of();
+}
+
+$dc4a439c51846821be283ad3b59cc$exports.toPromise = $dc4a439c51846821be283ad3b59cc$export$toPromise;
+$dc4a439c51846821be283ad3b59cc$exports.split = $dc4a439c51846821be283ad3b59cc$export$split;
+$dc4a439c51846821be283ad3b59cc$exports.makePromise = $dc4a439c51846821be283ad3b59cc$export$makePromise;
+$dc4a439c51846821be283ad3b59cc$exports.fromPromise = $dc4a439c51846821be283ad3b59cc$export$fromPromise;
+$dc4a439c51846821be283ad3b59cc$exports.fromError = $dc4a439c51846821be283ad3b59cc$export$fromError;
+$dc4a439c51846821be283ad3b59cc$exports.from = $dc4a439c51846821be283ad3b59cc$export$from;
+$dc4a439c51846821be283ad3b59cc$exports.execute = $dc4a439c51846821be283ad3b59cc$export$execute;
+$dc4a439c51846821be283ad3b59cc$exports.empty = $dc4a439c51846821be283ad3b59cc$export$empty;
+$dc4a439c51846821be283ad3b59cc$exports.createOperation = $dc4a439c51846821be283ad3b59cc$export$createOperation;
+$dc4a439c51846821be283ad3b59cc$exports.concat = $dc4a439c51846821be283ad3b59cc$export$concat;
+$dc4a439c51846821be283ad3b59cc$exports.ApolloLink = $dc4a439c51846821be283ad3b59cc$export$ApolloLink;

@@ -1,0 +1,115 @@
+var $ff61c590f24131671e5ff884a6b5660$exports = {};
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "tslib");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "classnames");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "react");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../../common/abstractPureComponent");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../../common/classes");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../../common/errors");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../../common/position");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../../common/props");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../button/buttons");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../html/html");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../icon/icon");
+$parcel$require("7ff61c590f24131671e5ff884a6b5660", "../overlay/overlay");
+
+var $ff61c590f24131671e5ff884a6b5660$export$Drawer =
+/** @class */
+function (_super) {
+  $ff61c590f24131671e5ff884a6b5660$import$tslib_1.__extends(Drawer, _super);
+
+  function Drawer() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Drawer.prototype.render = function () {
+    var _a = this.props,
+        size = _a.size,
+        style = _a.style,
+        position = _a.position,
+        vertical = _a.vertical;
+    var realPosition = position ? $ff61c590f24131671e5ff884a6b5660$import$getPositionIgnoreAngles(position) : null;
+    var classes = $ff61c590f24131671e5ff884a6b5660$import$classNames($ff61c590f24131671e5ff884a6b5660$import$Classes.DRAWER, (_b = {}, _b[$ff61c590f24131671e5ff884a6b5660$import$Classes.VERTICAL] = !realPosition && vertical, _b[realPosition ? $ff61c590f24131671e5ff884a6b5660$import$Classes.positionClass(realPosition) : ""] = true, _b), this.props.className);
+    var styleProp = size == null ? style : $ff61c590f24131671e5ff884a6b5660$import$tslib_1.__assign({}, style, (_c = {}, _c[(realPosition ? $ff61c590f24131671e5ff884a6b5660$import$isPositionHorizontal(realPosition) : vertical) ? "height" : "width"] = size, _c));
+    return $ff61c590f24131671e5ff884a6b5660$import$React.createElement($ff61c590f24131671e5ff884a6b5660$import$Overlay, $ff61c590f24131671e5ff884a6b5660$import$tslib_1.__assign({}, this.props, {
+      className: $ff61c590f24131671e5ff884a6b5660$import$Classes.OVERLAY_CONTAINER
+    }), $ff61c590f24131671e5ff884a6b5660$import$React.createElement("div", {
+      className: classes,
+      style: styleProp
+    }, this.maybeRenderHeader(), this.props.children));
+
+    var _b, _c;
+  };
+
+  Drawer.prototype.validateProps = function (props) {
+    if (props.title == null) {
+      if (props.icon != null) {
+        console.warn($ff61c590f24131671e5ff884a6b5660$import$Errors.DIALOG_WARN_NO_HEADER_ICON);
+      }
+
+      if (props.isCloseButtonShown != null) {
+        console.warn($ff61c590f24131671e5ff884a6b5660$import$Errors.DIALOG_WARN_NO_HEADER_CLOSE_BUTTON);
+      }
+    }
+
+    if (props.position != null) {
+      if (props.vertical) {
+        console.warn($ff61c590f24131671e5ff884a6b5660$import$Errors.DRAWER_VERTICAL_IS_IGNORED);
+      }
+
+      if (props.position !== $ff61c590f24131671e5ff884a6b5660$import$getPositionIgnoreAngles(props.position)) {
+        console.warn($ff61c590f24131671e5ff884a6b5660$import$Errors.DRAWER_ANGLE_POSITIONS_ARE_CASTED);
+      }
+    }
+  };
+
+  Drawer.prototype.maybeRenderCloseButton = function () {
+    // `isCloseButtonShown` can't be defaulted through default props because of props validation
+    // so this check actually defaults it to true (fails only if directly set to false)
+    if (this.props.isCloseButtonShown !== false) {
+      return $ff61c590f24131671e5ff884a6b5660$import$React.createElement($ff61c590f24131671e5ff884a6b5660$import$Button, {
+        "aria-label": "Close",
+        className: $ff61c590f24131671e5ff884a6b5660$import$Classes.DIALOG_CLOSE_BUTTON,
+        icon: $ff61c590f24131671e5ff884a6b5660$import$React.createElement($ff61c590f24131671e5ff884a6b5660$import$Icon, {
+          icon: "small-cross",
+          iconSize: $ff61c590f24131671e5ff884a6b5660$import$Icon.SIZE_LARGE
+        }),
+        minimal: true,
+        onClick: this.props.onClose
+      });
+    } else {
+      return null;
+    }
+  };
+
+  Drawer.prototype.maybeRenderHeader = function () {
+    var _a = this.props,
+        icon = _a.icon,
+        title = _a.title;
+
+    if (title == null) {
+      return null;
+    }
+
+    return $ff61c590f24131671e5ff884a6b5660$import$React.createElement("div", {
+      className: $ff61c590f24131671e5ff884a6b5660$import$Classes.DRAWER_HEADER
+    }, $ff61c590f24131671e5ff884a6b5660$import$React.createElement($ff61c590f24131671e5ff884a6b5660$import$Icon, {
+      icon: icon,
+      iconSize: $ff61c590f24131671e5ff884a6b5660$import$Icon.SIZE_LARGE
+    }), $ff61c590f24131671e5ff884a6b5660$import$React.createElement($ff61c590f24131671e5ff884a6b5660$import$H4, null, title), this.maybeRenderCloseButton());
+  };
+
+  Drawer.displayName = $ff61c590f24131671e5ff884a6b5660$import$DISPLAYNAME_PREFIX + ".Drawer";
+  Drawer.defaultProps = {
+    canOutsideClickClose: true,
+    isOpen: false,
+    position: null,
+    style: {},
+    vertical: false
+  };
+  Drawer.SIZE_SMALL = "360px";
+  Drawer.SIZE_STANDARD = "50%";
+  Drawer.SIZE_LARGE = "90%";
+  return Drawer;
+}($ff61c590f24131671e5ff884a6b5660$import$AbstractPureComponent);
+
+$ff61c590f24131671e5ff884a6b5660$exports.Drawer = $ff61c590f24131671e5ff884a6b5660$export$Drawer;

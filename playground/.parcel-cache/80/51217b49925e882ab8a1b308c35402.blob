@@ -1,0 +1,34 @@
+var $a77715dc903ba1f01b243e94a4e$exports = {};
+$parcel$require("07828a77715dc903ba1f01b243e94a4e", "tslib");
+$parcel$require("07828a77715dc903ba1f01b243e94a4e", "classnames");
+$parcel$require("07828a77715dc903ba1f01b243e94a4e", "react");
+$parcel$require("07828a77715dc903ba1f01b243e94a4e", "../../common/classes");
+$parcel$require("07828a77715dc903ba1f01b243e94a4e", "../../common/props");
+
+// this component is simple enough that tests would be purely tautological.
+
+/* istanbul ignore next */
+var $a77715dc903ba1f01b243e94a4e$export$NavbarDivider =
+/** @class */
+function (_super) {
+  $a77715dc903ba1f01b243e94a4e$import$tslib_1.__extends(NavbarDivider, _super);
+
+  function NavbarDivider() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  NavbarDivider.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        htmlProps = $a77715dc903ba1f01b243e94a4e$import$tslib_1.__rest(_a, ["className"]);
+
+    return $a77715dc903ba1f01b243e94a4e$import$React.createElement("div", $a77715dc903ba1f01b243e94a4e$import$tslib_1.__assign({
+      className: $a77715dc903ba1f01b243e94a4e$import$classNames($a77715dc903ba1f01b243e94a4e$import$Classes.NAVBAR_DIVIDER, className)
+    }, htmlProps));
+  };
+
+  NavbarDivider.displayName = $a77715dc903ba1f01b243e94a4e$import$DISPLAYNAME_PREFIX + ".NavbarDivider";
+  return NavbarDivider;
+}($a77715dc903ba1f01b243e94a4e$import$React.PureComponent);
+
+$a77715dc903ba1f01b243e94a4e$exports.NavbarDivider = $a77715dc903ba1f01b243e94a4e$export$NavbarDivider;

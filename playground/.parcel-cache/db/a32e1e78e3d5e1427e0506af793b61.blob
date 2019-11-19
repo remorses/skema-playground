@@ -1,0 +1,114 @@
+var $a56ba9fab0ac49ca6788b468b4a98895$exports = {};
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "tslib");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "classnames");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "react");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../../common/abstractPureComponent");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../../common/classes");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../../common/props");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../../common/utils");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../button/buttonGroup");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../button/buttons");
+$parcel$require("a56ba9fab0ac49ca6788b468b4a98895", "../icon/icon");
+
+var $a56ba9fab0ac49ca6788b468b4a98895$export$Toast =
+/** @class */
+function (_super) {
+  $a56ba9fab0ac49ca6788b468b4a98895$import$tslib_1.__extends(Toast, _super);
+
+  function Toast() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.handleActionClick = function (e) {
+      $a56ba9fab0ac49ca6788b468b4a98895$import$safeInvoke(_this.props.action.onClick, e);
+
+      _this.triggerDismiss(false);
+    };
+
+    _this.handleCloseClick = function () {
+      return _this.triggerDismiss(false);
+    };
+
+    _this.startTimeout = function () {
+      _this.clearTimeouts();
+
+      if (_this.props.timeout > 0) {
+        _this.setTimeout(function () {
+          return _this.triggerDismiss(true);
+        }, _this.props.timeout);
+      }
+    };
+
+    return _this;
+  }
+
+  Toast.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        icon = _a.icon,
+        intent = _a.intent,
+        message = _a.message;
+    return $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement("div", {
+      className: $a56ba9fab0ac49ca6788b468b4a98895$import$classNames($a56ba9fab0ac49ca6788b468b4a98895$import$Classes.TOAST, $a56ba9fab0ac49ca6788b468b4a98895$import$Classes.intentClass(intent), className),
+      onBlur: this.startTimeout,
+      onFocus: this.clearTimeouts,
+      onMouseEnter: this.clearTimeouts,
+      onMouseLeave: this.startTimeout,
+      tabIndex: 0
+    }, $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement($a56ba9fab0ac49ca6788b468b4a98895$import$Icon, {
+      icon: icon
+    }), $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement("span", {
+      className: $a56ba9fab0ac49ca6788b468b4a98895$import$Classes.TOAST_MESSAGE
+    }, message), $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement($a56ba9fab0ac49ca6788b468b4a98895$import$ButtonGroup, {
+      minimal: true
+    }, this.maybeRenderActionButton(), $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement($a56ba9fab0ac49ca6788b468b4a98895$import$Button, {
+      icon: "cross",
+      onClick: this.handleCloseClick
+    })));
+  };
+
+  Toast.prototype.componentDidMount = function () {
+    this.startTimeout();
+  };
+
+  Toast.prototype.componentDidUpdate = function (prevProps) {
+    if (prevProps.timeout !== this.props.timeout) {
+      if (this.props.timeout > 0) {
+        this.startTimeout();
+      } else {
+        this.clearTimeouts();
+      }
+    }
+  };
+
+  Toast.prototype.componentWillUnmount = function () {
+    this.clearTimeouts();
+  };
+
+  Toast.prototype.maybeRenderActionButton = function () {
+    var action = this.props.action;
+
+    if (action == null) {
+      return undefined;
+    } else {
+      return $a56ba9fab0ac49ca6788b468b4a98895$import$React.createElement($a56ba9fab0ac49ca6788b468b4a98895$import$AnchorButton, $a56ba9fab0ac49ca6788b468b4a98895$import$tslib_1.__assign({}, action, {
+        intent: undefined,
+        onClick: this.handleActionClick
+      }));
+    }
+  };
+
+  Toast.prototype.triggerDismiss = function (didTimeoutExpire) {
+    this.clearTimeouts();
+    $a56ba9fab0ac49ca6788b468b4a98895$import$safeInvoke(this.props.onDismiss, didTimeoutExpire);
+  };
+
+  Toast.defaultProps = {
+    className: "",
+    message: "",
+    timeout: 5000
+  };
+  Toast.displayName = $a56ba9fab0ac49ca6788b468b4a98895$import$DISPLAYNAME_PREFIX + ".Toast";
+  return Toast;
+}($a56ba9fab0ac49ca6788b468b4a98895$import$AbstractPureComponent);
+
+$a56ba9fab0ac49ca6788b468b4a98895$exports.Toast = $a56ba9fab0ac49ca6788b468b4a98895$export$Toast;

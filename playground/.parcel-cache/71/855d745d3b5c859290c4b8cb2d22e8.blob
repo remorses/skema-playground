@@ -1,0 +1,116 @@
+var $fc0a5ba3313bb924e870626c181941ad$exports = {};
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "tslib");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "classnames");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "react");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "react-transition-group");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "../../common/abstractPureComponent");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "../../common/classes");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "../../common/errors");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "../../common/utils");
+$parcel$require("fc0a5ba3313bb924e870626c181941ad", "./panelView");
+
+var $fc0a5ba3313bb924e870626c181941ad$export$PanelStack =
+/** @class */
+function (_super) {
+  $fc0a5ba3313bb924e870626c181941ad$import$tslib_1.__extends(PanelStack, _super);
+
+  function PanelStack() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.state = {
+      direction: "push",
+      stack: _this.props.stack != null ? _this.props.stack.slice().reverse() : [_this.props.initialPanel]
+    };
+
+    _this.handlePanelClose = function (panel) {
+      var stack = _this.state.stack; // only remove this panel if it is at the top and not the only one.
+
+      if (stack[0] !== panel || stack.length <= 1) {
+        return;
+      }
+
+      $fc0a5ba3313bb924e870626c181941ad$import$safeInvoke(_this.props.onClose, panel);
+
+      if (_this.props.stack == null) {
+        _this.setState(function (state) {
+          return {
+            direction: "pop",
+            stack: state.stack.filter(function (p) {
+              return p !== panel;
+            })
+          };
+        });
+      }
+    };
+
+    _this.handlePanelOpen = function (panel) {
+      $fc0a5ba3313bb924e870626c181941ad$import$safeInvoke(_this.props.onOpen, panel);
+
+      if (_this.props.stack == null) {
+        _this.setState(function (state) {
+          return {
+            direction: "push",
+            stack: [panel].concat(state.stack)
+          };
+        });
+      }
+    };
+
+    return _this;
+  }
+
+  PanelStack.prototype.componentWillReceiveProps = function (nextProps) {
+    if (this.props.stack !== nextProps.stack && this.props.stack != null && nextProps.stack != null) {
+      this.setState({
+        direction: this.props.stack.length - nextProps.stack.length < 0 ? "push" : "pop",
+        stack: nextProps.stack.slice().reverse()
+      });
+    }
+  };
+
+  PanelStack.prototype.render = function () {
+    var classes = $fc0a5ba3313bb924e870626c181941ad$import$classNames($fc0a5ba3313bb924e870626c181941ad$import$Classes.PANEL_STACK, $fc0a5ba3313bb924e870626c181941ad$import$Classes.PANEL_STACK + "-" + this.state.direction, this.props.className);
+    return $fc0a5ba3313bb924e870626c181941ad$import$React.createElement($fc0a5ba3313bb924e870626c181941ad$import$TransitionGroup, {
+      className: classes,
+      component: "div"
+    }, this.renderCurrentPanel());
+  };
+
+  PanelStack.prototype.validateProps = function (props) {
+    if (props.initialPanel == null && props.stack == null || props.initialPanel != null && props.stack != null) {
+      throw new Error($fc0a5ba3313bb924e870626c181941ad$import$Errors.PANEL_STACK_INITIAL_PANEL_STACK_MUTEX);
+    }
+
+    if (props.stack != null && props.stack.length === 0) {
+      throw new Error($fc0a5ba3313bb924e870626c181941ad$import$Errors.PANEL_STACK_REQUIRES_PANEL);
+    }
+  };
+
+  PanelStack.prototype.renderCurrentPanel = function () {
+    var _a = this.props.showPanelHeader,
+        showPanelHeader = _a === void 0 ? true : _a;
+    var stack = this.state.stack;
+
+    if (stack.length === 0) {
+      return null;
+    }
+
+    var activePanel = stack[0],
+        previousPanel = stack[1];
+    return $fc0a5ba3313bb924e870626c181941ad$import$React.createElement($fc0a5ba3313bb924e870626c181941ad$import$CSSTransition, {
+      classNames: $fc0a5ba3313bb924e870626c181941ad$import$Classes.PANEL_STACK,
+      key: stack.length,
+      timeout: 400
+    }, $fc0a5ba3313bb924e870626c181941ad$import$React.createElement($fc0a5ba3313bb924e870626c181941ad$import$PanelView, {
+      onClose: this.handlePanelClose,
+      onOpen: this.handlePanelOpen,
+      panel: activePanel,
+      previousPanel: previousPanel,
+      showHeader: showPanelHeader
+    }));
+  };
+
+  return PanelStack;
+}($fc0a5ba3313bb924e870626c181941ad$import$AbstractPureComponent);
+
+$fc0a5ba3313bb924e870626c181941ad$exports.PanelStack = $fc0a5ba3313bb924e870626c181941ad$export$PanelStack;

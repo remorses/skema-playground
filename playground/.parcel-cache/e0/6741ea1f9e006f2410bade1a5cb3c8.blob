@@ -1,0 +1,35 @@
+var $ef0293c2fa1f01bfc067b8cbc7a$exports = {};
+$parcel$require("84734ef0293c2fa1f01bfc067b8cbc7a", "tslib");
+$parcel$require("84734ef0293c2fa1f01bfc067b8cbc7a", "classnames");
+$parcel$require("84734ef0293c2fa1f01bfc067b8cbc7a", "react");
+$parcel$require("84734ef0293c2fa1f01bfc067b8cbc7a", "../../common/classes");
+$parcel$require("84734ef0293c2fa1f01bfc067b8cbc7a", "../../common/props");
+
+// this component is simple enough that tests would be purely tautological.
+
+/* istanbul ignore next */
+var $ef0293c2fa1f01bfc067b8cbc7a$export$NavbarHeading =
+/** @class */
+function (_super) {
+  $ef0293c2fa1f01bfc067b8cbc7a$import$tslib_1.__extends(NavbarHeading, _super);
+
+  function NavbarHeading() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  NavbarHeading.prototype.render = function () {
+    var _a = this.props,
+        children = _a.children,
+        className = _a.className,
+        htmlProps = $ef0293c2fa1f01bfc067b8cbc7a$import$tslib_1.__rest(_a, ["children", "className"]);
+
+    return $ef0293c2fa1f01bfc067b8cbc7a$import$React.createElement("div", $ef0293c2fa1f01bfc067b8cbc7a$import$tslib_1.__assign({
+      className: $ef0293c2fa1f01bfc067b8cbc7a$import$classNames($ef0293c2fa1f01bfc067b8cbc7a$import$Classes.NAVBAR_HEADING, className)
+    }, htmlProps), children);
+  };
+
+  NavbarHeading.displayName = $ef0293c2fa1f01bfc067b8cbc7a$import$DISPLAYNAME_PREFIX + ".NavbarHeading";
+  return NavbarHeading;
+}($ef0293c2fa1f01bfc067b8cbc7a$import$React.PureComponent);
+
+$ef0293c2fa1f01bfc067b8cbc7a$exports.NavbarHeading = $ef0293c2fa1f01bfc067b8cbc7a$export$NavbarHeading;

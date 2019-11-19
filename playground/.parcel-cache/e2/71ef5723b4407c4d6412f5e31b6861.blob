@@ -1,0 +1,11 @@
+var $f0df71b9fb49dadcde34d3c172cd4$exports = {};
+
+function $f0df71b9fb49dadcde34d3c172cd4$var$_assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+$f0df71b9fb49dadcde34d3c172cd4$exports = $f0df71b9fb49dadcde34d3c172cd4$var$_assertThisInitialized;

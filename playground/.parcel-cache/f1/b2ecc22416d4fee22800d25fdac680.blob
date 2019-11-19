@@ -1,0 +1,188 @@
+var $a6715279ae5cd1b4aa3349390b286$exports = {};
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "tslib");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "classnames");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "react");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "react-dom");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/abstractPureComponent");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/classes");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/errors");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/keys");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/position");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/props");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../../common/utils");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "../overlay/overlay");
+$parcel$require("596a6715279ae5cd1b4aa3349390b286", "./toast");
+
+var $a6715279ae5cd1b4aa3349390b286$export$Toaster =
+/** @class */
+function (_super) {
+  $a6715279ae5cd1b4aa3349390b286$import$tslib_1.__extends(Toaster, _super);
+
+  function Toaster() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.state = {
+      toasts: []
+    }; // auto-incrementing identifier for un-keyed toasts
+
+    _this.toastId = 0;
+
+    _this.getDismissHandler = function (toast) {
+      return function (timeoutExpired) {
+        _this.dismiss(toast.key, timeoutExpired);
+      };
+    };
+
+    _this.handleClose = function (e) {
+      // NOTE that `e` isn't always a KeyboardEvent but that's the only type we care about
+      if (e.which === $a6715279ae5cd1b4aa3349390b286$import$ESCAPE) {
+        _this.clear();
+      }
+    };
+
+    return _this;
+  }
+  /**
+   * Create a new `Toaster` instance that can be shared around your application.
+   * The `Toaster` will be rendered into a new element appended to the given container.
+   */
+
+
+  Toaster.create = function (props, container) {
+    if (container === void 0) {
+      container = document.body;
+    }
+
+    if (props != null && props.usePortal != null && !$a6715279ae5cd1b4aa3349390b286$import$isNodeEnv("production")) {
+      console.warn($a6715279ae5cd1b4aa3349390b286$import$TOASTER_WARN_INLINE);
+    }
+
+    var containerElement = document.createElement("div");
+    container.appendChild(containerElement);
+    var toaster = $a6715279ae5cd1b4aa3349390b286$import$ReactDOM.render($a6715279ae5cd1b4aa3349390b286$import$React.createElement(Toaster, $a6715279ae5cd1b4aa3349390b286$import$tslib_1.__assign({}, props, {
+      usePortal: false
+    })), containerElement);
+
+    if (toaster == null) {
+      throw new Error($a6715279ae5cd1b4aa3349390b286$import$TOASTER_CREATE_NULL);
+    }
+
+    return toaster;
+  };
+
+  Toaster.prototype.show = function (props, key) {
+    var options = this.createToastOptions(props, key);
+
+    if (key === undefined || this.isNewToastKey(key)) {
+      this.setState(function (prevState) {
+        return {
+          toasts: [options].concat(prevState.toasts)
+        };
+      });
+    } else {
+      this.setState(function (prevState) {
+        return {
+          toasts: prevState.toasts.map(function (t) {
+            return t.key === key ? options : t;
+          })
+        };
+      });
+    }
+
+    return options.key;
+  };
+
+  Toaster.prototype.dismiss = function (key, timeoutExpired) {
+    if (timeoutExpired === void 0) {
+      timeoutExpired = false;
+    }
+
+    this.setState(function (_a) {
+      var toasts = _a.toasts;
+      return {
+        toasts: toasts.filter(function (t) {
+          var matchesKey = t.key === key;
+
+          if (matchesKey) {
+            $a6715279ae5cd1b4aa3349390b286$import$safeInvoke(t.onDismiss, timeoutExpired);
+          }
+
+          return !matchesKey;
+        })
+      };
+    });
+  };
+
+  Toaster.prototype.clear = function () {
+    this.state.toasts.map(function (t) {
+      return $a6715279ae5cd1b4aa3349390b286$import$safeInvoke(t.onDismiss, false);
+    });
+    this.setState({
+      toasts: []
+    });
+  };
+
+  Toaster.prototype.getToasts = function () {
+    return this.state.toasts;
+  };
+
+  Toaster.prototype.render = function () {
+    // $pt-transition-duration * 3 + $pt-transition-duration / 2
+    var classes = $a6715279ae5cd1b4aa3349390b286$import$classNames($a6715279ae5cd1b4aa3349390b286$import$Classes.TOAST_CONTAINER, this.getPositionClasses(), this.props.className);
+    return $a6715279ae5cd1b4aa3349390b286$import$React.createElement($a6715279ae5cd1b4aa3349390b286$import$Overlay, {
+      autoFocus: this.props.autoFocus,
+      canEscapeKeyClose: this.props.canEscapeKeyClear,
+      canOutsideClickClose: false,
+      className: classes,
+      enforceFocus: false,
+      hasBackdrop: false,
+      isOpen: this.state.toasts.length > 0 || this.props.children != null,
+      onClose: this.handleClose,
+      transitionDuration: 350,
+      transitionName: $a6715279ae5cd1b4aa3349390b286$import$Classes.TOAST,
+      usePortal: this.props.usePortal
+    }, this.state.toasts.map(this.renderToast, this), this.props.children);
+  };
+
+  Toaster.prototype.isNewToastKey = function (key) {
+    return this.state.toasts.every(function (toast) {
+      return toast.key !== key;
+    });
+  };
+
+  Toaster.prototype.renderToast = function (toast) {
+    return $a6715279ae5cd1b4aa3349390b286$import$React.createElement($a6715279ae5cd1b4aa3349390b286$import$Toast, $a6715279ae5cd1b4aa3349390b286$import$tslib_1.__assign({}, toast, {
+      onDismiss: this.getDismissHandler(toast)
+    }));
+  };
+
+  Toaster.prototype.createToastOptions = function (props, key) {
+    if (key === void 0) {
+      key = "toast-" + this.toastId++;
+    } // clone the object before adding the key prop to avoid leaking the mutation
+
+
+    return $a6715279ae5cd1b4aa3349390b286$import$tslib_1.__assign({}, props, {
+      key: key
+    });
+  };
+
+  Toaster.prototype.getPositionClasses = function () {
+    var positions = this.props.position.split("-"); // NOTE that there is no -center class because that's the default style
+
+    return positions.map(function (p) {
+      return $a6715279ae5cd1b4aa3349390b286$import$Classes.TOAST_CONTAINER + "-" + p.toLowerCase();
+    });
+  };
+
+  Toaster.displayName = $a6715279ae5cd1b4aa3349390b286$import$DISPLAYNAME_PREFIX + ".Toaster";
+  Toaster.defaultProps = {
+    autoFocus: false,
+    canEscapeKeyClear: true,
+    position: $a6715279ae5cd1b4aa3349390b286$import$Position.TOP,
+    usePortal: true
+  };
+  return Toaster;
+}($a6715279ae5cd1b4aa3349390b286$import$AbstractPureComponent);
+
+$a6715279ae5cd1b4aa3349390b286$exports.Toaster = $a6715279ae5cd1b4aa3349390b286$export$Toaster;

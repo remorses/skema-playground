@@ -1,0 +1,42 @@
+var $f1689006b13f04b3a05eb87631795$exports = {};
+$parcel$require("043f1689006b13f04b3a05eb87631795", "tslib");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "classnames");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "react");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "../../common/classes");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "../../common/props");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "./menuDivider");
+$parcel$require("043f1689006b13f04b3a05eb87631795", "./menuItem");
+
+var $f1689006b13f04b3a05eb87631795$export$Menu =
+/** @class */
+function (_super) {
+  $f1689006b13f04b3a05eb87631795$import$tslib_1.__extends(Menu, _super);
+
+  function Menu() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Menu.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        children = _a.children,
+        large = _a.large,
+        ulRef = _a.ulRef,
+        htmlProps = $f1689006b13f04b3a05eb87631795$import$tslib_1.__rest(_a, ["className", "children", "large", "ulRef"]);
+
+    var classes = $f1689006b13f04b3a05eb87631795$import$classNames($f1689006b13f04b3a05eb87631795$import$Classes.MENU, (_b = {}, _b[$f1689006b13f04b3a05eb87631795$import$Classes.LARGE] = large, _b), className);
+    return $f1689006b13f04b3a05eb87631795$import$React.createElement("ul", $f1689006b13f04b3a05eb87631795$import$tslib_1.__assign({}, htmlProps, {
+      className: classes,
+      ref: ulRef
+    }), children);
+
+    var _b;
+  };
+
+  Menu.displayName = $f1689006b13f04b3a05eb87631795$import$DISPLAYNAME_PREFIX + ".Menu";
+  Menu.Divider = $f1689006b13f04b3a05eb87631795$import$MenuDivider;
+  Menu.Item = $f1689006b13f04b3a05eb87631795$import$MenuItem;
+  return Menu;
+}($f1689006b13f04b3a05eb87631795$import$React.Component);
+
+$f1689006b13f04b3a05eb87631795$exports.Menu = $f1689006b13f04b3a05eb87631795$export$Menu;

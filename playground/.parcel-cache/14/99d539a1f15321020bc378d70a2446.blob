@@ -1,0 +1,29 @@
+var $a2194c8d2048180148a27084b314dd3$exports = {};
+Object.defineProperty($a2194c8d2048180148a27084b314dd3$exports, "__esModule", {
+  value: true
+});
+var $a2194c8d2048180148a27084b314dd3$export$default = $a2194c8d2048180148a27084b314dd3$var$defineToStringTag;
+$a2194c8d2048180148a27084b314dd3$exports.default = $a2194c8d2048180148a27084b314dd3$export$default;
+/**
+ * The `defineToStringTag()` function checks first to see if the runtime
+ * supports the `Symbol` class and then if the `Symbol.toStringTag` constant
+ * is defined as a `Symbol` instance. If both conditions are met, the
+ * Symbol.toStringTag property is defined as a getter that returns the
+ * supplied class constructor's name.
+ *
+ * @method defineToStringTag
+ *
+ * @param {Class<any>} classObject a class such as Object, String, Number but
+ * typically one of your own creation through the class keyword; `class A {}`,
+ * for example.
+ */
+
+function $a2194c8d2048180148a27084b314dd3$var$defineToStringTag(classObject) {
+  if (typeof Symbol === 'function' && Symbol.toStringTag) {
+    Object.defineProperty(classObject.prototype, Symbol.toStringTag, {
+      get: function get() {
+        return this.constructor.name;
+      }
+    });
+  }
+}

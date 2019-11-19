@@ -1,0 +1,39 @@
+var $e1398de515d172d051c519482a69b$exports = {};
+Object.defineProperty($e1398de515d172d051c519482a69b$exports, "__esModule", {
+  value: true
+});
+var $e1398de515d172d051c519482a69b$export$Source = void 0;
+$e1398de515d172d051c519482a69b$exports.Source = $e1398de515d172d051c519482a69b$export$Source;
+var $e1398de515d172d051c519482a69b$var$_devAssert = $e1398de515d172d051c519482a69b$var$_interopRequireDefault($parcel$require("891e1398de515d172d051c519482a69b", "../jsutils/devAssert"));
+var $e1398de515d172d051c519482a69b$var$_defineToStringTag = $e1398de515d172d051c519482a69b$var$_interopRequireDefault($parcel$require("891e1398de515d172d051c519482a69b", "../jsutils/defineToStringTag"));
+
+function $e1398de515d172d051c519482a69b$var$_interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+/**
+ * A representation of source input to GraphQL.
+ * `name` and `locationOffset` are optional. They are useful for clients who
+ * store GraphQL documents in source files; for example, if the GraphQL input
+ * starts at line 40 in a file named Foo.graphql, it might be useful for name to
+ * be "Foo.graphql" and location to be `{ line: 40, column: 0 }`.
+ * line and column in locationOffset are 1-indexed
+ */
+
+
+var $e1398de515d172d051c519482a69b$var$Source = function Source(body, name, locationOffset) {
+  this.body = body;
+  this.name = name || 'GraphQL request';
+  this.locationOffset = locationOffset || {
+    line: 1,
+    column: 1
+  };
+  this.locationOffset.line > 0 || (0, $e1398de515d172d051c519482a69b$var$_devAssert.default)(0, 'line in locationOffset is 1-indexed and must be positive');
+  this.locationOffset.column > 0 || (0, $e1398de515d172d051c519482a69b$var$_devAssert.default)(0, 'column in locationOffset is 1-indexed and must be positive');
+}; // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
+
+
+$e1398de515d172d051c519482a69b$export$Source = $e1398de515d172d051c519482a69b$var$Source
+$e1398de515d172d051c519482a69b$exports.Source = $e1398de515d172d051c519482a69b$export$Source;
+(0, $e1398de515d172d051c519482a69b$var$_defineToStringTag.default)($e1398de515d172d051c519482a69b$var$Source);

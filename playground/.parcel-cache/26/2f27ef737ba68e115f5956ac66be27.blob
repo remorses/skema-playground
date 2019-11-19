@@ -1,0 +1,151 @@
+var $f19afe73278563dae93a2c80714$exports = {};
+
+var $f19afe73278563dae93a2c80714$var$__importDefault = $f19afe73278563dae93a2c80714$exports && $f19afe73278563dae93a2c80714$exports.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty($f19afe73278563dae93a2c80714$exports, "__esModule", {
+  value: true
+});
+const $f19afe73278563dae93a2c80714$var$react_1 = $f19afe73278563dae93a2c80714$var$__importDefault($parcel$require("11291f19afe73278563dae93a2c80714", "react"));
+const $f19afe73278563dae93a2c80714$var$styled_components_1 = $f19afe73278563dae93a2c80714$var$__importDefault($parcel$require("11291f19afe73278563dae93a2c80714", "styled-components"));
+const $f19afe73278563dae93a2c80714$var$styleProps_1 = $parcel$require("11291f19afe73278563dae93a2c80714", "./styleProps");
+var $f19afe73278563dae93a2c80714$export$Box = $f19afe73278563dae93a2c80714$var$styled_components_1.default.div.attrs(props => ({
+  variants: props.variants || ['box']
+}))`
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.Box = $f19afe73278563dae93a2c80714$export$Box;
+$f19afe73278563dae93a2c80714$exports.Box.displayName = 'Box';
+var $f19afe73278563dae93a2c80714$export$Card = $f19afe73278563dae93a2c80714$var$styled_components_1.default.div.attrs(props => ({
+  variants: props.variants || ['card']
+}))`
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.Card = $f19afe73278563dae93a2c80714$export$Card;
+$f19afe73278563dae93a2c80714$exports.Card.displayName = 'Card';
+var $f19afe73278563dae93a2c80714$export$Text = $f19afe73278563dae93a2c80714$var$styled_components_1.default.div.attrs(props => ({
+  variants: props.variants || ['text']
+}))`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.text}
+`;
+$f19afe73278563dae93a2c80714$exports.Text = $f19afe73278563dae93a2c80714$export$Text;
+$f19afe73278563dae93a2c80714$exports.Text.displayName = 'Text';
+var $f19afe73278563dae93a2c80714$export$Button = $f19afe73278563dae93a2c80714$var$styled_components_1.default.button.attrs(props => ({
+  onClick: props.onPress,
+  variants: props.variants || ['button'],
+  onPress: undefined
+}))`
+    width: auto;
+    padding: 4px 8px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    :active {
+        opacity: 0.2;
+    }
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.Button = $f19afe73278563dae93a2c80714$export$Button;
+$f19afe73278563dae93a2c80714$exports.Button.displayName = 'Button';
+var $f19afe73278563dae93a2c80714$export$Image = $f19afe73278563dae93a2c80714$var$styled_components_1.default.img.attrs(props => ({
+  src: props.source,
+  variants: props.variants || ['image']
+}))`
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.Image = $f19afe73278563dae93a2c80714$export$Image;
+$f19afe73278563dae93a2c80714$exports.Image.displayName = 'Image';
+var $f19afe73278563dae93a2c80714$export$ScrollView = $f19afe73278563dae93a2c80714$var$styled_components_1.default.div.attrs(props => ({
+  variants: props.variants || ['scrollview']
+}))`
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: auto;
+    ${({
+  noScrollbar
+}) => noScrollbar ? `
+            &::-webkit-scrollbar {
+                width: 0px;
+                background: transparent; /* Chrome/Safari/Webkit */
+            }
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE 10+ */
+            ` : ''}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.ScrollView = $f19afe73278563dae93a2c80714$export$ScrollView;
+$f19afe73278563dae93a2c80714$exports.ScrollView.displayName = 'ScrollView';
+var $f19afe73278563dae93a2c80714$export$Hidden = $f19afe73278563dae93a2c80714$var$styled_components_1.default.div`
+    visibility: hidden;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.box}
+`;
+$f19afe73278563dae93a2c80714$exports.Hidden = $f19afe73278563dae93a2c80714$export$Hidden;
+$f19afe73278563dae93a2c80714$exports.Hidden.displayName = 'Hidden';
+var $f19afe73278563dae93a2c80714$export$Link = $f19afe73278563dae93a2c80714$var$styled_components_1.default.a.attrs(props => ({
+  variants: props.variants || ['link']
+}))`
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.variants}
+    ${$f19afe73278563dae93a2c80714$var$styleProps_1.text}
+`;
+$f19afe73278563dae93a2c80714$exports.Link = $f19afe73278563dae93a2c80714$export$Link;
+$f19afe73278563dae93a2c80714$exports.Link.displayName = 'Link';
+
+var $f19afe73278563dae93a2c80714$export$H1 = props => $f19afe73278563dae93a2c80714$var$react_1.default.createElement($f19afe73278563dae93a2c80714$exports.Text, Object.assign({
+  variants: ['h1']
+}, props));
+
+$f19afe73278563dae93a2c80714$exports.H1 = $f19afe73278563dae93a2c80714$export$H1;
+$f19afe73278563dae93a2c80714$exports.H1.displayName = 'H1';
+
+var $f19afe73278563dae93a2c80714$export$H2 = props => $f19afe73278563dae93a2c80714$var$react_1.default.createElement($f19afe73278563dae93a2c80714$exports.Text, Object.assign({
+  variants: ['h2']
+}, props));
+
+$f19afe73278563dae93a2c80714$exports.H2 = $f19afe73278563dae93a2c80714$export$H2;
+$f19afe73278563dae93a2c80714$exports.H2.displayName = 'H2';
+
+var $f19afe73278563dae93a2c80714$export$Row = props => $f19afe73278563dae93a2c80714$var$react_1.default.createElement($f19afe73278563dae93a2c80714$exports.Box, Object.assign({
+  flexDirection: 'row'
+}, props));
+
+$f19afe73278563dae93a2c80714$exports.Row = $f19afe73278563dae93a2c80714$export$Row;
+$f19afe73278563dae93a2c80714$exports.Row.displayName = 'Row';
+var $f19afe73278563dae93a2c80714$export$Column = $f19afe73278563dae93a2c80714$exports.Box;
+$f19afe73278563dae93a2c80714$exports.Column = $f19afe73278563dae93a2c80714$export$Column;

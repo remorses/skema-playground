@@ -1,0 +1,8 @@
+var $e82b4df560759c4cdfc3811834e540f5$exports = {};
+$parcel$require("e82b4df560759c4cdfc3811834e540f5", "./Popper");
+$parcel$require("e82b4df560759c4cdfc3811834e540f5", "./Manager");
+$parcel$require("e82b4df560759c4cdfc3811834e540f5", "./Reference");
+$e82b4df560759c4cdfc3811834e540f5$exports.Reference = $e82b4df560759c4cdfc3811834e540f5$import$Reference;
+$e82b4df560759c4cdfc3811834e540f5$exports.Manager = $e82b4df560759c4cdfc3811834e540f5$import$Manager;
+$e82b4df560759c4cdfc3811834e540f5$exports.placements = $e82b4df560759c4cdfc3811834e540f5$import$placements;
+$e82b4df560759c4cdfc3811834e540f5$exports.Popper = $e82b4df560759c4cdfc3811834e540f5$import$Popper;

@@ -1,0 +1,16 @@
+var $a214852bb7636bbe33b3a914e27aaa5$exports = {};
+$parcel$require("2a214852bb7636bbe33b3a914e27aaa5", "@styled-system/core");
+var $a214852bb7636bbe33b3a914e27aaa5$var$config = {
+  background: true,
+  backgroundImage: true,
+  backgroundSize: true,
+  backgroundPosition: true,
+  backgroundRepeat: true
+};
+$a214852bb7636bbe33b3a914e27aaa5$var$config.bgImage = $a214852bb7636bbe33b3a914e27aaa5$var$config.backgroundImage;
+$a214852bb7636bbe33b3a914e27aaa5$var$config.bgSize = $a214852bb7636bbe33b3a914e27aaa5$var$config.backgroundSize;
+$a214852bb7636bbe33b3a914e27aaa5$var$config.bgPosition = $a214852bb7636bbe33b3a914e27aaa5$var$config.backgroundPosition;
+$a214852bb7636bbe33b3a914e27aaa5$var$config.bgRepeat = $a214852bb7636bbe33b3a914e27aaa5$var$config.backgroundRepeat;
+var $a214852bb7636bbe33b3a914e27aaa5$export$background = $a214852bb7636bbe33b3a914e27aaa5$import$system($a214852bb7636bbe33b3a914e27aaa5$var$config);
+$a214852bb7636bbe33b3a914e27aaa5$exports.background = $a214852bb7636bbe33b3a914e27aaa5$export$background;
+$a214852bb7636bbe33b3a914e27aaa5$exports.default = $a214852bb7636bbe33b3a914e27aaa5$export$background;

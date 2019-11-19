@@ -1,0 +1,30 @@
+var $aa7b9d27b6020a290539d13949d07311$exports = {};
+$parcel$require("aa7b9d27b6020a290539d13949d07311", "../common/classes");
+$parcel$require("aa7b9d27b6020a290539d13949d07311", "../common/interactionMode");
+
+/* istanbul ignore next */
+var $aa7b9d27b6020a290539d13949d07311$var$fakeFocusEngine = {
+  isActive: function () {
+    return true;
+  },
+  start: function () {
+    return true;
+  },
+  stop: function () {
+    return true;
+  }
+};
+var $aa7b9d27b6020a290539d13949d07311$var$focusEngine = typeof document !== "undefined" ? new $aa7b9d27b6020a290539d13949d07311$import$InteractionModeEngine(document.documentElement, $aa7b9d27b6020a290539d13949d07311$import$FOCUS_DISABLED) : $aa7b9d27b6020a290539d13949d07311$var$fakeFocusEngine;
+var $aa7b9d27b6020a290539d13949d07311$export$FocusStyleManager = {
+  alwaysShowFocus: function () {
+    return $aa7b9d27b6020a290539d13949d07311$var$focusEngine.stop();
+  },
+  isActive: function () {
+    return $aa7b9d27b6020a290539d13949d07311$var$focusEngine.isActive();
+  },
+  onlyShowFocusOnTabs: function () {
+    return $aa7b9d27b6020a290539d13949d07311$var$focusEngine.start();
+  }
+}; //# sourceMappingURL=focusStyleManager.js.map
+
+$aa7b9d27b6020a290539d13949d07311$exports.FocusStyleManager = $aa7b9d27b6020a290539d13949d07311$export$FocusStyleManager;

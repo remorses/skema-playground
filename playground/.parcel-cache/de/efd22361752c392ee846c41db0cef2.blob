@@ -1,0 +1,48 @@
+var $b93d3dfffad803c74d9f802116ec023c$exports = {};
+$parcel$require("b93d3dfffad803c74d9f802116ec023c", "@styled-system/core");
+$parcel$require("b93d3dfffad803c74d9f802116ec023c", "@styled-system/css");
+
+var $b93d3dfffad803c74d9f802116ec023c$export$variant = function variant(_ref) {
+  var _config;
+
+  var scale = _ref.scale,
+      _ref$prop = _ref.prop,
+      prop = _ref$prop === void 0 ? 'variant' : _ref$prop,
+      _ref$variants = _ref.variants,
+      variants = _ref$variants === void 0 ? {} : _ref$variants,
+      key = _ref.key;
+  var sx;
+
+  if (Object.keys(variants).length) {
+    sx = function sx(value, scale, props) {
+      return $b93d3dfffad803c74d9f802116ec023c$import$css($b93d3dfffad803c74d9f802116ec023c$import$get(scale, value, null))(props.theme);
+    };
+  } else {
+    sx = function sx(value, scale) {
+      return $b93d3dfffad803c74d9f802116ec023c$import$get(scale, value, null);
+    };
+  }
+
+  sx.scale = scale || key;
+  sx.defaults = variants;
+  var config = (_config = {}, _config[prop] = sx, _config);
+  var parser = $b93d3dfffad803c74d9f802116ec023c$import$createParser(config);
+  return parser;
+};
+
+$b93d3dfffad803c74d9f802116ec023c$exports.variant = $b93d3dfffad803c74d9f802116ec023c$export$variant;
+$b93d3dfffad803c74d9f802116ec023c$exports.default = $b93d3dfffad803c74d9f802116ec023c$export$variant;
+var $b93d3dfffad803c74d9f802116ec023c$export$buttonStyle = $b93d3dfffad803c74d9f802116ec023c$export$variant({
+  key: 'buttons'
+});
+$b93d3dfffad803c74d9f802116ec023c$exports.buttonStyle = $b93d3dfffad803c74d9f802116ec023c$export$buttonStyle;
+var $b93d3dfffad803c74d9f802116ec023c$export$textStyle = $b93d3dfffad803c74d9f802116ec023c$export$variant({
+  key: 'textStyles',
+  prop: 'textStyle'
+});
+$b93d3dfffad803c74d9f802116ec023c$exports.textStyle = $b93d3dfffad803c74d9f802116ec023c$export$textStyle;
+var $b93d3dfffad803c74d9f802116ec023c$export$colorStyle = $b93d3dfffad803c74d9f802116ec023c$export$variant({
+  key: 'colorStyles',
+  prop: 'colors'
+});
+$b93d3dfffad803c74d9f802116ec023c$exports.colorStyle = $b93d3dfffad803c74d9f802116ec023c$export$colorStyle;

@@ -1,0 +1,126 @@
+var $b35a494e24c7317b6ac63de4e93e70c$exports = {};
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "tslib");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "classnames");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "react");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "../../common/abstractPureComponent");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "../../common/classes");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "../../common/errors");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "../../common/props");
+$parcel$require("4b35a494e24c7317b6ac63de4e93e70c", "../../common/utils");
+// see http://stackoverflow.com/a/18473154/3124288 for calculating arc path
+var $b35a494e24c7317b6ac63de4e93e70c$var$R = 45;
+var $b35a494e24c7317b6ac63de4e93e70c$var$SPINNER_TRACK = "M 50,50 m 0,-" + $b35a494e24c7317b6ac63de4e93e70c$var$R + " a " + $b35a494e24c7317b6ac63de4e93e70c$var$R + "," + $b35a494e24c7317b6ac63de4e93e70c$var$R + " 0 1 1 0," + $b35a494e24c7317b6ac63de4e93e70c$var$R * 2 + " a " + $b35a494e24c7317b6ac63de4e93e70c$var$R + "," + $b35a494e24c7317b6ac63de4e93e70c$var$R + " 0 1 1 0,-" + $b35a494e24c7317b6ac63de4e93e70c$var$R * 2; // unitless total length of SVG path, to which stroke-dash* properties are relative.
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+// this value is the result of `<path d={SPINNER_TRACK} />.getTotalLength()` and works in all browsers:
+
+var $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH = 280;
+var $b35a494e24c7317b6ac63de4e93e70c$var$MIN_SIZE = 10;
+var $b35a494e24c7317b6ac63de4e93e70c$var$STROKE_WIDTH = 4;
+var $b35a494e24c7317b6ac63de4e93e70c$var$MIN_STROKE_WIDTH = 16;
+
+var $b35a494e24c7317b6ac63de4e93e70c$export$Spinner =
+/** @class */
+function (_super) {
+  $b35a494e24c7317b6ac63de4e93e70c$import$tslib_1.__extends(Spinner, _super);
+
+  function Spinner() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Spinner.prototype.componentDidUpdate = function (prevProps) {
+    if (prevProps.value !== this.props.value) {
+      // IE/Edge: re-render after changing value to force SVG update
+      this.forceUpdate();
+    }
+  };
+
+  Spinner.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        intent = _a.intent,
+        value = _a.value,
+        _b = _a.tagName,
+        TagName = _b === void 0 ? "div" : _b;
+    var size = this.getSize();
+    var classes = $b35a494e24c7317b6ac63de4e93e70c$import$classNames($b35a494e24c7317b6ac63de4e93e70c$import$Classes.SPINNER, $b35a494e24c7317b6ac63de4e93e70c$import$Classes.intentClass(intent), (_c = {}, _c[$b35a494e24c7317b6ac63de4e93e70c$import$Classes.SPINNER_NO_SPIN] = value != null, _c), className); // keep spinner track width consistent at all sizes (down to about 10px).
+
+    var strokeWidth = Math.min($b35a494e24c7317b6ac63de4e93e70c$var$MIN_STROKE_WIDTH, $b35a494e24c7317b6ac63de4e93e70c$var$STROKE_WIDTH * Spinner.SIZE_LARGE / size);
+    var strokeOffset = $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH - $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH * (value == null ? 0.25 : $b35a494e24c7317b6ac63de4e93e70c$import$clamp(value, 0, 1)); // multiple DOM elements around SVG are necessary to properly isolate animation:
+    // - SVG elements in IE do not support anim/trans so they must be set on a parent HTML element.
+    // - SPINNER_ANIMATION isolates svg from parent display and is always centered inside root element.
+
+    return $b35a494e24c7317b6ac63de4e93e70c$import$React.createElement(TagName, {
+      className: classes
+    }, $b35a494e24c7317b6ac63de4e93e70c$import$React.createElement(TagName, {
+      className: $b35a494e24c7317b6ac63de4e93e70c$import$Classes.SPINNER_ANIMATION
+    }, $b35a494e24c7317b6ac63de4e93e70c$import$React.createElement("svg", {
+      width: size,
+      height: size,
+      strokeWidth: strokeWidth.toFixed(2),
+      viewBox: this.getViewBox(strokeWidth)
+    }, $b35a494e24c7317b6ac63de4e93e70c$import$React.createElement("path", {
+      className: $b35a494e24c7317b6ac63de4e93e70c$import$Classes.SPINNER_TRACK,
+      d: $b35a494e24c7317b6ac63de4e93e70c$var$SPINNER_TRACK
+    }), $b35a494e24c7317b6ac63de4e93e70c$import$React.createElement("path", {
+      className: $b35a494e24c7317b6ac63de4e93e70c$import$Classes.SPINNER_HEAD,
+      d: $b35a494e24c7317b6ac63de4e93e70c$var$SPINNER_TRACK,
+      pathLength: $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH,
+      strokeDasharray: $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH + " " + $b35a494e24c7317b6ac63de4e93e70c$var$PATH_LENGTH,
+      strokeDashoffset: strokeOffset
+    }))));
+
+    var _c;
+  };
+
+  Spinner.prototype.validateProps = function (_a) {
+    var _b = _a.className,
+        className = _b === void 0 ? "" : _b,
+        size = _a.size;
+
+    if (size != null && (className.indexOf($b35a494e24c7317b6ac63de4e93e70c$import$Classes.SMALL) >= 0 || className.indexOf($b35a494e24c7317b6ac63de4e93e70c$import$Classes.LARGE) >= 0)) {
+      console.warn($b35a494e24c7317b6ac63de4e93e70c$import$SPINNER_WARN_CLASSES_SIZE);
+    }
+  };
+  /**
+   * Resolve size to a pixel value.
+   * Size can be set by className, props, default, or minimum constant.
+   */
+
+
+  Spinner.prototype.getSize = function () {
+    var _a = this.props,
+        _b = _a.className,
+        className = _b === void 0 ? "" : _b,
+        size = _a.size;
+
+    if (size == null) {
+      // allow Classes constants to determine default size.
+      if (className.indexOf($b35a494e24c7317b6ac63de4e93e70c$import$Classes.SMALL) >= 0) {
+        return Spinner.SIZE_SMALL;
+      } else if (className.indexOf($b35a494e24c7317b6ac63de4e93e70c$import$Classes.LARGE) >= 0) {
+        return Spinner.SIZE_LARGE;
+      }
+
+      return Spinner.SIZE_STANDARD;
+    }
+
+    return Math.max($b35a494e24c7317b6ac63de4e93e70c$var$MIN_SIZE, size);
+  };
+  /** Compute viewbox such that stroked track sits exactly at edge of image frame. */
+
+
+  Spinner.prototype.getViewBox = function (strokeWidth) {
+    var radius = $b35a494e24c7317b6ac63de4e93e70c$var$R + strokeWidth / 2;
+    var viewBoxX = (50 - radius).toFixed(2);
+    var viewBoxWidth = (radius * 2).toFixed(2);
+    return viewBoxX + " " + viewBoxX + " " + viewBoxWidth + " " + viewBoxWidth;
+  };
+
+  Spinner.displayName = $b35a494e24c7317b6ac63de4e93e70c$import$DISPLAYNAME_PREFIX + ".Spinner";
+  Spinner.SIZE_SMALL = 20;
+  Spinner.SIZE_STANDARD = 50;
+  Spinner.SIZE_LARGE = 100;
+  return Spinner;
+}($b35a494e24c7317b6ac63de4e93e70c$import$AbstractPureComponent);
+
+$b35a494e24c7317b6ac63de4e93e70c$exports.Spinner = $b35a494e24c7317b6ac63de4e93e70c$export$Spinner;

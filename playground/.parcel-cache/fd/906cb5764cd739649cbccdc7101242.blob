@@ -1,0 +1,23 @@
+var $be6a720277224c6601495a6a68cd8aa$exports = {};
+var $be6a720277224c6601495a6a68cd8aa$var$hasOwn = Object.prototype.hasOwnProperty;
+var $be6a720277224c6601495a6a68cd8aa$var$toString = Object.prototype.toString;
+
+$be6a720277224c6601495a6a68cd8aa$exports = function forEach(obj, fn, ctx) {
+  if ($be6a720277224c6601495a6a68cd8aa$var$toString.call(fn) !== '[object Function]') {
+    throw new TypeError('iterator must be a function');
+  }
+
+  var l = obj.length;
+
+  if (l === +l) {
+    for (var i = 0; i < l; i++) {
+      fn.call(ctx, obj[i], i, obj);
+    }
+  } else {
+    for (var k in obj) {
+      if ($be6a720277224c6601495a6a68cd8aa$var$hasOwn.call(obj, k)) {
+        fn.call(ctx, obj[k], k, obj);
+      }
+    }
+  }
+};

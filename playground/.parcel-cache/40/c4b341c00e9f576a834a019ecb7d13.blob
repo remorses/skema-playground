@@ -1,0 +1,41 @@
+var $dc4f92927972e7a93a00b328dd98670$exports = {};
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "tslib");
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "classnames");
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "react");
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "../../common/alignment");
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "../../common/classes");
+$parcel$require("1dc4f92927972e7a93a00b328dd98670", "../../common/props");
+
+// this component is simple enough that tests would be purely tautological.
+
+/* istanbul ignore next */
+var $dc4f92927972e7a93a00b328dd98670$export$NavbarGroup =
+/** @class */
+function (_super) {
+  $dc4f92927972e7a93a00b328dd98670$import$tslib_1.__extends(NavbarGroup, _super);
+
+  function NavbarGroup() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  NavbarGroup.prototype.render = function () {
+    var _a = this.props,
+        align = _a.align,
+        children = _a.children,
+        className = _a.className,
+        htmlProps = $dc4f92927972e7a93a00b328dd98670$import$tslib_1.__rest(_a, ["align", "children", "className"]);
+
+    var classes = $dc4f92927972e7a93a00b328dd98670$import$classNames($dc4f92927972e7a93a00b328dd98670$import$Classes.NAVBAR_GROUP, $dc4f92927972e7a93a00b328dd98670$import$Classes.alignmentClass(align), className);
+    return $dc4f92927972e7a93a00b328dd98670$import$React.createElement("div", $dc4f92927972e7a93a00b328dd98670$import$tslib_1.__assign({
+      className: classes
+    }, htmlProps), children);
+  };
+
+  NavbarGroup.displayName = $dc4f92927972e7a93a00b328dd98670$import$DISPLAYNAME_PREFIX + ".NavbarGroup";
+  NavbarGroup.defaultProps = {
+    align: $dc4f92927972e7a93a00b328dd98670$import$Alignment.LEFT
+  };
+  return NavbarGroup;
+}($dc4f92927972e7a93a00b328dd98670$import$React.PureComponent);
+
+$dc4f92927972e7a93a00b328dd98670$exports.NavbarGroup = $dc4f92927972e7a93a00b328dd98670$export$NavbarGroup;

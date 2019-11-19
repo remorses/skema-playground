@@ -1,0 +1,149 @@
+var $e436c0fad23d06a605553c66cb63665d$exports = {};
+Object.defineProperty($e436c0fad23d06a605553c66cb63665d$exports, "__esModule", {
+  value: true
+});
+var $e436c0fad23d06a605553c66cb63665d$export$default = $e436c0fad23d06a605553c66cb63665d$var$inspect;
+$e436c0fad23d06a605553c66cb63665d$exports.default = $e436c0fad23d06a605553c66cb63665d$export$default;
+var $e436c0fad23d06a605553c66cb63665d$var$_nodejsCustomInspectSymbol = $e436c0fad23d06a605553c66cb63665d$var$_interopRequireDefault($parcel$require("e436c0fad23d06a605553c66cb63665d", "./nodejsCustomInspectSymbol"));
+
+function $e436c0fad23d06a605553c66cb63665d$var$_interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$_typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    $e436c0fad23d06a605553c66cb63665d$var$_typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    $e436c0fad23d06a605553c66cb63665d$var$_typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return $e436c0fad23d06a605553c66cb63665d$var$_typeof(obj);
+}
+
+var $e436c0fad23d06a605553c66cb63665d$var$MAX_ARRAY_LENGTH = 10;
+var $e436c0fad23d06a605553c66cb63665d$var$MAX_RECURSIVE_DEPTH = 2;
+/**
+ * Used to print values in error messages.
+ */
+
+function $e436c0fad23d06a605553c66cb63665d$var$inspect(value) {
+  return $e436c0fad23d06a605553c66cb63665d$var$formatValue(value, []);
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$formatValue(value, seenValues) {
+  switch ($e436c0fad23d06a605553c66cb63665d$var$_typeof(value)) {
+    case 'string':
+      return JSON.stringify(value);
+
+    case 'function':
+      return value.name ? "[function ".concat(value.name, "]") : '[function]';
+
+    case 'object':
+      if (value === null) {
+        return 'null';
+      }
+
+      return $e436c0fad23d06a605553c66cb63665d$var$formatObjectValue(value, seenValues);
+
+    default:
+      return String(value);
+  }
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$formatObjectValue(value, previouslySeenValues) {
+  if (previouslySeenValues.indexOf(value) !== -1) {
+    return '[Circular]';
+  }
+
+  var seenValues = [].concat(previouslySeenValues, [value]);
+  var customInspectFn = $e436c0fad23d06a605553c66cb63665d$var$getCustomFn(value);
+
+  if (customInspectFn !== undefined) {
+    // $FlowFixMe(>=0.90.0)
+    var customValue = customInspectFn.call(value); // check for infinite recursion
+
+    if (customValue !== value) {
+      return typeof customValue === 'string' ? customValue : $e436c0fad23d06a605553c66cb63665d$var$formatValue(customValue, seenValues);
+    }
+  } else if (Array.isArray(value)) {
+    return $e436c0fad23d06a605553c66cb63665d$var$formatArray(value, seenValues);
+  }
+
+  return $e436c0fad23d06a605553c66cb63665d$var$formatObject(value, seenValues);
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$formatObject(object, seenValues) {
+  var keys = Object.keys(object);
+
+  if (keys.length === 0) {
+    return '{}';
+  }
+
+  if (seenValues.length > $e436c0fad23d06a605553c66cb63665d$var$MAX_RECURSIVE_DEPTH) {
+    return '[' + $e436c0fad23d06a605553c66cb63665d$var$getObjectTag(object) + ']';
+  }
+
+  var properties = keys.map(function (key) {
+    var value = $e436c0fad23d06a605553c66cb63665d$var$formatValue(object[key], seenValues);
+    return key + ': ' + value;
+  });
+  return '{ ' + properties.join(', ') + ' }';
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$formatArray(array, seenValues) {
+  if (array.length === 0) {
+    return '[]';
+  }
+
+  if (seenValues.length > $e436c0fad23d06a605553c66cb63665d$var$MAX_RECURSIVE_DEPTH) {
+    return '[Array]';
+  }
+
+  var len = Math.min($e436c0fad23d06a605553c66cb63665d$var$MAX_ARRAY_LENGTH, array.length);
+  var remaining = array.length - len;
+  var items = [];
+
+  for (var i = 0; i < len; ++i) {
+    items.push($e436c0fad23d06a605553c66cb63665d$var$formatValue(array[i], seenValues));
+  }
+
+  if (remaining === 1) {
+    items.push('... 1 more item');
+  } else if (remaining > 1) {
+    items.push("... ".concat(remaining, " more items"));
+  }
+
+  return '[' + items.join(', ') + ']';
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$getCustomFn(object) {
+  var customInspectFn = object[String($e436c0fad23d06a605553c66cb63665d$var$_nodejsCustomInspectSymbol.default)];
+
+  if (typeof customInspectFn === 'function') {
+    return customInspectFn;
+  }
+
+  if (typeof object.inspect === 'function') {
+    return object.inspect;
+  }
+}
+
+function $e436c0fad23d06a605553c66cb63665d$var$getObjectTag(object) {
+  var tag = Object.prototype.toString.call(object).replace(/^\[object /, '').replace(/]$/, '');
+
+  if (tag === 'Object' && typeof object.constructor === 'function') {
+    var name = object.constructor.name;
+
+    if (typeof name === 'string' && name !== '') {
+      return name;
+    }
+  }
+
+  return tag;
+}

@@ -1,0 +1,100 @@
+var $fe46e1809fc0bdec5c261764d6377c3d$exports = {};
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "tslib");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "classnames");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "react");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../../common/boundary");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../../common/classes");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../../common/position");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../menu/menu");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../menu/menuItem");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../overflow-list/overflowList");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "../popover/popover");
+$parcel$require("fe46e1809fc0bdec5c261764d6377c3d", "./breadcrumb");
+
+var $fe46e1809fc0bdec5c261764d6377c3d$export$Breadcrumbs =
+/** @class */
+function (_super) {
+  $fe46e1809fc0bdec5c261764d6377c3d$import$tslib_1.__extends(Breadcrumbs, _super);
+
+  function Breadcrumbs() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.renderOverflow = function (items) {
+      var collapseFrom = _this.props.collapseFrom;
+      var position = collapseFrom === $fe46e1809fc0bdec5c261764d6377c3d$import$Boundary.END ? $fe46e1809fc0bdec5c261764d6377c3d$import$Position.BOTTOM_RIGHT : $fe46e1809fc0bdec5c261764d6377c3d$import$Position.BOTTOM_LEFT;
+      var orderedItems = items;
+
+      if (collapseFrom === $fe46e1809fc0bdec5c261764d6377c3d$import$Boundary.START) {
+        // If we're collapsing from the start, the menu should be read from the bottom to the
+        // top, continuing with the breadcrumbs to the right. Since this means the first
+        // breadcrumb in the props must be the last in the menu, we need to reverse the overlow
+        // order.
+        orderedItems = items.slice().reverse();
+      }
+
+      return $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement("li", null, $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement($fe46e1809fc0bdec5c261764d6377c3d$import$Popover, $fe46e1809fc0bdec5c261764d6377c3d$import$tslib_1.__assign({
+        position: position
+      }, _this.props.popoverProps), $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement("span", {
+        className: $fe46e1809fc0bdec5c261764d6377c3d$import$Classes.BREADCRUMBS_COLLAPSED
+      }), $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement($fe46e1809fc0bdec5c261764d6377c3d$import$Menu, null, orderedItems.map(_this.renderOverflowBreadcrumb))));
+    };
+
+    _this.renderOverflowBreadcrumb = function (props, index) {
+      var isClickable = props.href != null || props.onClick != null;
+      return $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement($fe46e1809fc0bdec5c261764d6377c3d$import$MenuItem, $fe46e1809fc0bdec5c261764d6377c3d$import$tslib_1.__assign({
+        disabled: !isClickable
+      }, props, {
+        text: props.text,
+        key: index
+      }));
+    };
+
+    _this.renderBreadcrumbWrapper = function (props, index) {
+      var isCurrent = _this.props.items[_this.props.items.length - 1] === props;
+      return $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement("li", {
+        key: index
+      }, _this.renderBreadcrumb(props, isCurrent));
+    };
+
+    return _this;
+  }
+
+  Breadcrumbs.prototype.render = function () {
+    var _a = this.props,
+        className = _a.className,
+        collapseFrom = _a.collapseFrom,
+        items = _a.items,
+        minVisibleItems = _a.minVisibleItems,
+        _b = _a.overflowListProps,
+        overflowListProps = _b === void 0 ? {} : _b;
+    return $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement($fe46e1809fc0bdec5c261764d6377c3d$import$OverflowList, $fe46e1809fc0bdec5c261764d6377c3d$import$tslib_1.__assign({
+      collapseFrom: collapseFrom,
+      minVisibleItems: minVisibleItems,
+      tagName: "ul"
+    }, overflowListProps, {
+      className: $fe46e1809fc0bdec5c261764d6377c3d$import$classNames($fe46e1809fc0bdec5c261764d6377c3d$import$Classes.BREADCRUMBS, overflowListProps.className, className),
+      items: items,
+      overflowRenderer: this.renderOverflow,
+      visibleItemRenderer: this.renderBreadcrumbWrapper
+    }));
+  };
+
+  Breadcrumbs.prototype.renderBreadcrumb = function (props, isCurrent) {
+    if (isCurrent && this.props.currentBreadcrumbRenderer != null) {
+      return this.props.currentBreadcrumbRenderer(props);
+    } else if (this.props.breadcrumbRenderer != null) {
+      return this.props.breadcrumbRenderer(props);
+    } else {
+      return $fe46e1809fc0bdec5c261764d6377c3d$import$React.createElement($fe46e1809fc0bdec5c261764d6377c3d$import$Breadcrumb, $fe46e1809fc0bdec5c261764d6377c3d$import$tslib_1.__assign({}, props, {
+        current: isCurrent
+      }));
+    }
+  };
+
+  Breadcrumbs.defaultProps = {
+    collapseFrom: $fe46e1809fc0bdec5c261764d6377c3d$import$Boundary.START
+  };
+  return Breadcrumbs;
+}($fe46e1809fc0bdec5c261764d6377c3d$import$React.PureComponent);
+
+$fe46e1809fc0bdec5c261764d6377c3d$exports.Breadcrumbs = $fe46e1809fc0bdec5c261764d6377c3d$export$Breadcrumbs;

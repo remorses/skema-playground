@@ -20,6 +20,7 @@
     "jsx": "react",
     "noImplicitAny": false,
     "noUnusedLocals": false,
+    "sourceMap": true
   },
   "include": [
     "src"

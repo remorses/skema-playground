@@ -1,0 +1,91 @@
+var $d34e3396b3ba98218af001d2fc19$exports = {};
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "tslib");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "classnames");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "react");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../../common/abstractPureComponent");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../../common/classes");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../../common/errors");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../../common/props");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../button/buttons");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../html/html");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../icon/icon");
+$parcel$require("3721d34e3396b3ba98218af001d2fc19", "../overlay/overlay");
+
+var $d34e3396b3ba98218af001d2fc19$export$Dialog =
+/** @class */
+function (_super) {
+  $d34e3396b3ba98218af001d2fc19$import$tslib_1.__extends(Dialog, _super);
+
+  function Dialog() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Dialog.prototype.render = function () {
+    return $d34e3396b3ba98218af001d2fc19$import$React.createElement($d34e3396b3ba98218af001d2fc19$import$Overlay, $d34e3396b3ba98218af001d2fc19$import$tslib_1.__assign({}, this.props, {
+      className: $d34e3396b3ba98218af001d2fc19$import$Classes.OVERLAY_SCROLL_CONTAINER,
+      hasBackdrop: true
+    }), $d34e3396b3ba98218af001d2fc19$import$React.createElement("div", {
+      className: $d34e3396b3ba98218af001d2fc19$import$Classes.DIALOG_CONTAINER
+    }, $d34e3396b3ba98218af001d2fc19$import$React.createElement("div", {
+      className: $d34e3396b3ba98218af001d2fc19$import$classNames($d34e3396b3ba98218af001d2fc19$import$Classes.DIALOG, this.props.className),
+      style: this.props.style
+    }, this.maybeRenderHeader(), this.props.children)));
+  };
+
+  Dialog.prototype.validateProps = function (props) {
+    if (props.title == null) {
+      if (props.icon != null) {
+        console.warn($d34e3396b3ba98218af001d2fc19$import$Errors.DIALOG_WARN_NO_HEADER_ICON);
+      }
+
+      if (props.isCloseButtonShown != null) {
+        console.warn($d34e3396b3ba98218af001d2fc19$import$Errors.DIALOG_WARN_NO_HEADER_CLOSE_BUTTON);
+      }
+    }
+  };
+
+  Dialog.prototype.maybeRenderCloseButton = function () {
+    // show close button if prop is undefined or null
+    // this gives us a behavior as if the default value were `true`
+    if (this.props.isCloseButtonShown !== false) {
+      return $d34e3396b3ba98218af001d2fc19$import$React.createElement($d34e3396b3ba98218af001d2fc19$import$Button, {
+        "aria-label": "Close",
+        className: $d34e3396b3ba98218af001d2fc19$import$Classes.DIALOG_CLOSE_BUTTON,
+        icon: $d34e3396b3ba98218af001d2fc19$import$React.createElement($d34e3396b3ba98218af001d2fc19$import$Icon, {
+          icon: "small-cross",
+          iconSize: $d34e3396b3ba98218af001d2fc19$import$Icon.SIZE_LARGE
+        }),
+        minimal: true,
+        onClick: this.props.onClose
+      });
+    } else {
+      return undefined;
+    }
+  };
+
+  Dialog.prototype.maybeRenderHeader = function () {
+    var _a = this.props,
+        icon = _a.icon,
+        title = _a.title;
+
+    if (title == null) {
+      return undefined;
+    }
+
+    return $d34e3396b3ba98218af001d2fc19$import$React.createElement("div", {
+      className: $d34e3396b3ba98218af001d2fc19$import$Classes.DIALOG_HEADER
+    }, $d34e3396b3ba98218af001d2fc19$import$React.createElement($d34e3396b3ba98218af001d2fc19$import$Icon, {
+      icon: icon,
+      iconSize: $d34e3396b3ba98218af001d2fc19$import$Icon.SIZE_LARGE
+    }), $d34e3396b3ba98218af001d2fc19$import$React.createElement($d34e3396b3ba98218af001d2fc19$import$H4, null, title), this.maybeRenderCloseButton());
+  };
+
+  Dialog.defaultProps = {
+    canOutsideClickClose: true,
+    isOpen: false
+  };
+  Dialog.displayName = $d34e3396b3ba98218af001d2fc19$import$DISPLAYNAME_PREFIX + ".Dialog";
+  return Dialog;
+}($d34e3396b3ba98218af001d2fc19$import$AbstractPureComponent);
+
+$d34e3396b3ba98218af001d2fc19$exports.Dialog = $d34e3396b3ba98218af001d2fc19$export$Dialog;

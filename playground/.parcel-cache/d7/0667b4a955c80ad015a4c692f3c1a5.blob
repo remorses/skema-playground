@@ -1,0 +1,49 @@
+var $ff4b96fb090f611987188cf0b71a0e57$exports = {};
+
+var $ff4b96fb090f611987188cf0b71a0e57$var$__importDefault = $ff4b96fb090f611987188cf0b71a0e57$exports && $ff4b96fb090f611987188cf0b71a0e57$exports.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty($ff4b96fb090f611987188cf0b71a0e57$exports, "__esModule", {
+  value: true
+}); // import styled from '@emotion/native';
+
+const $ff4b96fb090f611987188cf0b71a0e57$var$theme_1 = $ff4b96fb090f611987188cf0b71a0e57$var$__importDefault($parcel$require("ff4b96fb090f611987188cf0b71a0e57", "../theme"));
+const $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1 = $parcel$require("ff4b96fb090f611987188cf0b71a0e57", "styled-system");
+const $ff4b96fb090f611987188cf0b71a0e57$var$css_1 = $ff4b96fb090f611987188cf0b71a0e57$var$__importDefault($parcel$require("ff4b96fb090f611987188cf0b71a0e57", "@styled-system/css")); // import shouldForwardProp from '@styled-system/should-forward-prop';
+
+const $ff4b96fb090f611987188cf0b71a0e57$var$sx = props => $ff4b96fb090f611987188cf0b71a0e57$var$css_1.default(props.sx)(props.theme);
+
+const $ff4b96fb090f611987188cf0b71a0e57$var$base = props => $ff4b96fb090f611987188cf0b71a0e57$var$css_1.default(props.__css)(props.theme);
+
+var $ff4b96fb090f611987188cf0b71a0e57$export$variants = ({
+  theme,
+  variants
+}) => {
+  if (!theme || !Object.keys(theme).length) {
+    theme = $ff4b96fb090f611987188cf0b71a0e57$var$theme_1.default;
+  }
+
+  if (!Array.isArray(variants)) {
+    variants = [variants];
+  }
+
+  const styles = theme.variants || {};
+  let style = {};
+
+  for (const variant of variants) {
+    const newStyle = styles[variant] || $ff4b96fb090f611987188cf0b71a0e57$var$theme_1.default[variant] || {};
+    style = Object.assign({}, style, newStyle);
+  }
+
+  return $ff4b96fb090f611987188cf0b71a0e57$var$css_1.default(style)(theme);
+};
+
+$ff4b96fb090f611987188cf0b71a0e57$exports.variants = $ff4b96fb090f611987188cf0b71a0e57$export$variants;
+var $ff4b96fb090f611987188cf0b71a0e57$export$box = $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.compose($ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.space, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.layout, // typography,
+$ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.flexbox, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.background, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.color, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.border, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.shadow);
+$ff4b96fb090f611987188cf0b71a0e57$exports.box = $ff4b96fb090f611987188cf0b71a0e57$export$box;
+var $ff4b96fb090f611987188cf0b71a0e57$export$text = $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.compose($ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.space, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.layout, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.typography, $ff4b96fb090f611987188cf0b71a0e57$var$styled_system_1.color);
+$ff4b96fb090f611987188cf0b71a0e57$exports.text = $ff4b96fb090f611987188cf0b71a0e57$export$text;

@@ -1,0 +1,49 @@
+var $df21d382b89653b6ceafc48c3c79a43$exports = {};
+$parcel$require("0df21d382b89653b6ceafc48c3c79a43", "tslib");
+$parcel$require("0df21d382b89653b6ceafc48c3c79a43", "react");
+$parcel$require("0df21d382b89653b6ceafc48c3c79a43", "@apollo/react-common");
+$parcel$require("0df21d382b89653b6ceafc48c3c79a43", "@apollo/react-hooks");
+
+function $df21d382b89653b6ceafc48c3c79a43$export$getDataFromTree(tree, context) {
+  if (context === void 0) {
+    context = {};
+  }
+
+  return $df21d382b89653b6ceafc48c3c79a43$export$getMarkupFromTree({
+    tree: tree,
+    context: context,
+    renderFunction: $parcel$require("0df21d382b89653b6ceafc48c3c79a43", "react-dom/server").renderToStaticMarkup
+  });
+}
+
+function $df21d382b89653b6ceafc48c3c79a43$export$getMarkupFromTree(_a) {
+  var tree = _a.tree,
+      _b = _a.context,
+      context = _b === void 0 ? {} : _b,
+      _c = _a.renderFunction,
+      renderFunction = _c === void 0 ? $parcel$require("0df21d382b89653b6ceafc48c3c79a43", "react-dom/server").renderToStaticMarkup : _c;
+  var renderPromises = new $df21d382b89653b6ceafc48c3c79a43$import$RenderPromises();
+
+  function process() {
+    var ApolloContext = $df21d382b89653b6ceafc48c3c79a43$import$getApolloContext();
+    var html = renderFunction($df21d382b89653b6ceafc48c3c79a43$import$React.createElement(ApolloContext.Provider, {
+      value: $df21d382b89653b6ceafc48c3c79a43$import$__assign($df21d382b89653b6ceafc48c3c79a43$import$__assign({}, context), {
+        renderPromises: renderPromises
+      })
+    }, tree));
+    return renderPromises.hasPromises() ? renderPromises.consumeAndAwaitPromises().then(process) : html;
+  }
+
+  return Promise.resolve().then(process);
+}
+
+function $df21d382b89653b6ceafc48c3c79a43$export$renderToStringWithData(component) {
+  return $df21d382b89653b6ceafc48c3c79a43$export$getMarkupFromTree({
+    tree: component,
+    renderFunction: $parcel$require("0df21d382b89653b6ceafc48c3c79a43", "react-dom/server").renderToString
+  });
+}
+
+$df21d382b89653b6ceafc48c3c79a43$exports.renderToStringWithData = $df21d382b89653b6ceafc48c3c79a43$export$renderToStringWithData;
+$df21d382b89653b6ceafc48c3c79a43$exports.getMarkupFromTree = $df21d382b89653b6ceafc48c3c79a43$export$getMarkupFromTree;
+$df21d382b89653b6ceafc48c3c79a43$exports.getDataFromTree = $df21d382b89653b6ceafc48c3c79a43$export$getDataFromTree;

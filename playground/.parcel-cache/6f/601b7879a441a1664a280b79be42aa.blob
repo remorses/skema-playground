@@ -1,0 +1,412 @@
+var $b6e537d6f3bcfd8acb82c92be479fe$exports = {};
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "@apollo/react-common");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "@apollo/react-common");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "tslib");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "react");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "hoist-non-react-statics");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "@apollo/react-components");
+$parcel$require("21b6e537d6f3bcfd8acb82c92be479fe", "ts-invariant");
+$b6e537d6f3bcfd8acb82c92be479fe$exports.resetApolloContext = $b6e537d6f3bcfd8acb82c92be479fe$import$resetApolloContext;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.getApolloContext = $b6e537d6f3bcfd8acb82c92be479fe$import$getApolloContext;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.ApolloProvider = $b6e537d6f3bcfd8acb82c92be479fe$import$ApolloProvider;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.ApolloConsumer = $b6e537d6f3bcfd8acb82c92be479fe$import$ApolloConsumer;
+
+var $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToOptions = function () {
+  return {};
+};
+
+var $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToSkip = function () {
+  return false;
+};
+
+function $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$var$calculateVariablesFromProps(operation, props) {
+  var variables = {};
+
+  for (var _i = 0, _a = operation.variables; _i < _a.length; _i++) {
+    var _b = _a[_i],
+        variable = _b.variable,
+        type = _b.type;
+    if (!variable.name || !variable.name.value) continue;
+    var variableName = variable.name.value;
+    var variableProp = props[variableName];
+
+    if (typeof variableProp !== 'undefined') {
+      variables[variableName] = variableProp;
+      continue;
+    }
+
+    if (type.kind !== 'NonNullType') {
+      variables[variableName] = undefined;
+    }
+  }
+
+  return variables;
+}
+
+var $b6e537d6f3bcfd8acb82c92be479fe$var$GraphQLBase = function (_super) {
+  $b6e537d6f3bcfd8acb82c92be479fe$import$__extends(GraphQLBase, _super);
+
+  function GraphQLBase(props) {
+    var _this = _super.call(this, props) || this;
+
+    _this.withRef = false;
+    _this.setWrappedInstance = _this.setWrappedInstance.bind(_this);
+    return _this;
+  }
+
+  GraphQLBase.prototype.getWrappedInstance = function () {
+    "production" === "production" ? $b6e537d6f3bcfd8acb82c92be479fe$import$invariant(this.withRef, 2) : $b6e537d6f3bcfd8acb82c92be479fe$import$invariant(this.withRef, "To access the wrapped instance, you need to specify " + "{ withRef: true } in the options");
+    return this.wrappedInstance;
+  };
+
+  GraphQLBase.prototype.setWrappedInstance = function (ref) {
+    this.wrappedInstance = ref;
+  };
+
+  return GraphQLBase;
+}($b6e537d6f3bcfd8acb82c92be479fe$import$React.Component);
+
+function $b6e537d6f3bcfd8acb82c92be479fe$export$withQuery(document, operationOptions) {
+  if (operationOptions === void 0) {
+    operationOptions = {};
+  }
+
+  var operation = $b6e537d6f3bcfd8acb82c92be479fe$import$parser(document);
+  var _a = operationOptions.options,
+      options = _a === void 0 ? $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToOptions : _a,
+      _b = operationOptions.skip,
+      skip = _b === void 0 ? $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToSkip : _b,
+      _c = operationOptions.alias,
+      alias = _c === void 0 ? 'Apollo' : _c;
+  var mapPropsToOptions = options;
+
+  if (typeof mapPropsToOptions !== 'function') {
+    mapPropsToOptions = function () {
+      return options;
+    };
+  }
+
+  var mapPropsToSkip = skip;
+
+  if (typeof mapPropsToSkip !== 'function') {
+    mapPropsToSkip = function () {
+      return skip;
+    };
+  }
+
+  var lastResultProps;
+  return function (WrappedComponent) {
+    var graphQLDisplayName = alias + "(" + $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName(WrappedComponent) + ")";
+
+    var GraphQL = function (_super) {
+      $b6e537d6f3bcfd8acb82c92be479fe$import$__extends(GraphQL, _super);
+
+      function GraphQL() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+
+      GraphQL.prototype.render = function () {
+        var _this = this;
+
+        var props = this.props;
+        var shouldSkip = mapPropsToSkip(props);
+        var opts = shouldSkip ? Object.create(null) : $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, mapPropsToOptions(props));
+
+        if (!shouldSkip && !opts.variables && operation.variables.length > 0) {
+          opts.variables = $b6e537d6f3bcfd8acb82c92be479fe$var$calculateVariablesFromProps(operation, props);
+        }
+
+        return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement($b6e537d6f3bcfd8acb82c92be479fe$import$Query, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, opts, {
+          displayName: graphQLDisplayName,
+          skip: shouldSkip,
+          query: document
+        }), function (_a) {
+          var _b, _c;
+
+          var _ = _a.client,
+              data = _a.data,
+              r = $b6e537d6f3bcfd8acb82c92be479fe$import$__rest(_a, ["client", "data"]);
+
+          if (operationOptions.withRef) {
+            _this.withRef = true;
+            props = Object.assign({}, props, {
+              ref: _this.setWrappedInstance
+            });
+          }
+
+          if (shouldSkip) {
+            return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props, {}));
+          }
+
+          var result = Object.assign(r, data || {});
+          var name = operationOptions.name || 'data';
+          var childProps = (_b = {}, _b[name] = result, _b);
+
+          if (operationOptions.props) {
+            var newResult = (_c = {}, _c[name] = result, _c.ownProps = props, _c);
+            lastResultProps = operationOptions.props(newResult, lastResultProps);
+            childProps = lastResultProps;
+          }
+
+          return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props, childProps));
+        });
+      };
+
+      GraphQL.displayName = graphQLDisplayName;
+      GraphQL.WrappedComponent = WrappedComponent;
+      return GraphQL;
+    }($b6e537d6f3bcfd8acb82c92be479fe$var$GraphQLBase);
+
+    return $b6e537d6f3bcfd8acb82c92be479fe$import$hoistNonReactStatics(GraphQL, WrappedComponent, {});
+  };
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$export$withMutation(document, operationOptions) {
+  if (operationOptions === void 0) {
+    operationOptions = {};
+  }
+
+  var operation = $b6e537d6f3bcfd8acb82c92be479fe$import$parser(document);
+  var _a = operationOptions.options,
+      options = _a === void 0 ? $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToOptions : _a,
+      _b = operationOptions.alias,
+      alias = _b === void 0 ? 'Apollo' : _b;
+  var mapPropsToOptions = options;
+  if (typeof mapPropsToOptions !== 'function') mapPropsToOptions = function () {
+    return options;
+  };
+  return function (WrappedComponent) {
+    var graphQLDisplayName = alias + "(" + $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName(WrappedComponent) + ")";
+
+    var GraphQL = function (_super) {
+      $b6e537d6f3bcfd8acb82c92be479fe$import$__extends(GraphQL, _super);
+
+      function GraphQL() {
+        return _super !== null && _super.apply(this, arguments) || this;
+      }
+
+      GraphQL.prototype.render = function () {
+        var props = this.props;
+        var opts = mapPropsToOptions(props);
+
+        if (operationOptions.withRef) {
+          this.withRef = true;
+          props = Object.assign({}, props, {
+            ref: this.setWrappedInstance
+          });
+        }
+
+        if (!opts.variables && operation.variables.length > 0) {
+          opts.variables = $b6e537d6f3bcfd8acb82c92be479fe$var$calculateVariablesFromProps(operation, props);
+        }
+
+        return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement($b6e537d6f3bcfd8acb82c92be479fe$import$Mutation, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({
+          ignoreResults: true
+        }, opts, {
+          mutation: document
+        }), function (mutate, _a) {
+          var _b, _c;
+
+          var data = _a.data,
+              r = $b6e537d6f3bcfd8acb82c92be479fe$import$__rest(_a, ["data"]);
+          var result = Object.assign(r, data || {});
+          var name = operationOptions.name || 'mutate';
+          var resultName = operationOptions.name ? name + "Result" : 'result';
+          var childProps = (_b = {}, _b[name] = mutate, _b[resultName] = result, _b);
+
+          if (operationOptions.props) {
+            var newResult = (_c = {}, _c[name] = mutate, _c[resultName] = result, _c.ownProps = props, _c);
+            childProps = operationOptions.props(newResult);
+          }
+
+          return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props, childProps));
+        });
+      };
+
+      GraphQL.displayName = graphQLDisplayName;
+      GraphQL.WrappedComponent = WrappedComponent;
+      return GraphQL;
+    }($b6e537d6f3bcfd8acb82c92be479fe$var$GraphQLBase);
+
+    return $b6e537d6f3bcfd8acb82c92be479fe$import$hoistNonReactStatics(GraphQL, WrappedComponent, {});
+  };
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$export$withSubscription(document, operationOptions) {
+  if (operationOptions === void 0) {
+    operationOptions = {};
+  }
+
+  var operation = $b6e537d6f3bcfd8acb82c92be479fe$import$parser(document);
+  var _a = operationOptions.options,
+      options = _a === void 0 ? $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToOptions : _a,
+      _b = operationOptions.skip,
+      skip = _b === void 0 ? $b6e537d6f3bcfd8acb82c92be479fe$var$defaultMapPropsToSkip : _b,
+      _c = operationOptions.alias,
+      alias = _c === void 0 ? 'Apollo' : _c,
+      shouldResubscribe = operationOptions.shouldResubscribe;
+  var mapPropsToOptions = options;
+  if (typeof mapPropsToOptions !== 'function') mapPropsToOptions = function () {
+    return options;
+  };
+  var mapPropsToSkip = skip;
+  if (typeof mapPropsToSkip !== 'function') mapPropsToSkip = function () {
+    return skip;
+  };
+  var lastResultProps;
+  return function (WrappedComponent) {
+    var graphQLDisplayName = alias + "(" + $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName(WrappedComponent) + ")";
+
+    var GraphQL = function (_super) {
+      $b6e537d6f3bcfd8acb82c92be479fe$import$__extends(GraphQL, _super);
+
+      function GraphQL(props) {
+        var _this = _super.call(this, props) || this;
+
+        _this.state = {
+          resubscribe: false
+        };
+        return _this;
+      }
+
+      GraphQL.prototype.componentDidUpate = function (prevProps) {
+        if (shouldResubscribe) {
+          this.setState({
+            resubscribe: shouldResubscribe(prevProps, this.props)
+          });
+        }
+      };
+
+      GraphQL.prototype.render = function () {
+        var _this = this;
+
+        var props = this.props;
+        var shouldSkip = mapPropsToSkip(props);
+        var opts = shouldSkip ? Object.create(null) : mapPropsToOptions(props);
+
+        if (!shouldSkip && !opts.variables && operation.variables.length > 0) {
+          opts.variables = $b6e537d6f3bcfd8acb82c92be479fe$var$calculateVariablesFromProps(operation, props);
+        }
+
+        return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement($b6e537d6f3bcfd8acb82c92be479fe$import$Subscription, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, opts, {
+          displayName: graphQLDisplayName,
+          skip: shouldSkip,
+          subscription: document,
+          shouldResubscribe: this.state.resubscribe
+        }), function (_a) {
+          var _b, _c;
+
+          var data = _a.data,
+              r = $b6e537d6f3bcfd8acb82c92be479fe$import$__rest(_a, ["data"]);
+
+          if (operationOptions.withRef) {
+            _this.withRef = true;
+            props = Object.assign({}, props, {
+              ref: _this.setWrappedInstance
+            });
+          }
+
+          if (shouldSkip) {
+            return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props, {}));
+          }
+
+          var result = Object.assign(r, data || {});
+          var name = operationOptions.name || 'data';
+          var childProps = (_b = {}, _b[name] = result, _b);
+
+          if (operationOptions.props) {
+            var newResult = (_c = {}, _c[name] = result, _c.ownProps = props, _c);
+            lastResultProps = operationOptions.props(newResult, lastResultProps);
+            childProps = lastResultProps;
+          }
+
+          return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props, childProps));
+        });
+      };
+
+      GraphQL.displayName = graphQLDisplayName;
+      GraphQL.WrappedComponent = WrappedComponent;
+      return GraphQL;
+    }($b6e537d6f3bcfd8acb82c92be479fe$var$GraphQLBase);
+
+    return $b6e537d6f3bcfd8acb82c92be479fe$import$hoistNonReactStatics(GraphQL, WrappedComponent, {});
+  };
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$export$graphql(document, operationOptions) {
+  if (operationOptions === void 0) {
+    operationOptions = {};
+  }
+
+  switch ($b6e537d6f3bcfd8acb82c92be479fe$import$parser(document).type) {
+    case $b6e537d6f3bcfd8acb82c92be479fe$import$DocumentType.Mutation:
+      return $b6e537d6f3bcfd8acb82c92be479fe$export$withMutation(document, operationOptions);
+
+    case $b6e537d6f3bcfd8acb82c92be479fe$import$DocumentType.Subscription:
+      return $b6e537d6f3bcfd8acb82c92be479fe$export$withSubscription(document, operationOptions);
+
+    case $b6e537d6f3bcfd8acb82c92be479fe$import$DocumentType.Query:
+    default:
+      return $b6e537d6f3bcfd8acb82c92be479fe$export$withQuery(document, operationOptions);
+  }
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName$1(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+
+function $b6e537d6f3bcfd8acb82c92be479fe$export$withApollo(WrappedComponent, operationOptions) {
+  if (operationOptions === void 0) {
+    operationOptions = {};
+  }
+
+  var withDisplayName = "withApollo(" + $b6e537d6f3bcfd8acb82c92be479fe$var$getDisplayName$1(WrappedComponent) + ")";
+
+  var WithApollo = function (_super) {
+    $b6e537d6f3bcfd8acb82c92be479fe$import$__extends(WithApollo, _super);
+
+    function WithApollo(props) {
+      var _this = _super.call(this, props) || this;
+
+      _this.setWrappedInstance = _this.setWrappedInstance.bind(_this);
+      return _this;
+    }
+
+    WithApollo.prototype.getWrappedInstance = function () {
+      "production" === "production" ? $b6e537d6f3bcfd8acb82c92be479fe$import$invariant(operationOptions.withRef, 1) : $b6e537d6f3bcfd8acb82c92be479fe$import$invariant(operationOptions.withRef, "To access the wrapped instance, you need to specify " + "{ withRef: true } in the options");
+      return this.wrappedInstance;
+    };
+
+    WithApollo.prototype.setWrappedInstance = function (ref) {
+      this.wrappedInstance = ref;
+    };
+
+    WithApollo.prototype.render = function () {
+      var _this = this;
+
+      return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement($b6e537d6f3bcfd8acb82c92be479fe$import$ApolloConsumer, null, function (client) {
+        var props = Object.assign({}, _this.props, {
+          client: client,
+          ref: operationOptions.withRef ? _this.setWrappedInstance : undefined
+        });
+        return $b6e537d6f3bcfd8acb82c92be479fe$import$React.createElement(WrappedComponent, $b6e537d6f3bcfd8acb82c92be479fe$import$__assign({}, props));
+      });
+    };
+
+    WithApollo.displayName = withDisplayName;
+    WithApollo.WrappedComponent = WrappedComponent;
+    return WithApollo;
+  }($b6e537d6f3bcfd8acb82c92be479fe$import$React.Component);
+
+  return $b6e537d6f3bcfd8acb82c92be479fe$import$hoistNonReactStatics(WithApollo, WrappedComponent, {});
+}
+
+$b6e537d6f3bcfd8acb82c92be479fe$exports.withSubscription = $b6e537d6f3bcfd8acb82c92be479fe$export$withSubscription;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.withQuery = $b6e537d6f3bcfd8acb82c92be479fe$export$withQuery;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.withMutation = $b6e537d6f3bcfd8acb82c92be479fe$export$withMutation;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.withApollo = $b6e537d6f3bcfd8acb82c92be479fe$export$withApollo;
+$b6e537d6f3bcfd8acb82c92be479fe$exports.graphql = $b6e537d6f3bcfd8acb82c92be479fe$export$graphql;

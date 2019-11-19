@@ -1,0 +1,280 @@
+var $ec56a3d2908dea3ae1d2d6079a9e1f3$exports = {};
+var $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI = $parcel$require("6ec56a3d2908dea3ae1d2d6079a9e1f3", "uri-js"),
+    $ec56a3d2908dea3ae1d2d6079a9e1f3$var$equal = $parcel$require("6ec56a3d2908dea3ae1d2d6079a9e1f3", "fast-deep-equal"),
+    $ec56a3d2908dea3ae1d2d6079a9e1f3$var$util = $parcel$require("6ec56a3d2908dea3ae1d2d6079a9e1f3", "./util"),
+    $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SchemaObject = $parcel$require("6ec56a3d2908dea3ae1d2d6079a9e1f3", "./schema_obj"),
+    $ec56a3d2908dea3ae1d2d6079a9e1f3$var$traverse = $parcel$require("6ec56a3d2908dea3ae1d2d6079a9e1f3", "json-schema-traverse");
+$ec56a3d2908dea3ae1d2d6079a9e1f3$exports = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.normalizeId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.fullPath = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getFullPath;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.url = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveUrl;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.ids = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveIds;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.inlineRef = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$inlineRef;
+$ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.schema = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveSchema;
+/**
+ * [resolve and compile the references ($ref)]
+ * @this   Ajv
+ * @param  {Function} compile reference to schema compilation funciton (localCompile)
+ * @param  {Object} root object with information about the root schema for the current schema
+ * @param  {String} ref reference to resolve
+ * @return {Object|Function} schema object (if the schema can be inlined) or validation function
+ */
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve(compile, root, ref) {
+  /* jshint validthis: true */
+  var refVal = this._refs[ref];
+
+  if (typeof refVal == 'string') {
+    if (this._refs[refVal]) refVal = this._refs[refVal];else return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolve.call(this, compile, root, refVal);
+  }
+
+  refVal = refVal || this._schemas[ref];
+
+  if (refVal instanceof $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SchemaObject) {
+    return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$inlineRef(refVal.schema, this._opts.inlineRefs) ? refVal.schema : refVal.validate || this._compile(refVal);
+  }
+
+  var res = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveSchema.call(this, root, ref);
+  var schema, v, baseId;
+
+  if (res) {
+    schema = res.schema;
+    root = res.root;
+    baseId = res.baseId;
+  }
+
+  if (schema instanceof $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SchemaObject) {
+    v = schema.validate || compile.call(this, schema.schema, root, undefined, baseId);
+  } else if (schema !== undefined) {
+    v = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$inlineRef(schema, this._opts.inlineRefs) ? schema : compile.call(this, schema, root, undefined, baseId);
+  }
+
+  return v;
+}
+/**
+ * Resolve schema, its root and baseId
+ * @this Ajv
+ * @param  {Object} root root object with properties schema, refVal, refs
+ * @param  {String} ref  reference to resolve
+ * @return {Object} object with properties schema, root, baseId
+ */
+
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveSchema(root, ref) {
+  /* jshint validthis: true */
+  var p = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI.parse(ref),
+      refPath = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$_getFullPath(p),
+      baseId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getFullPath(this._getId(root.schema));
+
+  if (Object.keys(root.schema).length === 0 || refPath !== baseId) {
+    var id = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(refPath);
+    var refVal = this._refs[id];
+
+    if (typeof refVal == 'string') {
+      return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveRecursive.call(this, root, refVal, p);
+    } else if (refVal instanceof $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SchemaObject) {
+      if (!refVal.validate) this._compile(refVal);
+      root = refVal;
+    } else {
+      refVal = this._schemas[id];
+
+      if (refVal instanceof $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SchemaObject) {
+        if (!refVal.validate) this._compile(refVal);
+        if (id == $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(ref)) return {
+          schema: refVal,
+          root: root,
+          baseId: baseId
+        };
+        root = refVal;
+      } else {
+        return;
+      }
+    }
+
+    if (!root.schema) return;
+    baseId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getFullPath(this._getId(root.schema));
+  }
+
+  return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getJsonPointer.call(this, p, baseId, root.schema, root);
+}
+/* @this Ajv */
+
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveRecursive(root, ref, parsedRef) {
+  /* jshint validthis: true */
+  var res = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveSchema.call(this, root, ref);
+
+  if (res) {
+    var schema = res.schema;
+    var baseId = res.baseId;
+    root = res.root;
+
+    var id = this._getId(schema);
+
+    if (id) baseId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveUrl(baseId, id);
+    return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getJsonPointer.call(this, parsedRef, baseId, schema, root);
+  }
+}
+
+var $ec56a3d2908dea3ae1d2d6079a9e1f3$var$PREVENT_SCOPE_CHANGE = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$util.toHash(['properties', 'patternProperties', 'enum', 'dependencies', 'definitions']);
+/* @this Ajv */
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getJsonPointer(parsedRef, baseId, schema, root) {
+  /* jshint validthis: true */
+  parsedRef.fragment = parsedRef.fragment || '';
+  if (parsedRef.fragment.slice(0, 1) != '/') return;
+  var parts = parsedRef.fragment.split('/');
+
+  for (var i = 1; i < parts.length; i++) {
+    var part = parts[i];
+
+    if (part) {
+      part = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$util.unescapeFragment(part);
+      schema = schema[part];
+      if (schema === undefined) break;
+      var id;
+
+      if (!$ec56a3d2908dea3ae1d2d6079a9e1f3$var$PREVENT_SCOPE_CHANGE[part]) {
+        id = this._getId(schema);
+        if (id) baseId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveUrl(baseId, id);
+
+        if (schema.$ref) {
+          var $ref = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveUrl(baseId, schema.$ref);
+          var res = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveSchema.call(this, root, $ref);
+
+          if (res) {
+            schema = res.schema;
+            root = res.root;
+            baseId = res.baseId;
+          }
+        }
+      }
+    }
+  }
+
+  if (schema !== undefined && schema !== root.schema) return {
+    schema: schema,
+    root: root,
+    baseId: baseId
+  };
+}
+
+var $ec56a3d2908dea3ae1d2d6079a9e1f3$var$SIMPLE_INLINED = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$util.toHash(['type', 'format', 'pattern', 'maxLength', 'minLength', 'maxProperties', 'minProperties', 'maxItems', 'minItems', 'maximum', 'minimum', 'uniqueItems', 'multipleOf', 'required', 'enum']);
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$inlineRef(schema, limit) {
+  if (limit === false) return false;
+  if (limit === undefined || limit === true) return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$checkNoRef(schema);else if (limit) return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$countKeys(schema) <= limit;
+}
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$checkNoRef(schema) {
+  var item;
+
+  if (Array.isArray(schema)) {
+    for (var i = 0; i < schema.length; i++) {
+      item = schema[i];
+      if (typeof item == 'object' && !$ec56a3d2908dea3ae1d2d6079a9e1f3$var$checkNoRef(item)) return false;
+    }
+  } else {
+    for (var key in schema) {
+      if (key == '$ref') return false;
+      item = schema[key];
+      if (typeof item == 'object' && !$ec56a3d2908dea3ae1d2d6079a9e1f3$var$checkNoRef(item)) return false;
+    }
+  }
+
+  return true;
+}
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$countKeys(schema) {
+  var count = 0,
+      item;
+
+  if (Array.isArray(schema)) {
+    for (var i = 0; i < schema.length; i++) {
+      item = schema[i];
+      if (typeof item == 'object') count += $ec56a3d2908dea3ae1d2d6079a9e1f3$var$countKeys(item);
+      if (count == Infinity) return Infinity;
+    }
+  } else {
+    for (var key in schema) {
+      if (key == '$ref') return Infinity;
+
+      if ($ec56a3d2908dea3ae1d2d6079a9e1f3$var$SIMPLE_INLINED[key]) {
+        count++;
+      } else {
+        item = schema[key];
+        if (typeof item == 'object') count += $ec56a3d2908dea3ae1d2d6079a9e1f3$var$countKeys(item) + 1;
+        if (count == Infinity) return Infinity;
+      }
+    }
+  }
+
+  return count;
+}
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getFullPath(id, normalize) {
+  if (normalize !== false) id = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(id);
+  var p = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI.parse(id);
+  return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$_getFullPath(p);
+}
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$_getFullPath(p) {
+  return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI.serialize(p).split('#')[0] + '#';
+}
+
+var $ec56a3d2908dea3ae1d2d6079a9e1f3$var$TRAILING_SLASH_HASH = /#\/?$/;
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(id) {
+  return id ? id.replace($ec56a3d2908dea3ae1d2d6079a9e1f3$var$TRAILING_SLASH_HASH, '') : '';
+}
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveUrl(baseId, id) {
+  id = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(id);
+  return $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI.resolve(baseId, id);
+}
+/* @this Ajv */
+
+
+function $ec56a3d2908dea3ae1d2d6079a9e1f3$var$resolveIds(schema) {
+  var schemaId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(this._getId(schema));
+  var baseIds = {
+    '': schemaId
+  };
+  var fullPaths = {
+    '': $ec56a3d2908dea3ae1d2d6079a9e1f3$var$getFullPath(schemaId, false)
+  };
+  var localRefs = {};
+  var self = this;
+  $ec56a3d2908dea3ae1d2d6079a9e1f3$var$traverse(schema, {
+    allKeys: true
+  }, function (sch, jsonPtr, rootSchema, parentJsonPtr, parentKeyword, parentSchema, keyIndex) {
+    if (jsonPtr === '') return;
+
+    var id = self._getId(sch);
+
+    var baseId = baseIds[parentJsonPtr];
+    var fullPath = fullPaths[parentJsonPtr] + '/' + parentKeyword;
+    if (keyIndex !== undefined) fullPath += '/' + (typeof keyIndex == 'number' ? keyIndex : $ec56a3d2908dea3ae1d2d6079a9e1f3$var$util.escapeFragment(keyIndex));
+
+    if (typeof id == 'string') {
+      id = baseId = $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(baseId ? $ec56a3d2908dea3ae1d2d6079a9e1f3$var$URI.resolve(baseId, id) : id);
+      var refVal = self._refs[id];
+      if (typeof refVal == 'string') refVal = self._refs[refVal];
+
+      if (refVal && refVal.schema) {
+        if (!$ec56a3d2908dea3ae1d2d6079a9e1f3$var$equal(sch, refVal.schema)) throw new Error('id "' + id + '" resolves to more than one schema');
+      } else if (id != $ec56a3d2908dea3ae1d2d6079a9e1f3$var$normalizeId(fullPath)) {
+        if (id[0] == '#') {
+          if (localRefs[id] && !$ec56a3d2908dea3ae1d2d6079a9e1f3$var$equal(sch, localRefs[id])) throw new Error('id "' + id + '" resolves to more than one schema');
+          localRefs[id] = sch;
+        } else {
+          self._refs[id] = fullPath;
+        }
+      }
+    }
+
+    baseIds[jsonPtr] = baseId;
+    fullPaths[jsonPtr] = fullPath;
+  });
+  return localRefs;
+}

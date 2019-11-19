@@ -1,0 +1,41 @@
+var $f9372da2e44ef3c18b37c581239ba3dd$exports = {};
+Object.defineProperty($f9372da2e44ef3c18b37c581239ba3dd$exports, "__esModule", {
+  value: true
+});
+var $f9372da2e44ef3c18b37c581239ba3dd$export$TokenKind = void 0;
+$f9372da2e44ef3c18b37c581239ba3dd$exports.TokenKind = $f9372da2e44ef3c18b37c581239ba3dd$export$TokenKind;
+/**
+ * An exported enum describing the different kinds of tokens that the
+ * lexer emits.
+ */
+
+var $f9372da2e44ef3c18b37c581239ba3dd$var$TokenKind = Object.freeze({
+  SOF: '<SOF>',
+  EOF: '<EOF>',
+  BANG: '!',
+  DOLLAR: '$',
+  AMP: '&',
+  PAREN_L: '(',
+  PAREN_R: ')',
+  SPREAD: '...',
+  COLON: ':',
+  EQUALS: '=',
+  AT: '@',
+  BRACKET_L: '[',
+  BRACKET_R: ']',
+  BRACE_L: '{',
+  PIPE: '|',
+  BRACE_R: '}',
+  NAME: 'Name',
+  INT: 'Int',
+  FLOAT: 'Float',
+  STRING: 'String',
+  BLOCK_STRING: 'BlockString',
+  COMMENT: 'Comment'
+});
+/**
+ * The enum type representing the token kinds values.
+ */
+
+$f9372da2e44ef3c18b37c581239ba3dd$export$TokenKind = $f9372da2e44ef3c18b37c581239ba3dd$var$TokenKind
+$f9372da2e44ef3c18b37c581239ba3dd$exports.TokenKind = $f9372da2e44ef3c18b37c581239ba3dd$export$TokenKind;

@@ -1,0 +1,33 @@
+var $e32db136b6f21d70d0ff0aa$exports = {};
+$parcel$require("747741585e32db136b6f21d70d0ff0aa", "@styled-system/core");
+var $e32db136b6f21d70d0ff0aa$var$defaults = {
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72]
+};
+var $e32db136b6f21d70d0ff0aa$var$config = {
+  fontFamily: {
+    property: 'fontFamily',
+    scale: 'fonts'
+  },
+  fontSize: {
+    property: 'fontSize',
+    scale: 'fontSizes',
+    defaultScale: $e32db136b6f21d70d0ff0aa$var$defaults.fontSizes
+  },
+  fontWeight: {
+    property: 'fontWeight',
+    scale: 'fontWeights'
+  },
+  lineHeight: {
+    property: 'lineHeight',
+    scale: 'lineHeights'
+  },
+  letterSpacing: {
+    property: 'letterSpacing',
+    scale: 'letterSpacings'
+  },
+  textAlign: true,
+  fontStyle: true
+};
+var $e32db136b6f21d70d0ff0aa$export$typography = $e32db136b6f21d70d0ff0aa$import$system($e32db136b6f21d70d0ff0aa$var$config);
+$e32db136b6f21d70d0ff0aa$exports.typography = $e32db136b6f21d70d0ff0aa$export$typography;
+$e32db136b6f21d70d0ff0aa$exports.default = $e32db136b6f21d70d0ff0aa$export$typography;

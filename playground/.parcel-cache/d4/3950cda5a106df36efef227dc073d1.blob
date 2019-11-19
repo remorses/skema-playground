@@ -1,0 +1,14 @@
+var $d54f95f8f09c2d078539227c99685489$exports = {};
+$parcel$require("d54f95f8f09c2d078539227c99685489", "@styled-system/core");
+var $d54f95f8f09c2d078539227c99685489$export$shadow = $d54f95f8f09c2d078539227c99685489$import$system({
+  boxShadow: {
+    property: 'boxShadow',
+    scale: 'shadows'
+  },
+  textShadow: {
+    property: 'textShadow',
+    scale: 'shadows'
+  }
+});
+$d54f95f8f09c2d078539227c99685489$exports.shadow = $d54f95f8f09c2d078539227c99685489$export$shadow;
+$d54f95f8f09c2d078539227c99685489$exports.default = $d54f95f8f09c2d078539227c99685489$export$shadow;

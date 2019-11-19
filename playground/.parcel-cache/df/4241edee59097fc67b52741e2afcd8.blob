@@ -1,0 +1,217 @@
+var $ca685c5a45b4668947e83$exports = {};
+var $ca685c5a45b4668947e83$export$__esModule = true;
+$ca685c5a45b4668947e83$exports.__esModule = $ca685c5a45b4668947e83$export$__esModule;
+var $ca685c5a45b4668947e83$var$_react = $parcel$require("76544060089ca685c5a45b4668947e83", "react");
+var $ca685c5a45b4668947e83$var$_react2 = $ca685c5a45b4668947e83$var$_interopRequireDefault($ca685c5a45b4668947e83$var$_react);
+var $ca685c5a45b4668947e83$var$_propTypes = $parcel$require("76544060089ca685c5a45b4668947e83", "prop-types");
+var $ca685c5a45b4668947e83$var$_propTypes2 = $ca685c5a45b4668947e83$var$_interopRequireDefault($ca685c5a45b4668947e83$var$_propTypes);
+var $ca685c5a45b4668947e83$var$_gud = $parcel$require("76544060089ca685c5a45b4668947e83", "gud");
+var $ca685c5a45b4668947e83$var$_gud2 = $ca685c5a45b4668947e83$var$_interopRequireDefault($ca685c5a45b4668947e83$var$_gud);
+var $ca685c5a45b4668947e83$var$_warning = $parcel$require("76544060089ca685c5a45b4668947e83", "warning");
+var $ca685c5a45b4668947e83$var$_warning2 = $ca685c5a45b4668947e83$var$_interopRequireDefault($ca685c5a45b4668947e83$var$_warning);
+
+function $ca685c5a45b4668947e83$var$_interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+function $ca685c5a45b4668947e83$var$_classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function $ca685c5a45b4668947e83$var$_possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function $ca685c5a45b4668947e83$var$_inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var $ca685c5a45b4668947e83$var$MAX_SIGNED_31_BIT_INT = 1073741823; // Inlined Object.is polyfill.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+
+function $ca685c5a45b4668947e83$var$objectIs(x, y) {
+  if (x === y) {
+    return x !== 0 || 1 / x === 1 / y;
+  } else {
+    return x !== x && y !== y;
+  }
+}
+
+function $ca685c5a45b4668947e83$var$createEventEmitter(value) {
+  var handlers = [];
+  return {
+    on: function on(handler) {
+      handlers.push(handler);
+    },
+    off: function off(handler) {
+      handlers = handlers.filter(function (h) {
+        return h !== handler;
+      });
+    },
+    get: function get() {
+      return value;
+    },
+    set: function set(newValue, changedBits) {
+      value = newValue;
+      handlers.forEach(function (handler) {
+        return handler(value, changedBits);
+      });
+    }
+  };
+}
+
+function $ca685c5a45b4668947e83$var$onlyChild(children) {
+  return Array.isArray(children) ? children[0] : children;
+}
+
+function $ca685c5a45b4668947e83$var$createReactContext(defaultValue, calculateChangedBits) {
+  var _Provider$childContex, _Consumer$contextType;
+
+  var contextProp = '__create-react-context-' + (0, $ca685c5a45b4668947e83$var$_gud2.default)() + '__';
+
+  var Provider = function (_Component) {
+    $ca685c5a45b4668947e83$var$_inherits(Provider, _Component);
+
+    function Provider() {
+      var _temp, _this, _ret;
+
+      $ca685c5a45b4668947e83$var$_classCallCheck(this, Provider);
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _ret = (_temp = (_this = $ca685c5a45b4668947e83$var$_possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.emitter = $ca685c5a45b4668947e83$var$createEventEmitter(_this.props.value), _temp), $ca685c5a45b4668947e83$var$_possibleConstructorReturn(_this, _ret);
+    }
+
+    Provider.prototype.getChildContext = function getChildContext() {
+      var _ref;
+
+      return _ref = {}, _ref[contextProp] = this.emitter, _ref;
+    };
+
+    Provider.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+      if (this.props.value !== nextProps.value) {
+        var oldValue = this.props.value;
+        var newValue = nextProps.value;
+        var changedBits = void 0;
+
+        if ($ca685c5a45b4668947e83$var$objectIs(oldValue, newValue)) {
+          changedBits = 0; // No change
+        } else {
+          changedBits = typeof calculateChangedBits === 'function' ? calculateChangedBits(oldValue, newValue) : $ca685c5a45b4668947e83$var$MAX_SIGNED_31_BIT_INT;
+
+          if ("production" !== 'production') {
+            (0, $ca685c5a45b4668947e83$var$_warning2.default)((changedBits & $ca685c5a45b4668947e83$var$MAX_SIGNED_31_BIT_INT) === changedBits, 'calculateChangedBits: Expected the return value to be a ' + '31-bit integer. Instead received: %s', changedBits);
+          }
+
+          changedBits |= 0;
+
+          if (changedBits !== 0) {
+            this.emitter.set(nextProps.value, changedBits);
+          }
+        }
+      }
+    };
+
+    Provider.prototype.render = function render() {
+      return this.props.children;
+    };
+
+    return Provider;
+  }($ca685c5a45b4668947e83$var$_react.Component);
+
+  Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[contextProp] = $ca685c5a45b4668947e83$var$_propTypes2.default.object.isRequired, _Provider$childContex);
+
+  var Consumer = function (_Component2) {
+    $ca685c5a45b4668947e83$var$_inherits(Consumer, _Component2);
+
+    function Consumer() {
+      var _temp2, _this2, _ret2;
+
+      $ca685c5a45b4668947e83$var$_classCallCheck(this, Consumer);
+
+      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return _ret2 = (_temp2 = (_this2 = $ca685c5a45b4668947e83$var$_possibleConstructorReturn(this, _Component2.call.apply(_Component2, [this].concat(args))), _this2), _this2.state = {
+        value: _this2.getValue()
+      }, _this2.onUpdate = function (newValue, changedBits) {
+        var observedBits = _this2.observedBits | 0;
+
+        if ((observedBits & changedBits) !== 0) {
+          _this2.setState({
+            value: _this2.getValue()
+          });
+        }
+      }, _temp2), $ca685c5a45b4668947e83$var$_possibleConstructorReturn(_this2, _ret2);
+    }
+
+    Consumer.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+      var observedBits = nextProps.observedBits;
+      this.observedBits = observedBits === undefined || observedBits === null ? $ca685c5a45b4668947e83$var$MAX_SIGNED_31_BIT_INT // Subscribe to all changes by default
+      : observedBits;
+    };
+
+    Consumer.prototype.componentDidMount = function componentDidMount() {
+      if (this.context[contextProp]) {
+        this.context[contextProp].on(this.onUpdate);
+      }
+
+      var observedBits = this.props.observedBits;
+      this.observedBits = observedBits === undefined || observedBits === null ? $ca685c5a45b4668947e83$var$MAX_SIGNED_31_BIT_INT // Subscribe to all changes by default
+      : observedBits;
+    };
+
+    Consumer.prototype.componentWillUnmount = function componentWillUnmount() {
+      if (this.context[contextProp]) {
+        this.context[contextProp].off(this.onUpdate);
+      }
+    };
+
+    Consumer.prototype.getValue = function getValue() {
+      if (this.context[contextProp]) {
+        return this.context[contextProp].get();
+      } else {
+        return defaultValue;
+      }
+    };
+
+    Consumer.prototype.render = function render() {
+      return $ca685c5a45b4668947e83$var$onlyChild(this.props.children)(this.state.value);
+    };
+
+    return Consumer;
+  }($ca685c5a45b4668947e83$var$_react.Component);
+
+  Consumer.contextTypes = (_Consumer$contextType = {}, _Consumer$contextType[contextProp] = $ca685c5a45b4668947e83$var$_propTypes2.default.object, _Consumer$contextType);
+  return {
+    Provider: Provider,
+    Consumer: Consumer
+  };
+}
+
+var $ca685c5a45b4668947e83$export$default = $ca685c5a45b4668947e83$var$createReactContext;
+$ca685c5a45b4668947e83$exports.default = $ca685c5a45b4668947e83$export$default;
+$ca685c5a45b4668947e83$exports = $ca685c5a45b4668947e83$exports['default'];

@@ -1,0 +1,532 @@
+var $eecfcc31431f9723bfd9d3cd1a1c7$exports = {};
+
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$__extends = $eecfcc31431f9723bfd9d3cd1a1c7$exports && $eecfcc31431f9723bfd9d3cd1a1c7$exports.__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
+
+    return extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$__assign = $eecfcc31431f9723bfd9d3cd1a1c7$exports && $eecfcc31431f9723bfd9d3cd1a1c7$exports.__assign || function () {
+  $eecfcc31431f9723bfd9d3cd1a1c7$var$__assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return $eecfcc31431f9723bfd9d3cd1a1c7$var$__assign.apply(this, arguments);
+};
+
+Object.defineProperty($eecfcc31431f9723bfd9d3cd1a1c7$exports, "__esModule", {
+  value: true
+});
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes = $parcel$require("685eecfcc31431f9723bfd9d3cd1a1c7", "prop-types");
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$React = $parcel$require("685eecfcc31431f9723bfd9d3cd1a1c7", "react");
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$isEqual = $parcel$require("685eecfcc31431f9723bfd9d3cd1a1c7", "lodash.isequal");
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1 = $parcel$require("685eecfcc31431f9723bfd9d3cd1a1c7", "./editorOptions");
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$ace = $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.getAceInstance();
+
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$Range = $eecfcc31431f9723bfd9d3cd1a1c7$var$ace.require("ace/range").Range;
+
+var $eecfcc31431f9723bfd9d3cd1a1c7$var$ReactAce =
+/** @class */
+function (_super) {
+  $eecfcc31431f9723bfd9d3cd1a1c7$var$__extends(ReactAce, _super);
+
+  function ReactAce(props) {
+    var _this = _super.call(this, props) || this;
+
+    $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.editorEvents.forEach(function (method) {
+      _this[method] = _this[method].bind(_this);
+    });
+    _this.debounce = $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.debounce;
+    return _this;
+  }
+
+  ReactAce.prototype.componentDidMount = function () {
+    var _this = this;
+
+    var _a = this.props,
+        className = _a.className,
+        onBeforeLoad = _a.onBeforeLoad,
+        onValidate = _a.onValidate,
+        mode = _a.mode,
+        focus = _a.focus,
+        theme = _a.theme,
+        fontSize = _a.fontSize,
+        value = _a.value,
+        defaultValue = _a.defaultValue,
+        cursorStart = _a.cursorStart,
+        showGutter = _a.showGutter,
+        wrapEnabled = _a.wrapEnabled,
+        showPrintMargin = _a.showPrintMargin,
+        _b = _a.scrollMargin,
+        scrollMargin = _b === void 0 ? [0, 0, 0, 0] : _b,
+        keyboardHandler = _a.keyboardHandler,
+        onLoad = _a.onLoad,
+        commands = _a.commands,
+        annotations = _a.annotations,
+        markers = _a.markers,
+        placeholder = _a.placeholder;
+    this.editor = $eecfcc31431f9723bfd9d3cd1a1c7$var$ace.edit(this.refEditor);
+
+    if (onBeforeLoad) {
+      onBeforeLoad($eecfcc31431f9723bfd9d3cd1a1c7$var$ace);
+    }
+
+    var editorProps = Object.keys(this.props.editorProps);
+
+    for (var i = 0; i < editorProps.length; i++) {
+      this.editor[editorProps[i]] = this.props.editorProps[editorProps[i]];
+    }
+
+    if (this.props.debounceChangePeriod) {
+      this.onChange = this.debounce(this.onChange, this.props.debounceChangePeriod);
+    }
+
+    this.editor.renderer.setScrollMargin(scrollMargin[0], scrollMargin[1], scrollMargin[2], scrollMargin[3]);
+    this.editor.getSession().setMode("ace/mode/" + mode);
+    this.editor.setTheme("ace/theme/" + theme);
+    this.editor.setFontSize(fontSize);
+    this.editor.getSession().setValue(!defaultValue ? value : defaultValue, cursorStart);
+
+    if (this.props.navigateToFileEnd) {
+      this.editor.navigateFileEnd();
+    }
+
+    this.editor.renderer.setShowGutter(showGutter);
+    this.editor.getSession().setUseWrapMode(wrapEnabled);
+    this.editor.setShowPrintMargin(showPrintMargin);
+    this.editor.on("focus", this.onFocus);
+    this.editor.on("blur", this.onBlur);
+    this.editor.on("copy", this.onCopy);
+    this.editor.on("paste", this.onPaste);
+    this.editor.on("change", this.onChange);
+    this.editor.on("input", this.onInput);
+
+    if (placeholder) {
+      this.updatePlaceholder();
+    }
+
+    this.editor.getSession().selection.on("changeSelection", this.onSelectionChange);
+    this.editor.getSession().selection.on("changeCursor", this.onCursorChange);
+
+    if (onValidate) {
+      this.editor.getSession().on("changeAnnotation", function () {
+        // tslint:disable-next-line:no-shadowed-variable
+        var annotations = _this.editor.getSession().getAnnotations();
+
+        _this.props.onValidate(annotations);
+      });
+    }
+
+    this.editor.session.on("changeScrollTop", this.onScroll);
+    this.editor.getSession().setAnnotations(annotations || []);
+
+    if (markers && markers.length > 0) {
+      this.handleMarkers(markers);
+    } // get a list of possible options to avoid 'misspelled option errors'
+
+
+    var availableOptions = this.editor.$options;
+    $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.editorOptions.forEach(function (option) {
+      if (availableOptions.hasOwnProperty(option)) {
+        _this.editor.setOption(option, _this.props[option]);
+      } else if (_this.props[option]) {
+        console.warn("ReactAce: editor option " + option + " was activated but not found. Did you need to import a related tool or did you possibly mispell the option?");
+      }
+    });
+    this.handleOptions(this.props);
+
+    if (Array.isArray(commands)) {
+      commands.forEach(function (command) {
+        if (typeof command.exec === "string") {
+          _this.editor.commands.bindKey(command.bindKey, command.exec);
+        } else {
+          _this.editor.commands.addCommand(command);
+        }
+      });
+    }
+
+    if (keyboardHandler) {
+      this.editor.setKeyboardHandler("ace/keyboard/" + keyboardHandler);
+    }
+
+    if (className) {
+      this.refEditor.className += " " + className;
+    }
+
+    if (onLoad) {
+      onLoad(this.editor);
+    }
+
+    this.editor.resize();
+
+    if (focus) {
+      this.editor.focus();
+    }
+  };
+
+  ReactAce.prototype.componentDidUpdate = function (prevProps) {
+    var oldProps = prevProps;
+    var nextProps = this.props;
+
+    for (var i = 0; i < $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.editorOptions.length; i++) {
+      var option = $eecfcc31431f9723bfd9d3cd1a1c7$var$editorOptions_1.editorOptions[i];
+
+      if (nextProps[option] !== oldProps[option]) {
+        this.editor.setOption(option, nextProps[option]);
+      }
+    }
+
+    if (nextProps.className !== oldProps.className) {
+      var appliedClasses = this.refEditor.className;
+      var appliedClassesArray_1 = appliedClasses.trim().split(" ");
+      var oldClassesArray = oldProps.className.trim().split(" ");
+      oldClassesArray.forEach(function (oldClass) {
+        var index = appliedClassesArray_1.indexOf(oldClass);
+        appliedClassesArray_1.splice(index, 1);
+      });
+      this.refEditor.className = " " + nextProps.className + " " + appliedClassesArray_1.join(" ");
+    } // First process editor value, as it may create a new session (see issue #300)
+
+
+    if (this.editor && this.editor.getValue() !== nextProps.value) {
+      // editor.setValue is a synchronous function call, change event is emitted before setValue return.
+      this.silent = true;
+      var pos = this.editor.session.selection.toJSON();
+      this.editor.setValue(nextProps.value, nextProps.cursorStart);
+      this.editor.session.selection.fromJSON(pos);
+      this.silent = false;
+    }
+
+    if (nextProps.placeholder !== oldProps.placeholder) {
+      this.updatePlaceholder();
+    }
+
+    if (nextProps.mode !== oldProps.mode) {
+      this.editor.getSession().setMode("ace/mode/" + nextProps.mode);
+    }
+
+    if (nextProps.theme !== oldProps.theme) {
+      this.editor.setTheme("ace/theme/" + nextProps.theme);
+    }
+
+    if (nextProps.keyboardHandler !== oldProps.keyboardHandler) {
+      if (nextProps.keyboardHandler) {
+        this.editor.setKeyboardHandler("ace/keyboard/" + nextProps.keyboardHandler);
+      } else {
+        this.editor.setKeyboardHandler(null);
+      }
+    }
+
+    if (nextProps.fontSize !== oldProps.fontSize) {
+      this.editor.setFontSize(nextProps.fontSize);
+    }
+
+    if (nextProps.wrapEnabled !== oldProps.wrapEnabled) {
+      this.editor.getSession().setUseWrapMode(nextProps.wrapEnabled);
+    }
+
+    if (nextProps.showPrintMargin !== oldProps.showPrintMargin) {
+      this.editor.setShowPrintMargin(nextProps.showPrintMargin);
+    }
+
+    if (nextProps.showGutter !== oldProps.showGutter) {
+      this.editor.renderer.setShowGutter(nextProps.showGutter);
+    }
+
+    if (!$eecfcc31431f9723bfd9d3cd1a1c7$var$isEqual(nextProps.setOptions, oldProps.setOptions)) {
+      this.handleOptions(nextProps);
+    }
+
+    if (!$eecfcc31431f9723bfd9d3cd1a1c7$var$isEqual(nextProps.annotations, oldProps.annotations)) {
+      this.editor.getSession().setAnnotations(nextProps.annotations || []);
+    }
+
+    if (!$eecfcc31431f9723bfd9d3cd1a1c7$var$isEqual(nextProps.markers, oldProps.markers) && Array.isArray(nextProps.markers)) {
+      this.handleMarkers(nextProps.markers);
+    } // this doesn't look like it works at all....
+
+
+    if (!$eecfcc31431f9723bfd9d3cd1a1c7$var$isEqual(nextProps.scrollMargin, oldProps.scrollMargin)) {
+      this.handleScrollMargins(nextProps.scrollMargin);
+    }
+
+    if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
+      this.editor.resize();
+    }
+
+    if (this.props.focus && !prevProps.focus) {
+      this.editor.focus();
+    }
+  };
+
+  ReactAce.prototype.handleScrollMargins = function (margins) {
+    if (margins === void 0) {
+      margins = [0, 0, 0, 0];
+    }
+
+    this.editor.renderer.setScrollMargins(margins[0], margins[1], margins[2], margins[3]);
+  };
+
+  ReactAce.prototype.componentWillUnmount = function () {
+    this.editor.destroy();
+    this.editor = null;
+  };
+
+  ReactAce.prototype.onChange = function (event) {
+    if (this.props.onChange && !this.silent) {
+      var value = this.editor.getValue();
+      this.props.onChange(value, event);
+    }
+  };
+
+  ReactAce.prototype.onSelectionChange = function (event) {
+    if (this.props.onSelectionChange) {
+      var value = this.editor.getSelection();
+      this.props.onSelectionChange(value, event);
+    }
+  };
+
+  ReactAce.prototype.onCursorChange = function (event) {
+    if (this.props.onCursorChange) {
+      var value = this.editor.getSelection();
+      this.props.onCursorChange(value, event);
+    }
+  };
+
+  ReactAce.prototype.onInput = function (event) {
+    if (this.props.onInput) {
+      this.props.onInput(event);
+    }
+
+    if (this.props.placeholder) {
+      this.updatePlaceholder();
+    }
+  };
+
+  ReactAce.prototype.onFocus = function (event) {
+    if (this.props.onFocus) {
+      this.props.onFocus(event, this.editor);
+    }
+  };
+
+  ReactAce.prototype.onBlur = function (event) {
+    if (this.props.onBlur) {
+      this.props.onBlur(event, this.editor);
+    }
+  };
+
+  ReactAce.prototype.onCopy = function (text) {
+    if (this.props.onCopy) {
+      this.props.onCopy(text);
+    }
+  };
+
+  ReactAce.prototype.onPaste = function (text) {
+    if (this.props.onPaste) {
+      this.props.onPaste(text);
+    }
+  };
+
+  ReactAce.prototype.onScroll = function () {
+    if (this.props.onScroll) {
+      this.props.onScroll(this.editor);
+    }
+  };
+
+  ReactAce.prototype.handleOptions = function (props) {
+    var setOptions = Object.keys(props.setOptions);
+
+    for (var y = 0; y < setOptions.length; y++) {
+      this.editor.setOption(setOptions[y], props.setOptions[setOptions[y]]);
+    }
+  };
+
+  ReactAce.prototype.handleMarkers = function (markers) {
+    var _this = this; // remove foreground markers
+
+
+    var currentMarkers = this.editor.getSession().getMarkers(true);
+
+    for (var i in currentMarkers) {
+      if (currentMarkers.hasOwnProperty(i)) {
+        this.editor.getSession().removeMarker(currentMarkers[i].id);
+      }
+    } // remove background markers except active line marker and selected word marker
+
+
+    currentMarkers = this.editor.getSession().getMarkers(false);
+
+    for (var i in currentMarkers) {
+      if (currentMarkers.hasOwnProperty(i) && currentMarkers[i].clazz !== "ace_active-line" && currentMarkers[i].clazz !== "ace_selected-word") {
+        this.editor.getSession().removeMarker(currentMarkers[i].id);
+      }
+    } // add new markers
+
+
+    markers.forEach(function (_a) {
+      var startRow = _a.startRow,
+          startCol = _a.startCol,
+          endRow = _a.endRow,
+          endCol = _a.endCol,
+          className = _a.className,
+          type = _a.type,
+          _b = _a.inFront,
+          inFront = _b === void 0 ? false : _b;
+      var range = new $eecfcc31431f9723bfd9d3cd1a1c7$var$Range(startRow, startCol, endRow, endCol);
+
+      _this.editor.getSession().addMarker(range, className, type, inFront);
+    });
+  };
+
+  ReactAce.prototype.updatePlaceholder = function () {
+    // Adapted from https://stackoverflow.com/questions/26695708/how-can-i-add-placeholder-text-when-the-editor-is-empty
+    var editor = this.editor;
+    var placeholder = this.props.placeholder;
+    var showPlaceholder = !editor.session.getValue().length;
+    var node = editor.renderer.placeholderNode;
+
+    if (!showPlaceholder && node) {
+      editor.renderer.scroller.removeChild(editor.renderer.placeholderNode);
+      editor.renderer.placeholderNode = null;
+    } else if (showPlaceholder && !node) {
+      node = editor.renderer.placeholderNode = document.createElement("div");
+      node.textContent = placeholder || "";
+      node.className = "ace_comment ace_placeholder";
+      node.style.padding = "0 9px";
+      node.style.position = "absolute";
+      node.style.zIndex = "3";
+      editor.renderer.scroller.appendChild(node);
+    } else if (showPlaceholder && node) {
+      node.textContent = placeholder;
+    }
+  };
+
+  ReactAce.prototype.updateRef = function (item) {
+    this.refEditor = item;
+  };
+
+  ReactAce.prototype.render = function () {
+    var _a = this.props,
+        name = _a.name,
+        width = _a.width,
+        height = _a.height,
+        style = _a.style;
+    var divStyle = $eecfcc31431f9723bfd9d3cd1a1c7$var$__assign({
+      width: width,
+      height: height
+    }, style);
+    return $eecfcc31431f9723bfd9d3cd1a1c7$var$React.createElement("div", {
+      ref: this.updateRef,
+      id: name,
+      style: divStyle
+    });
+  };
+
+  ReactAce.propTypes = {
+    mode: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    focus: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    theme: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    name: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    className: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    height: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    width: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    fontSize: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.oneOfType([$eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number, $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string]),
+    showGutter: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    onChange: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onCopy: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onPaste: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onFocus: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onInput: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onBlur: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onScroll: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    value: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    defaultValue: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    onLoad: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onSelectionChange: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onCursorChange: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onBeforeLoad: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    onValidate: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.func,
+    minLines: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number,
+    maxLines: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number,
+    readOnly: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    highlightActiveLine: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    tabSize: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number,
+    showPrintMargin: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    cursorStart: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number,
+    debounceChangePeriod: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.number,
+    editorProps: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.object,
+    setOptions: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.object,
+    style: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.object,
+    scrollMargin: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array,
+    annotations: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array,
+    markers: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array,
+    keyboardHandler: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string,
+    wrapEnabled: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    enableSnippets: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    enableBasicAutocompletion: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.oneOfType([$eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool, $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array]),
+    enableLiveAutocompletion: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.oneOfType([$eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool, $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array]),
+    navigateToFileEnd: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.bool,
+    commands: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.array,
+    placeholder: $eecfcc31431f9723bfd9d3cd1a1c7$var$PropTypes.string
+  };
+  ReactAce.defaultProps = {
+    name: "ace-editor",
+    focus: false,
+    mode: "",
+    theme: "",
+    height: "500px",
+    width: "500px",
+    value: "",
+    fontSize: 12,
+    enableSnippets: false,
+    showGutter: true,
+    onChange: null,
+    onPaste: null,
+    onLoad: null,
+    onScroll: null,
+    minLines: null,
+    maxLines: null,
+    readOnly: false,
+    highlightActiveLine: true,
+    showPrintMargin: true,
+    tabSize: 4,
+    cursorStart: 1,
+    editorProps: {},
+    style: {},
+    scrollMargin: [0, 0, 0, 0],
+    setOptions: {},
+    wrapEnabled: false,
+    enableBasicAutocompletion: false,
+    enableLiveAutocompletion: false,
+    placeholder: null,
+    navigateToFileEnd: true
+  };
+  return ReactAce;
+}($eecfcc31431f9723bfd9d3cd1a1c7$var$React.Component);
+
+var $eecfcc31431f9723bfd9d3cd1a1c7$export$default = $eecfcc31431f9723bfd9d3cd1a1c7$var$ReactAce;
+$eecfcc31431f9723bfd9d3cd1a1c7$exports.default = $eecfcc31431f9723bfd9d3cd1a1c7$export$default; //# sourceMappingURL=ace.js.map

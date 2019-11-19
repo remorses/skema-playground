@@ -1,0 +1,129 @@
+var $b7411966372bb2d393a2770dea01a4f5$exports = {};
+$parcel$require("b7411966372bb2d393a2770dea01a4f5", "@styled-system/core");
+var $b7411966372bb2d393a2770dea01a4f5$var$defaults = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512]
+};
+
+var $b7411966372bb2d393a2770dea01a4f5$var$isNumber = function isNumber(n) {
+  return typeof n === 'number' && !isNaN(n);
+};
+
+var $b7411966372bb2d393a2770dea01a4f5$var$getMargin = function getMargin(n, scale) {
+  if (!$b7411966372bb2d393a2770dea01a4f5$var$isNumber(n)) {
+    return $b7411966372bb2d393a2770dea01a4f5$import$get(scale, n, n);
+  }
+
+  var isNegative = n < 0;
+  var absolute = Math.abs(n);
+  var value = $b7411966372bb2d393a2770dea01a4f5$import$get(scale, absolute, absolute);
+
+  if (!$b7411966372bb2d393a2770dea01a4f5$var$isNumber(value)) {
+    return isNegative ? '-' + value : value;
+  }
+
+  return value * (isNegative ? -1 : 1);
+};
+
+var $b7411966372bb2d393a2770dea01a4f5$var$configs = {};
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin = {
+  margin: {
+    property: 'margin',
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginTop: {
+    property: 'marginTop',
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginRight: {
+    property: 'marginRight',
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginBottom: {
+    property: 'marginBottom',
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginLeft: {
+    property: 'marginLeft',
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginX: {
+    properties: ['marginLeft', 'marginRight'],
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  marginY: {
+    properties: ['marginTop', 'marginBottom'],
+    scale: 'space',
+    transform: $b7411966372bb2d393a2770dea01a4f5$var$getMargin,
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  }
+};
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.m = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.margin;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.mt = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginTop;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.mr = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginRight;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.mb = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginBottom;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.ml = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginLeft;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.mx = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginX;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.margin.my = $b7411966372bb2d393a2770dea01a4f5$var$configs.margin.marginY;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding = {
+  padding: {
+    property: 'padding',
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingTop: {
+    property: 'paddingTop',
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingRight: {
+    property: 'paddingRight',
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingBottom: {
+    property: 'paddingBottom',
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingLeft: {
+    property: 'paddingLeft',
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingX: {
+    properties: ['paddingLeft', 'paddingRight'],
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  },
+  paddingY: {
+    properties: ['paddingTop', 'paddingBottom'],
+    scale: 'space',
+    defaultScale: $b7411966372bb2d393a2770dea01a4f5$var$defaults.space
+  }
+};
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.p = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.padding;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.pt = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingTop;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.pr = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingRight;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.pb = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingBottom;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.pl = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingLeft;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.px = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingX;
+$b7411966372bb2d393a2770dea01a4f5$var$configs.padding.py = $b7411966372bb2d393a2770dea01a4f5$var$configs.padding.paddingY;
+var $b7411966372bb2d393a2770dea01a4f5$export$margin = $b7411966372bb2d393a2770dea01a4f5$import$system($b7411966372bb2d393a2770dea01a4f5$var$configs.margin);
+$b7411966372bb2d393a2770dea01a4f5$exports.margin = $b7411966372bb2d393a2770dea01a4f5$export$margin;
+var $b7411966372bb2d393a2770dea01a4f5$export$padding = $b7411966372bb2d393a2770dea01a4f5$import$system($b7411966372bb2d393a2770dea01a4f5$var$configs.padding);
+$b7411966372bb2d393a2770dea01a4f5$exports.padding = $b7411966372bb2d393a2770dea01a4f5$export$padding;
+var $b7411966372bb2d393a2770dea01a4f5$export$space = $b7411966372bb2d393a2770dea01a4f5$import$compose($b7411966372bb2d393a2770dea01a4f5$export$margin, $b7411966372bb2d393a2770dea01a4f5$export$padding);
+$b7411966372bb2d393a2770dea01a4f5$exports.space = $b7411966372bb2d393a2770dea01a4f5$export$space;
+$b7411966372bb2d393a2770dea01a4f5$exports.default = $b7411966372bb2d393a2770dea01a4f5$export$space;

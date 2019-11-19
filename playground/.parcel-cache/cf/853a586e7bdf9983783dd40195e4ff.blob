@@ -1,0 +1,24 @@
+var $f263b2b9fbbcf5dd485a2671e8$exports = {};
+$parcel$require("875208f263b2b9fbbcf5dd485a2671e8", "../utils");
+
+// tslint:disable-next-line:ban-types
+function $f263b2b9fbbcf5dd485a2671e8$export$safeInvokeMember(obj, key) {
+  var args = [];
+
+  for (var _i = 2; _i < arguments.length; _i++) {
+    args[_i - 2] = arguments[_i];
+  }
+
+  if (obj != null) {
+    var member = obj[key];
+
+    if ($f263b2b9fbbcf5dd485a2671e8$import$isFunction(member)) {
+      return member.apply(void 0, args);
+    }
+  }
+
+  return undefined;
+} //# sourceMappingURL=safeInvokeMember.js.map
+
+
+$f263b2b9fbbcf5dd485a2671e8$exports.safeInvokeMember = $f263b2b9fbbcf5dd485a2671e8$export$safeInvokeMember;

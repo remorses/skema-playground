@@ -1,0 +1,40 @@
+var $a68ed8ce9eb2957f54c4f7d1aa2$exports = {};
+$parcel$require("11723a68ed8ce9eb2957f54c4f7d1aa2", "tslib");
+$parcel$require("11723a68ed8ce9eb2957f54c4f7d1aa2", "classnames");
+$parcel$require("11723a68ed8ce9eb2957f54c4f7d1aa2", "react");
+$parcel$require("11723a68ed8ce9eb2957f54c4f7d1aa2", "../../common/classes");
+$parcel$require("11723a68ed8ce9eb2957f54c4f7d1aa2", "../../common/props");
+
+// this component is simple enough that tests would be purely tautological.
+
+/* istanbul ignore next */
+var $a68ed8ce9eb2957f54c4f7d1aa2$export$ControlGroup =
+/** @class */
+function (_super) {
+  $a68ed8ce9eb2957f54c4f7d1aa2$import$tslib_1.__extends(ControlGroup, _super);
+
+  function ControlGroup() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  ControlGroup.prototype.render = function () {
+    var _a = this.props,
+        children = _a.children,
+        className = _a.className,
+        fill = _a.fill,
+        vertical = _a.vertical,
+        htmlProps = $a68ed8ce9eb2957f54c4f7d1aa2$import$tslib_1.__rest(_a, ["children", "className", "fill", "vertical"]);
+
+    var rootClasses = $a68ed8ce9eb2957f54c4f7d1aa2$import$classNames($a68ed8ce9eb2957f54c4f7d1aa2$import$Classes.CONTROL_GROUP, (_b = {}, _b[$a68ed8ce9eb2957f54c4f7d1aa2$import$Classes.FILL] = fill, _b[$a68ed8ce9eb2957f54c4f7d1aa2$import$Classes.VERTICAL] = vertical, _b), className);
+    return $a68ed8ce9eb2957f54c4f7d1aa2$import$React.createElement("div", $a68ed8ce9eb2957f54c4f7d1aa2$import$tslib_1.__assign({}, htmlProps, {
+      className: rootClasses
+    }), children);
+
+    var _b;
+  };
+
+  ControlGroup.displayName = $a68ed8ce9eb2957f54c4f7d1aa2$import$DISPLAYNAME_PREFIX + ".ControlGroup";
+  return ControlGroup;
+}($a68ed8ce9eb2957f54c4f7d1aa2$import$React.PureComponent);
+
+$a68ed8ce9eb2957f54c4f7d1aa2$exports.ControlGroup = $a68ed8ce9eb2957f54c4f7d1aa2$export$ControlGroup;

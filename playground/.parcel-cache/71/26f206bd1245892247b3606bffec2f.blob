@@ -1,0 +1,6 @@
+var $f56c0560d2da0d6a0bbcac66ea32897$exports = {};
+var $f56c0560d2da0d6a0bbcac66ea32897$var$key = '__global_unique_id__';
+
+$f56c0560d2da0d6a0bbcac66ea32897$exports = function () {
+  return $parcel$global[$f56c0560d2da0d6a0bbcac66ea32897$var$key] = ($parcel$global[$f56c0560d2da0d6a0bbcac66ea32897$var$key] || 0) + 1;
+};

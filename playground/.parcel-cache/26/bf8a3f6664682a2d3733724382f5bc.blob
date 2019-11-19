@@ -1,0 +1,176 @@
+var $db2cc7f30f09e111a3a229cd99d71a7d$exports = {};
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$parser = $parcel$require("db2cc7f30f09e111a3a229cd99d71a7d", "graphql/language/parser");
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$parse = $db2cc7f30f09e111a3a229cd99d71a7d$var$parser.parse; // Strip insignificant whitespace
+// Note that this could do a lot more, such as reorder fields etc.
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$normalize(string) {
+  return string.replace(/[\s,]+/g, ' ').trim();
+} // A map docString -> graphql document
+
+
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$docCache = {}; // A map fragmentName -> [normalized source]
+
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap = {};
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$cacheKeyFromLoc(loc) {
+  return $db2cc7f30f09e111a3a229cd99d71a7d$var$normalize(loc.source.body.substring(loc.start, loc.end));
+} // For testing.
+
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$resetCaches() {
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$docCache = {};
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap = {};
+} // Take a unstripped parsed document (query/mutation or even fragment), and
+// check all fragment definitions, checking for name->source uniqueness.
+// We also want to make sure only unique fragments exist in the document.
+
+
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$printFragmentWarnings = true;
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$processFragments(ast) {
+  var astFragmentMap = {};
+  var definitions = [];
+
+  for (var i = 0; i < ast.definitions.length; i++) {
+    var fragmentDefinition = ast.definitions[i];
+
+    if (fragmentDefinition.kind === 'FragmentDefinition') {
+      var fragmentName = fragmentDefinition.name.value;
+      var sourceKey = $db2cc7f30f09e111a3a229cd99d71a7d$var$cacheKeyFromLoc(fragmentDefinition.loc); // We know something about this fragment
+
+      if ($db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap.hasOwnProperty(fragmentName) && !$db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap[fragmentName][sourceKey]) {
+        // this is a problem because the app developer is trying to register another fragment with
+        // the same name as one previously registered. So, we tell them about it.
+        if ($db2cc7f30f09e111a3a229cd99d71a7d$var$printFragmentWarnings) {
+          console.warn("Warning: fragment with name " + fragmentName + " already exists.\n" + "graphql-tag enforces all fragment names across your application to be unique; read more about\n" + "this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names");
+        }
+
+        $db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap[fragmentName][sourceKey] = true;
+      } else if (!$db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap.hasOwnProperty(fragmentName)) {
+        $db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap[fragmentName] = {};
+        $db2cc7f30f09e111a3a229cd99d71a7d$var$fragmentSourceMap[fragmentName][sourceKey] = true;
+      }
+
+      if (!astFragmentMap[sourceKey]) {
+        astFragmentMap[sourceKey] = true;
+        definitions.push(fragmentDefinition);
+      }
+    } else {
+      definitions.push(fragmentDefinition);
+    }
+  }
+
+  ast.definitions = definitions;
+  return ast;
+}
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$disableFragmentWarnings() {
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$printFragmentWarnings = false;
+}
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$stripLoc(doc, removeLocAtThisLevel) {
+  var docType = Object.prototype.toString.call(doc);
+
+  if (docType === '[object Array]') {
+    return doc.map(function (d) {
+      return $db2cc7f30f09e111a3a229cd99d71a7d$var$stripLoc(d, removeLocAtThisLevel);
+    });
+  }
+
+  if (docType !== '[object Object]') {
+    throw new Error('Unexpected input.');
+  } // We don't want to remove the root loc field so we can use it
+  // for fragment substitution (see below)
+
+
+  if (removeLocAtThisLevel && doc.loc) {
+    delete doc.loc;
+  } // https://github.com/apollographql/graphql-tag/issues/40
+
+
+  if (doc.loc) {
+    delete doc.loc.startToken;
+    delete doc.loc.endToken;
+  }
+
+  var keys = Object.keys(doc);
+  var key;
+  var value;
+  var valueType;
+
+  for (key in keys) {
+    if (keys.hasOwnProperty(key)) {
+      value = doc[keys[key]];
+      valueType = Object.prototype.toString.call(value);
+
+      if (valueType === '[object Object]' || valueType === '[object Array]') {
+        doc[keys[key]] = $db2cc7f30f09e111a3a229cd99d71a7d$var$stripLoc(value, true);
+      }
+    }
+  }
+
+  return doc;
+}
+
+var $db2cc7f30f09e111a3a229cd99d71a7d$var$experimentalFragmentVariables = false;
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$parseDocument(doc) {
+  var cacheKey = $db2cc7f30f09e111a3a229cd99d71a7d$var$normalize(doc);
+
+  if ($db2cc7f30f09e111a3a229cd99d71a7d$var$docCache[cacheKey]) {
+    return $db2cc7f30f09e111a3a229cd99d71a7d$var$docCache[cacheKey];
+  }
+
+  var parsed = $db2cc7f30f09e111a3a229cd99d71a7d$var$parse(doc, {
+    experimentalFragmentVariables: $db2cc7f30f09e111a3a229cd99d71a7d$var$experimentalFragmentVariables
+  });
+
+  if (!parsed || parsed.kind !== 'Document') {
+    throw new Error('Not a valid GraphQL document.');
+  } // check that all "new" fragments inside the documents are consistent with
+  // existing fragments of the same name
+
+
+  parsed = $db2cc7f30f09e111a3a229cd99d71a7d$var$processFragments(parsed);
+  parsed = $db2cc7f30f09e111a3a229cd99d71a7d$var$stripLoc(parsed, false);
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$docCache[cacheKey] = parsed;
+  return parsed;
+}
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$enableExperimentalFragmentVariables() {
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$experimentalFragmentVariables = true;
+}
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$disableExperimentalFragmentVariables() {
+  $db2cc7f30f09e111a3a229cd99d71a7d$var$experimentalFragmentVariables = false;
+} // XXX This should eventually disallow arbitrary string interpolation, like Relay does
+
+
+function $db2cc7f30f09e111a3a229cd99d71a7d$var$gql()
+/* arguments */
+{
+  var args = Array.prototype.slice.call(arguments);
+  var literals = args[0]; // We always get literals[0] and then matching post literals for each arg given
+
+  var result = typeof literals === "string" ? literals : literals[0];
+
+  for (var i = 1; i < args.length; i++) {
+    if (args[i] && args[i].kind && args[i].kind === 'Document') {
+      result += args[i].loc.source.body;
+    } else {
+      result += args[i];
+    }
+
+    result += literals[i];
+  }
+
+  return $db2cc7f30f09e111a3a229cd99d71a7d$var$parseDocument(result);
+} // Support typescript, which isn't as nice as Babel about default exports
+
+
+$db2cc7f30f09e111a3a229cd99d71a7d$var$gql.default = $db2cc7f30f09e111a3a229cd99d71a7d$var$gql;
+$db2cc7f30f09e111a3a229cd99d71a7d$var$gql.resetCaches = $db2cc7f30f09e111a3a229cd99d71a7d$var$resetCaches;
+$db2cc7f30f09e111a3a229cd99d71a7d$var$gql.disableFragmentWarnings = $db2cc7f30f09e111a3a229cd99d71a7d$var$disableFragmentWarnings;
+$db2cc7f30f09e111a3a229cd99d71a7d$var$gql.enableExperimentalFragmentVariables = $db2cc7f30f09e111a3a229cd99d71a7d$var$enableExperimentalFragmentVariables;
+$db2cc7f30f09e111a3a229cd99d71a7d$var$gql.disableExperimentalFragmentVariables = $db2cc7f30f09e111a3a229cd99d71a7d$var$disableExperimentalFragmentVariables;
+$db2cc7f30f09e111a3a229cd99d71a7d$exports = $db2cc7f30f09e111a3a229cd99d71a7d$var$gql;

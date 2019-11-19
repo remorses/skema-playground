@@ -1,0 +1,45 @@
+var $a6377657f0e35dc825a17a8ecfe1b$exports = {};
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "tslib");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "classnames");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "react");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "../../common/classes");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "../../common/props");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "./navbarDivider");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "./navbarGroup");
+$parcel$require("263a6377657f0e35dc825a17a8ecfe1b", "./navbarHeading");
+
+// this component is simple enough that tests would be purely tautological.
+
+/* istanbul ignore next */
+var $a6377657f0e35dc825a17a8ecfe1b$export$Navbar =
+/** @class */
+function (_super) {
+  $a6377657f0e35dc825a17a8ecfe1b$import$tslib_1.__extends(Navbar, _super);
+
+  function Navbar() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  Navbar.prototype.render = function () {
+    var _a = this.props,
+        children = _a.children,
+        className = _a.className,
+        fixedToTop = _a.fixedToTop,
+        htmlProps = $a6377657f0e35dc825a17a8ecfe1b$import$tslib_1.__rest(_a, ["children", "className", "fixedToTop"]);
+
+    var classes = $a6377657f0e35dc825a17a8ecfe1b$import$classNames($a6377657f0e35dc825a17a8ecfe1b$import$Classes.NAVBAR, (_b = {}, _b[$a6377657f0e35dc825a17a8ecfe1b$import$Classes.FIXED_TOP] = fixedToTop, _b), className);
+    return $a6377657f0e35dc825a17a8ecfe1b$import$React.createElement("div", $a6377657f0e35dc825a17a8ecfe1b$import$tslib_1.__assign({
+      className: classes
+    }, htmlProps), children);
+
+    var _b;
+  };
+
+  Navbar.displayName = $a6377657f0e35dc825a17a8ecfe1b$import$DISPLAYNAME_PREFIX + ".Navbar";
+  Navbar.Divider = $a6377657f0e35dc825a17a8ecfe1b$import$NavbarDivider;
+  Navbar.Group = $a6377657f0e35dc825a17a8ecfe1b$import$NavbarGroup;
+  Navbar.Heading = $a6377657f0e35dc825a17a8ecfe1b$import$NavbarHeading;
+  return Navbar;
+}($a6377657f0e35dc825a17a8ecfe1b$import$React.PureComponent);
+
+$a6377657f0e35dc825a17a8ecfe1b$exports.Navbar = $a6377657f0e35dc825a17a8ecfe1b$export$Navbar;

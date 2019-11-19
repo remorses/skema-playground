@@ -1,0 +1,64 @@
+var $fc4cacb83043e873870dfbd58f0200e$exports = {};
+Object.defineProperty($fc4cacb83043e873870dfbd58f0200e$exports, "__esModule", {
+  value: true
+});
+const $fc4cacb83043e873870dfbd58f0200e$var$space = [0, 4, 8, 16, 32, 64, 128, 256];
+const $fc4cacb83043e873870dfbd58f0200e$var$sizes = [0, 4, 8, 16, 32, 64, 128, 256, 500, 900];
+const $fc4cacb83043e873870dfbd58f0200e$var$colors = {
+  primary: '#001EC4',
+  globalBackground: '#EFF3FB',
+  background: '#D7DCE6',
+  text: '#4C5461',
+  lightText: '#7A869A',
+  white: '#FFFFFF'
+};
+const $fc4cacb83043e873870dfbd58f0200e$var$shadows = ['0px 2px 10px rgba(159,159,159,0.3)', '0px 2px 10px rgba(159,159,159,0.7)'];
+const $fc4cacb83043e873870dfbd58f0200e$var$fonts = {
+  default: 'arial'
+};
+const $fc4cacb83043e873870dfbd58f0200e$var$fontSizes = ['12px', '14px', '16px', '24px', '42px'];
+const $fc4cacb83043e873870dfbd58f0200e$var$fontWeights = [300, 400, 500, 600];
+const $fc4cacb83043e873870dfbd58f0200e$var$radii = ['4px', '8px'];
+const $fc4cacb83043e873870dfbd58f0200e$var$text = {
+  fontFamily: $fc4cacb83043e873870dfbd58f0200e$var$fonts.default,
+  fontSize: $fc4cacb83043e873870dfbd58f0200e$var$fontSizes[2],
+  fontWeight: $fc4cacb83043e873870dfbd58f0200e$var$fontWeights[1]
+};
+const $fc4cacb83043e873870dfbd58f0200e$var$variants = {
+  text: $fc4cacb83043e873870dfbd58f0200e$var$text,
+  h1: Object.assign({}, $fc4cacb83043e873870dfbd58f0200e$var$text, {
+    fontSize: 4
+  }),
+  h2: Object.assign({}, $fc4cacb83043e873870dfbd58f0200e$var$text, {
+    fontSize: 3
+  }),
+  link: Object.assign({}, $fc4cacb83043e873870dfbd58f0200e$var$text, {
+    color: 'primary'
+  }),
+  image: {},
+  button: Object.assign({}, $fc4cacb83043e873870dfbd58f0200e$var$text, {
+    borderRadius: $fc4cacb83043e873870dfbd58f0200e$var$radii[0],
+    color: $fc4cacb83043e873870dfbd58f0200e$var$colors.white,
+    bg: $fc4cacb83043e873870dfbd58f0200e$var$colors.primary
+  }),
+  card: {
+    borderRadius: $fc4cacb83043e873870dfbd58f0200e$var$radii[1],
+    backgroundColor: $fc4cacb83043e873870dfbd58f0200e$var$colors.background,
+    boxShadow: $fc4cacb83043e873870dfbd58f0200e$var$shadows[0],
+    marginTop: $fc4cacb83043e873870dfbd58f0200e$var$space[3],
+    padding: $fc4cacb83043e873870dfbd58f0200e$var$space[3],
+    width: '100%'
+  }
+};
+var $fc4cacb83043e873870dfbd58f0200e$export$default = {
+  colors: $fc4cacb83043e873870dfbd58f0200e$var$colors,
+  fonts: $fc4cacb83043e873870dfbd58f0200e$var$fonts,
+  fontSizes: $fc4cacb83043e873870dfbd58f0200e$var$fontSizes,
+  fontWeights: $fc4cacb83043e873870dfbd58f0200e$var$fontWeights,
+  space: $fc4cacb83043e873870dfbd58f0200e$var$space,
+  shadows: $fc4cacb83043e873870dfbd58f0200e$var$shadows,
+  sizes: $fc4cacb83043e873870dfbd58f0200e$var$sizes,
+  variants: $fc4cacb83043e873870dfbd58f0200e$var$variants,
+  radii: $fc4cacb83043e873870dfbd58f0200e$var$radii
+};
+$fc4cacb83043e873870dfbd58f0200e$exports.default = $fc4cacb83043e873870dfbd58f0200e$export$default;
