@@ -30,7 +30,7 @@ import {
     TrendingUp
 } from 'styled-icons/feather'
 import { RightArrowAlt, CodeCurly } from 'styled-icons/boxicons-regular'
-import { simpleUsage, unionsUsage, interfacesUsage } from './constants'
+import { simpleUsage, unionsUsage, interfacesUsage } from '../constants'
 
 const MAILCHIMP_URL = ''
 
