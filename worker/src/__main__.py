@@ -23,6 +23,8 @@ def main(host, port=80):
     uvicorn.run(app, host=host, port=port, log_level="debug")
 
 
+
+
 if __name__ == "__main__":
     main("0.0.0.0", int(os.getenv("PORT")) or 8000)
 
