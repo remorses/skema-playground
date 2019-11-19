@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Box, Text } from 'hybrid-components'
-import { Eye, EyeOff, } from 'styled-icons/feather'
+import { Eye, EyeOff } from 'styled-icons/feather'
 import { ShowAlt, Coffee } from 'styled-icons/boxicons-regular/'
 import { Hide } from 'styled-icons/boxicons-regular/'
 import { useGlobal } from '../store'

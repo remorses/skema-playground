@@ -20,7 +20,7 @@ export default ({
     language = 'yaml',
     readOnly = false,
     minLines = 0,
-    showGutter=true,
+    showGutter = true,
     theme = 'tomorrow_night_eighties',
     onChange = (v) => null,
     ...rest
@@ -29,13 +29,11 @@ export default ({
         <Box
             overflow='auto'
             height='100%'
-            
             // borderRadius='10px'
             p={0}
             {...rest}
         >
             <AceEditor
-                
                 // ref={key}
                 readOnly={readOnly}
                 mode={language}
@@ -43,7 +41,7 @@ export default ({
                 theme={theme}
                 // name={key}
                 height='100%'
-                editorProps={{ $blockScrolling: false,  }}
+                editorProps={{ $blockScrolling: false }}
                 value={value}
                 width={'100%'}
                 // maxLines={300}
@@ -61,7 +59,7 @@ export default ({
                     showInvisibles: false,
                     showGutter,
                     // scrollPastEnd: true,
-                    spellcheck: true,
+                    spellcheck: true
                 }}
             />
         </Box>

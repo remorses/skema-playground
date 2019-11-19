@@ -11,8 +11,8 @@ interface State {
         language?: string
         options: any
     }
-    fetchingOutput: boolean,
-    showSettings: boolean,
+    fetchingOutput: boolean
+    showSettings: boolean
 }
 
 const skemaCode = `
@@ -37,18 +37,22 @@ const initialState = {
         options: {}
     },
     fetchingOutput: false,
-    showSettings: true,
+    showSettings: true
 }
 
 const actions = (store: Store<State>) => {
     return {
         setSkemaCode: (code) => {
-            store.setState({ skemaEditor: { ...store.state.skemaEditor, code } })
+            store.setState({
+                skemaEditor: { ...store.state.skemaEditor, code }
+            })
         },
         setOutputCode: (getCode) => {
             store.setState({ fetchingOutput: true })
             getCode.then((code) => {
-                store.setState({ outputEditor: { ...store.state.skemaEditor, code } })
+                store.setState({
+                    outputEditor: { ...store.state.skemaEditor, code }
+                })
                 store.setState({ fetchingOutput: false })
             })
         },
@@ -63,7 +67,7 @@ const actions = (store: Store<State>) => {
             store.setState({ settings: { ...store.state.settings, options } })
         },
         toggleShowSettings: () => {
-            store.setState({showSettings: !store.state.showSettings})
+            store.setState({ showSettings: !store.state.showSettings })
         }
     }
 }

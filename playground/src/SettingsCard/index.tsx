@@ -99,7 +99,9 @@ const View = ({ data }: { data: GetLanguagesQuery }) => {
                                         options: settings.options,
                                         language: settings.language as LanguageName
                                     }
-                                }).then(({ data }) => data.output.code + '\n\n\n\n')
+                                }).then(
+                                    ({ data }) => data.output.code + '\n\n\n\n'
+                                )
                             )
                         }}
                         intent='primary'
