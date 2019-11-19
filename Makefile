@@ -25,4 +25,4 @@ deploy:
 	docker -H ssh://morse@instabotnet.club stack deploy -c docker-stack.yml --with-registry-auth skema
 
 # [bump if playground]
-# 0.0.5
+# 0.0.6
