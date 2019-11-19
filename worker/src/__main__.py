@@ -5,7 +5,7 @@ from starlette.middleware.cors import CORSMiddleware
 from strawberry.asgi import GraphQL
 from .server import schema
 
-def main(host, port):
+def main(host, port=80):
     app = Starlette(debug=True)
 
     app.add_middleware(
