@@ -36,7 +36,7 @@ const MAILCHIMP_URL = ''
 
 const App = () => {
     return (
-        <Provider color='#000' gradients={['#fff', '#ffe']}>
+        <Provider color='#000' bg='white'>
             <Hero>
                 <Logo
                     width={['100%', null, '800px']}
