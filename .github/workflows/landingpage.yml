@@ -26,6 +26,7 @@ jobs:
                 personalAccessToken: ${{ secrets.GITHUB_TOKEN }}
                 imageName: landingpage
                 context: landingpage
+                # tags: ${{ concat('latest, ', ) }}
         -   run: env
             env:
                 OUT: ${{ toJson(outputs)}}
