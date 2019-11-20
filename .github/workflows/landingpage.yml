@@ -22,7 +22,9 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         -   run: env
             env:
-                STEPS: ${{ toJson(steps)}}
+                STEPS: ${{ toJson(steps) }}
+                BUMP: ${{ toJson(steps.bump) }}
+                OUT: ${{ toJson(steps.bump.outputs) }}
         -   name: Publish Image
             uses: remorses/github-docker@master
             with:
