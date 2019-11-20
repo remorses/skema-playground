@@ -12,7 +12,11 @@ services:
             - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/docs/"
     landingpage:
         # [bump if landingpage]
+<<<<<<< HEAD
         image: docker.pkg.github.com/remorses/skema-playground/landingpage # :0.0.8
+=======
+        image: docker.pkg.github.com/remorses/skema-playground/landingpage:0.0.9
+>>>>>>> 4b432b5539c15dae1455cbd548ac14bd75b823c4
         networks:
             - traefik_default
         labels:
