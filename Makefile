@@ -34,4 +34,4 @@ deploy:
 	docker -H $(DOCKER_HOST) stack deploy -c docker-stack.yml --with-registry-auth skema
 
 # [bump if playground]
-# 0.0.10
+# 0.0.11
