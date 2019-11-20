@@ -47,6 +47,7 @@ body {
     border: 2px solid black;
     border-top: none;
     border-bottom: none;
+    padding: 0 5px;
     padding-top: 60px;
 
     /* border-left: 5px solid rgba(255, 255, 255, 0);
