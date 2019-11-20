@@ -29,7 +29,6 @@ jobs:
         -   run: env
             env:
                 OUT: ${{ toJson(outputs)}}
-                STEPS: ${{ toJson(steps.outputs)}}
                 STEPS: ${{ toJson(steps)}}
         # -   uses: whoan/docker-build-with-cache-action@v1
         #     with:
