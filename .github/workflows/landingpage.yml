@@ -19,6 +19,10 @@ jobs:
                 prefix: landingpage
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        -   run: env
+            env:
+                OUT: ${{ toJson(outputs)}}
+                STEPS: ${{ toJson(steps)}}
         -   name: Publish Image
             uses: remorses/github-docker@master
             with:
@@ -27,10 +31,7 @@ jobs:
                 imageName: landingpage
                 context: landingpage
                 # tags: ${{ concat('latest, ', ) }}
-        -   run: env
-            env:
-                OUT: ${{ toJson(outputs)}}
-                STEPS: ${{ toJson(steps)}}
+
         # -   uses: whoan/docker-build-with-cache-action@v1
         #     with:
         #         username: remorses
