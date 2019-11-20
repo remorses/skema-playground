@@ -30,7 +30,8 @@ redeploy:
 	docker -H $(DOCKER_HOST) service update --with-registry-auth --force skema_landingpage
 
 deploy:
-	docker -D --config ~/.docker/ stack deploy -c docker-stack.yml --resolve-image always --with-registry-auth skema
+	docker -H $(DOCKER_HOST) stack rm skema
+	docker -H $(DOCKER_HOST) stack deploy -c docker-stack.yml --with-registry-auth skema
 
 # [bump if playground]
 # 0.0.10
