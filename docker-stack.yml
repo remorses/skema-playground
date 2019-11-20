@@ -9,10 +9,10 @@ services:
             - traefik.enable=true
             - traefik.port=80
             - traefik.docker.network=traefik_default
-            - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/docs"
+            - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/docs/"
     landingpage:
         # [bump if landingpage]
-        image: docker.pkg.github.com/remorses/skema-playground/landingpage:0.0.8
+        image: docker.pkg.github.com/remorses/skema-playground/landingpage # :0.0.8
         networks:
             - traefik_default
         labels:
@@ -30,7 +30,7 @@ services:
             - traefik.enable=true
             - traefik.port=80
             - traefik.docker.network=traefik_default
-            - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/app"
+            - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/app/"
     worker:
         image: docker.pkg.github.com/remorses/skema-playground/worker
         networks:
