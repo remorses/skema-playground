@@ -10,6 +10,8 @@ services:
             - traefik.port=80
             - traefik.docker.network=traefik_default
             - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/docs/"
+            - "traefik.frontend.redirect.regex=^(.*)/docs$$"
+            - "traefik.frontend.redirect.replacement=$$1/docs/"
     landingpage:
         # [bump if landingpage]
         image: docker.pkg.github.com/remorses/skema-playground/landingpage # :0.0.8
@@ -30,6 +32,8 @@ services:
             - traefik.enable=true
             - traefik.port=80
             - traefik.docker.network=traefik_default
+            - "traefik.frontend.redirect.regex=^(.*)/app$$"
+            - "traefik.frontend.redirect.replacement=$$1/app/"
             - "traefik.frontend.rule=Host:skema.club;PathPrefixStrip:/app/"
     worker:
         image: docker.pkg.github.com/remorses/skema-playground/worker

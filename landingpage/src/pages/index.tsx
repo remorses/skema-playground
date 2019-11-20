@@ -45,8 +45,8 @@ const App = () => {
                 {/* <Head fontSize='60px'>Skema</Head> */}
                 <SubHead>One source of truth for all your types</SubHead>
                 {/* <SignupForm action={MAILCHIMP_URL} /> */}
-                <Button href='/app'>Start Playground</Button>
-                <a href='/docs'>
+                <Button href='/app/'>Start Playground</Button>
+                <a href='/docs/'>
                     Documentation
                     <RightArrowAlt display='inline' width='20px' />
                 </a>

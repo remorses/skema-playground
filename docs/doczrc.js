@@ -1,4 +1,4 @@
 export default {
   menu: [],
-  base: "/docs"
+  base: "/docs/"
 }
