@@ -10,6 +10,7 @@ public
 /coverage
 
 # production
+.parcel-cache
 /build
 dist
 .cache
