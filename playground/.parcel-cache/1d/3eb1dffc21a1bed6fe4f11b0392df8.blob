@@ -1,7 +1,0 @@
-var $f60329600a53066c361fa19103977$exports = {};
-
-if ("production" === 'production') {
-  $f60329600a53066c361fa19103977$exports = $parcel$require("050f60329600a53066c361fa19103977", "./cjs/react-dom-server.browser.production.min.js");
-} else {
-  $f60329600a53066c361fa19103977$exports = require('./cjs/react-dom-server.browser.development.js');
-}

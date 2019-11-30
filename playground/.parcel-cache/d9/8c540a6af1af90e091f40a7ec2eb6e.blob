@@ -1,9 +1,0 @@
-var $c87b8419aabaf62c7f81b29f8d7e398e$exports = {};
-
-function $c87b8419aabaf62c7f81b29f8d7e398e$var$_interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-$c87b8419aabaf62c7f81b29f8d7e398e$exports = $c87b8419aabaf62c7f81b29f8d7e398e$var$_interopRequireDefault;

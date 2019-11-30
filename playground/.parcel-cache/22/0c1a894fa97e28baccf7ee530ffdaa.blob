@@ -1,9 +1,0 @@
-var $b423f25df08f2f0d6661f14c7378dd5$exports = {};
-
-function $b423f25df08f2f0d6661f14c7378dd5$var$replaceClassName(origClass, classToRemove) {
-  return origClass.replace(new RegExp('(^|\\s)' + classToRemove + '(?:\\s|$)', 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
-}
-
-$b423f25df08f2f0d6661f14c7378dd5$exports = function removeClass(element, className) {
-  if (element.classList) element.classList.remove(className);else if (typeof element.className === 'string') element.className = $b423f25df08f2f0d6661f14c7378dd5$var$replaceClassName(element.className, className);else element.setAttribute('class', $b423f25df08f2f0d6661f14c7378dd5$var$replaceClassName(element.className && element.className.baseVal || '', className));
-};

@@ -1,8 +1,0 @@
-var $e38b0d4e6572c0dd54f06e6c68977939$exports = {};
-$parcel$require("e38b0d4e6572c0dd54f06e6c68977939", "./generated/iconContents");
-$parcel$require("e38b0d4e6572c0dd54f06e6c68977939", "./generated/iconNames");
-$parcel$require("e38b0d4e6572c0dd54f06e6c68977939", "./generated/iconSvgPaths");
-$e38b0d4e6572c0dd54f06e6c68977939$exports.IconNames = $e38b0d4e6572c0dd54f06e6c68977939$import$IconNames;
-$e38b0d4e6572c0dd54f06e6c68977939$exports.IconContents = $e38b0d4e6572c0dd54f06e6c68977939$import$IconContents;
-$e38b0d4e6572c0dd54f06e6c68977939$exports.IconSvgPaths20 = $e38b0d4e6572c0dd54f06e6c68977939$import$IconSvgPaths20;
-$e38b0d4e6572c0dd54f06e6c68977939$exports.IconSvgPaths16 = $e38b0d4e6572c0dd54f06e6c68977939$import$IconSvgPaths16;
