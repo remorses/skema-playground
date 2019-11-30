@@ -6,7 +6,8 @@
     "builds": [
         { "src": "landingpage/package.json", "use": "@now/static-build" },
         { "src": "playground/package.json", "use": "@now/static-build" },
-        { "src": "docs/package.json", "use": "@now/static-build" }
+        { "src": "docs/package.json", "use": "@now/static-build" },
+        { "src": "worker/entry.py", "use": "@now/python" }
     ],
     "routes": [
         {
@@ -26,6 +27,10 @@
         {
             "src": "/app/(.*)",
             "dest": "/playground/$1"
+        },
+        {
+            "src": "/worker/",
+            "dest": "/worker/entry.py"
         },
         {
             "src": "/(.*)",
