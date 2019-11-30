@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+        { "src": "landingpage/package.json", "use": "@now/static-build" },
+        { "src": "playground/package.json", "use": "@now/static-build" },
+        { "src": "docs/package.json", "use": "@now/static-build" }
+    ],
+    "routes": [
+        {
+            "src": "(.*)/docs",
+            "status": 308,
+            "headers": { "Location": "$1/docs/" }
+        },
+        {
+            "src": "/docs/(.*)",
+            "dest": "/docs/$1"
+        },
+        {
+            "src": "(.*)/app",
+            "status": 308,
+            "headers": { "Location": "$1/app/" }
+        },
+        {
+            "src": "/app/(.*)",
+            "dest": "/playground/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/landingpage/$1"
+        }
+    ]
+}

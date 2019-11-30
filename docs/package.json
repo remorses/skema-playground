@@ -1,23 +1,17 @@
 {
-  "name": "docz-example-basic",
-  "private": true,
-  "version": "2.0.0-rc.41",
-  "license": "MIT",
-  "files": [
-    "src/",
-    "doczrc.js",
-    "package.json"
-  ],
-  "scripts": {
-    "dev": "docz dev",
-    "build": "docz build",
-    "serve": "docz serve"
-  },
-  "dependencies": {
-    "docz": "next",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "scheduler": "^0.15.0"
-  }
+    "name": "mkdocs",
+    "version": "1.0.0",
+    "private": true,
+    "description": "An MkDocs project, ready for deployment with ZEIT Now.",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "dev": "mkdocs serve -a localhost:$PORT",
+        "build": "pip3 install mkdocs mkdocs-material && mkdocs build -d public"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }

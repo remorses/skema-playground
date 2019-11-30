@@ -41,6 +41,7 @@
   },
   "scripts": {
     "build": "parcel build public/index.html --public-url /app/ --no-source-maps --detailed-report",
+    "dev": "parcel serve --port $PORT public/index.html",
     "build1": "parcel build   public/index.html --no-source-maps "
   },
   "eslintConfig": {
